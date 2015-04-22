@@ -45,7 +45,31 @@ typedef enum {
     AMSlideMenuRightOpened,
 } AMSlideMenuState;
 
-@interface AMSlideMenuMainViewController : UIViewController
+@protocol AMSlideMenuMultipleStoryboarding <NSObject>
+
+@optional
+/**
+ * Override this method and return instantiated navigation controller that will opened
+ * when cell at indexPath will be selected from left menu
+ * NOTE! If you override this method, then segueIdentifierForIndexPathInLeftMenu will be ignored
+ * @param indexPath of left menu table
+ * @return UINavigationController instance for input indexPath
+ */
+- (UINavigationController *)navigationControllerForIndexPathInLeftMenu:(NSIndexPath *)indexPath;
+
+/**
+ * Override this method and return instantiated navigation controller that will opened
+ * when cell at indexPath will be selected from left menu
+ * NOTE! If you override this method, then segueIdentifierForIndexPathInRightMenu will be ignored
+ * @param indexPath of right menu table
+ * @return UINavigationController instance for input indexPath
+ */
+- (UINavigationController *)navigationControllerForIndexPathInRightMenu:(NSIndexPath *)indexPath;
+
+
+@end
+
+@interface AMSlideMenuMainViewController : UIViewController <AMSlideMenuMultipleStoryboarding>
 
 #pragma mark - Properties
 
@@ -95,37 +119,61 @@ typedef enum {
 - (CGFloat)rightMenuWidth;
 
 /**
- * Override this method to select whether of 
+ * Override this method to change the animation duration of opening the menu
+ * @return Open animation duration (Default will return 0.35f
+ */
+- (CGFloat) openAnimationDuration;
+
+/**
+ * Override this method to change the animation duration of closing the menu
+ * @return Closing animation duration (Default will return 0.35f
+ */
+- (CGFloat) closeAnimationDuration;
+
+/**
+ * Override this metod to change the animation easing of opening the menu
+ * @return Animation easing (Default will return UIViewAnimationOptionCurveLinear
+ */
+- (UIViewAnimationOptions) openAnimationCurve;
+
+/**
+ * Override this metod to change the animation easing of closing the menu
+ * @return Animation easing (Default will return UIViewAnimationOptionCurveLinear
+ */
+- (UIViewAnimationOptions) closeAnimationCurve;
+
+/**
+ * Override this method to select whether of
  * menues is the primary and which's root vc will be presented in first time.
  * @return Type of primary menu (Default will return AMPrimaryMenuLeft)
  */
 - (AMPrimaryMenu)primaryMenu;
 
 /**
- * Override this method to set which of indexPaths 
+ * Override this method to set which of indexPaths
  * will be selected automatically on first time for left menu
  * @return Default will return (0, 0)
  */
 - (NSIndexPath *)initialIndexPathForLeftMenu;
 
 /**
- * Override this method to set which of 
+ * Override this method to set which of
  * indexPaths will be selected automatically on first time for right menu
  * @return Default will return (0, 0)
  */
 - (NSIndexPath *)initialIndexPathForRightMenu;
 
 /**
- * Override this method to set which of 
- * indexPaths will be selected automatically on first time for right menu
+ * Override this method and return segue identifier that will be performed
+ * when cell at indexPath will be selected from left menu
  * @param indexPath of left menu table
  * @return Segue identifier for input indexPath
  */
 - (NSString *)segueIdentifierForIndexPathInLeftMenu:(NSIndexPath *)indexPath;
 
 /**
- * Override this method to set which 
- * of indexPaths will be selected automatically on first time for right menu
+ * Override this method and return segue identifier that will be performed
+ * when cell at indexPath will be selected from right menu
  * @param indexPath of right menu table
  * @return Segue identifier for input indexPath
  */

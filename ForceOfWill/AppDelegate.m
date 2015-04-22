@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 IndieZiOS. All rights reserved.
 //
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "AppDelegate.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import <RestKit/RestKit.h>
 #import <CoreData/CoreData.h>
 #import "CardREST.h"
+#import "DeckREST.h"
 #import "MatchManager.h"
 
 @interface AppDelegate ()
@@ -26,26 +28,15 @@
 //#if DEBUG
 //    self.facebookToken = @"CAAIEZCsE3Yh0BALpwcYOIb3kQVdZB5CAVZAkiEZCHvZBSXeeEG62ffwy9yfHFh6eVJ6aA7DFSJ1iJuv2Xh5rpqGaJTXUqOmRWnYd84nXxeGqy7HHjkx28UnNmxvKWMWZC1uoUCPGsSk94QZCRFFoPGdiV2ZCUs1peUvw04OMK3yiS9okQnZAxIe8WMe5JdsBunisYC8i21X4nfHdrcQUseM5u";
 //#endif
-    // Whenever a person opens the app, check for a cached session
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        
-        // If there's one, just open the session silently, without showing the user the login UI
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
-                                           allowLoginUI:NO
-                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-                                          // Handler for session state changes
-                                          // This method will be called EACH time the session state changes,
-                                          // also for intermediate states and NOT just when the session open
-                                          NSLog(@"Token: %@", session.accessTokenData.accessToken);
-                                          self.facebookToken = session.accessTokenData.accessToken;
-                                      }];
-    }
+    // Override point for customization after application launch.
+    [FBSDKLoginButton class];
     
     [self configureRK];
     
     [self configureMatchManger];
    
-    return YES;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 -(void)configureGlobals
@@ -92,14 +83,32 @@
                                                        @"Name":@"name"}];
     
     // register mappings with the provider using a response descriptor
-    RKResponseDescriptor *responseDescriptor =
+    RKResponseDescriptor *cardsResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:cardMapping
                                                  method:RKRequestMethodGET
                                             pathPattern:@"/api/cards"
                                                 keyPath:@""
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
-    [objectManager addResponseDescriptor:responseDescriptor];
+    [objectManager addResponseDescriptor:cardsResponseDescriptor];
+    
+    // setup object mappings
+    RKObjectMapping *deckMapping = [RKObjectMapping mappingForClass:[DeckREST class]];
+    [deckMapping addAttributeMappingsFromDictionary:@{ @"title": @"title",
+                                                       @"notes": @"notes",
+                                                       @"_id":@"identifier",
+                                                       @"privacy":@"privacy",
+                                                       @"author":@"author"}];
+    
+    // register mappings with the provider using a response descriptor
+    RKResponseDescriptor *decksResponseDescriptor =
+    [RKResponseDescriptor responseDescriptorWithMapping:deckMapping
+                                                 method:RKRequestMethodGET
+                                            pathPattern:@"/api/decks"
+                                                keyPath:@""
+                                            statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    [objectManager addResponseDescriptor:decksResponseDescriptor];
 }
 
 - (void)configureMatchManger
@@ -121,14 +130,24 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+#pragma mark - Facebook Delegate
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 #pragma mark - Core Data stack

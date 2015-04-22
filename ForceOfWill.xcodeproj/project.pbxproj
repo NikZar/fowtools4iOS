@@ -69,16 +69,22 @@
 		2334C68C19FED7470060D609 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C68B19FED7470060D609 /* LoginVC.m */; };
 		2334C69419FEE1B10060D609 /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C69219FEE1B10060D609 /* CardCollectionViewCell.m */; };
 		2334C6A41A0057B20060D609 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C6A31A0057B20060D609 /* Card.m */; };
+		233C54911AE8510F008CD1E1 /* DecksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C54901AE8510F008CD1E1 /* DecksVC.m */; };
+		233C549E1AE85534008CD1E1 /* DeckREST.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C549D1AE85534008CD1E1 /* DeckREST.m */; };
+		233C54A11AE855EA008CD1E1 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C54A01AE855EA008CD1E1 /* Deck.m */; };
+		233C54A41AE855EA008CD1E1 /* DeckCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C54A31AE855EA008CD1E1 /* DeckCard.m */; };
+		233C54A71AE8566A008CD1E1 /* Deck+REST.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C54A61AE8566A008CD1E1 /* Deck+REST.m */; };
+		233C54A91AE85B05008CD1E1 /* decks.png in Resources */ = {isa = PBXBuildFile; fileRef = 233C54A81AE85B05008CD1E1 /* decks.png */; };
 		233D7E271A4656C5008D04E3 /* FOWDocsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233D7E261A4656C5008D04E3 /* FOWDocsTVC.m */; };
 		233D7E291A465AFC008D04E3 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 233D7E281A465AFC008D04E3 /* documents.png */; };
 		233D7E2D1A46DD5E008D04E3 /* InfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233D7E2C1A46DD5E008D04E3 /* InfoVC.m */; };
+		23AE75F11ABE13D600521657 /* FOW_Rules.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23AE75F01ABE13D600521657 /* FOW_Rules.pdf */; };
 		23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */; };
 		23C58CA01A1164F3003ABF31 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9F1A1164F3003ABF31 /* search.png */; };
 		23C58CA31A11790B003ABF31 /* CardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C58CA21A11790B003ABF31 /* CardDetailVC.m */; };
 		23C58CA51A117E08003ABF31 /* cards.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58CA41A117E08003ABF31 /* cards.png */; };
 		23C58CA71A117E12003ABF31 /* lifepoints.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58CA61A117E12003ABF31 /* lifepoints.png */; };
 		23C58CAA1A11820C003ABF31 /* ToolsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C58CA91A11820C003ABF31 /* ToolsVC.m */; };
-		23CF66831A2D29B100D98B3C /* FOW_Rules.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23CF66821A2D29B100D98B3C /* FOW_Rules.pdf */; };
 		23CF66851A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23CF66841A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf */; };
 		23CF66871A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */; };
 		23CF66B81A2D2C1C00D98B3C /* ReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF668A1A2D2C1C00D98B3C /* ReaderAppDelegate.m */; };
@@ -220,11 +226,24 @@
 		2334C69219FEE1B10060D609 /* CardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewCell.m; sourceTree = "<group>"; };
 		2334C6A21A0057B20060D609 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		2334C6A31A0057B20060D609 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		233C548F1AE8510F008CD1E1 /* DecksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecksVC.h; sourceTree = "<group>"; };
+		233C54901AE8510F008CD1E1 /* DecksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecksVC.m; sourceTree = "<group>"; };
+		233C54931AE851B8008CD1E1 /* ForceOfWill 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ForceOfWill 4.xcdatamodel"; sourceTree = "<group>"; };
+		233C549C1AE85534008CD1E1 /* DeckREST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckREST.h; sourceTree = "<group>"; };
+		233C549D1AE85534008CD1E1 /* DeckREST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckREST.m; sourceTree = "<group>"; };
+		233C549F1AE855EA008CD1E1 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		233C54A01AE855EA008CD1E1 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		233C54A21AE855EA008CD1E1 /* DeckCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckCard.h; sourceTree = "<group>"; };
+		233C54A31AE855EA008CD1E1 /* DeckCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckCard.m; sourceTree = "<group>"; };
+		233C54A51AE8566A008CD1E1 /* Deck+REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Deck+REST.h"; sourceTree = "<group>"; };
+		233C54A61AE8566A008CD1E1 /* Deck+REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Deck+REST.m"; sourceTree = "<group>"; };
+		233C54A81AE85B05008CD1E1 /* decks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = decks.png; sourceTree = "<group>"; };
 		233D7E251A4656C5008D04E3 /* FOWDocsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOWDocsTVC.h; sourceTree = "<group>"; };
 		233D7E261A4656C5008D04E3 /* FOWDocsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FOWDocsTVC.m; sourceTree = "<group>"; };
 		233D7E281A465AFC008D04E3 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
 		233D7E2B1A46DD5E008D04E3 /* InfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoVC.h; sourceTree = "<group>"; };
 		233D7E2C1A46DD5E008D04E3 /* InfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoVC.m; sourceTree = "<group>"; };
+		23AE75F01ABE13D600521657 /* FOW_Rules.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Rules.pdf; sourceTree = "<group>"; };
 		23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23C58C9F1A1164F3003ABF31 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		23C58CA11A11790B003ABF31 /* CardDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailVC.h; sourceTree = "<group>"; };
@@ -233,7 +252,6 @@
 		23C58CA61A117E12003ABF31 /* lifepoints.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifepoints.png; sourceTree = "<group>"; };
 		23C58CA81A11820C003ABF31 /* ToolsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsVC.h; sourceTree = "<group>"; };
 		23C58CA91A11820C003ABF31 /* ToolsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsVC.m; sourceTree = "<group>"; };
-		23CF66821A2D29B100D98B3C /* FOW_Rules.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Rules.pdf; sourceTree = "<group>"; };
 		23CF66841A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Penalty_Guidelines.pdf; sourceTree = "<group>"; };
 		23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Tournament_Policy.pdf; sourceTree = "<group>"; };
 		23CF66891A2D2C1C00D98B3C /* ReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderAppDelegate.h; sourceTree = "<group>"; };
@@ -564,6 +582,7 @@
 		2334C66719FCFD9D0060D609 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				233C54A81AE85B05008CD1E1 /* decks.png */,
 				233D7E281A465AFC008D04E3 /* documents.png */,
 				232D16E51A220F38002B3617 /* matches.png */,
 				23C58CA61A117E12003ABF31 /* lifepoints.png */,
@@ -589,6 +608,7 @@
 				23C58CAB1A118212003ABF31 /* Tools */,
 				231595C61A04EE9400618676 /* Login */,
 				2334C69019FEE17F0060D609 /* Cards */,
+				233C548E1AE850D1008CD1E1 /* Decks */,
 				231595BF1A04ECF900618676 /* Life Points */,
 				232D16E71A221B46002B3617 /* Matches */,
 				232D16D21A20D3EF002B3617 /* FOW TV */,
@@ -604,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				2334C64519FCFD7B0060D609 /* ForceOfWill.xcdatamodeld */,
+				233C54921AE8516D008CD1E1 /* Deck */,
 				231595D21A05290800618676 /* Card */,
 				232D16EC1A27C9AF002B3617 /* Match */,
 			);
@@ -621,6 +642,30 @@
 				23C58CA21A11790B003ABF31 /* CardDetailVC.m */,
 			);
 			name = Cards;
+			sourceTree = "<group>";
+		};
+		233C548E1AE850D1008CD1E1 /* Decks */ = {
+			isa = PBXGroup;
+			children = (
+				233C548F1AE8510F008CD1E1 /* DecksVC.h */,
+				233C54901AE8510F008CD1E1 /* DecksVC.m */,
+			);
+			name = Decks;
+			sourceTree = "<group>";
+		};
+		233C54921AE8516D008CD1E1 /* Deck */ = {
+			isa = PBXGroup;
+			children = (
+				233C54A21AE855EA008CD1E1 /* DeckCard.h */,
+				233C54A31AE855EA008CD1E1 /* DeckCard.m */,
+				233C549F1AE855EA008CD1E1 /* Deck.h */,
+				233C54A01AE855EA008CD1E1 /* Deck.m */,
+				233C549C1AE85534008CD1E1 /* DeckREST.h */,
+				233C549D1AE85534008CD1E1 /* DeckREST.m */,
+				233C54A51AE8566A008CD1E1 /* Deck+REST.h */,
+				233C54A61AE8566A008CD1E1 /* Deck+REST.m */,
+			);
+			name = Deck;
 			sourceTree = "<group>";
 		};
 		233D7E2A1A46DD41008D04E3 /* Info */ = {
@@ -646,7 +691,7 @@
 			children = (
 				23CF66881A2D2C1C00D98B3C /* Classes */,
 				23CF668F1A2D2C1C00D98B3C /* Sources */,
-				23CF66821A2D29B100D98B3C /* FOW_Rules.pdf */,
+				23AE75F01ABE13D600521657 /* FOW_Rules.pdf */,
 				23CF66841A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf */,
 				23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */,
 			);
@@ -829,7 +874,7 @@
 				231595CA1A0514E600618676 /* flip.png in Resources */,
 				23C58CA01A1164F3003ABF31 /* search.png in Resources */,
 				231595F61A05B0DD00618676 /* Icon76.png in Resources */,
-				23CF66831A2D29B100D98B3C /* FOW_Rules.pdf in Resources */,
+				23AE75F11ABE13D600521657 /* FOW_Rules.pdf in Resources */,
 				231595E01A05457300618676 /* Icon-Small-50@2x.png in Resources */,
 				231595DE1A05457300618676 /* Icon-72@2x.png in Resources */,
 				23CF66871A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf in Resources */,
@@ -849,6 +894,7 @@
 				23CF66851A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf in Resources */,
 				231595F31A05AF9E00618676 /* Icon180.png in Resources */,
 				231595F21A05AF9E00618676 /* Icon120.png in Resources */,
+				233C54A91AE85B05008CD1E1 /* decks.png in Resources */,
 				231595E61A05457300618676 /* iTunesArtwork@2x in Resources */,
 				231595DD1A05457300618676 /* Icon-72.png in Resources */,
 				231595F01A05AF9E00618676 /* Icon80.png in Resources */,
@@ -943,16 +989,20 @@
 				2334C69419FEE1B10060D609 /* CardCollectionViewCell.m in Sources */,
 				23CF66C81A2D2C1C00D98B3C /* ReaderThumbRequest.m in Sources */,
 				23CF66C41A2D2C1C00D98B3C /* ReaderThumbCache.m in Sources */,
+				233C549E1AE85534008CD1E1 /* DeckREST.m in Sources */,
 				232D16D81A20D4E4002B3617 /* FOWTVDetailVC.m in Sources */,
 				23CF66B91A2D2C1C00D98B3C /* ReaderBookDelegate.m in Sources */,
 				232D172D1A2B46F3002B3617 /* MatchTVC.m in Sources */,
 				232D16F81A27CBAD002B3617 /* MatchManager.m in Sources */,
+				233C54A41AE855EA008CD1E1 /* DeckCard.m in Sources */,
+				233C54A11AE855EA008CD1E1 /* Deck.m in Sources */,
 				233D7E2D1A46DD5E008D04E3 /* InfoVC.m in Sources */,
 				232D172A1A2B46DA002B3617 /* LifeChangeTVCell.m in Sources */,
 				232D17081A27E2EC002B3617 /* Turn+Management.m in Sources */,
 				232D17341A2B4AAA002B3617 /* LifeChange.m in Sources */,
 				232D16FB1A27CF67002B3617 /* Match+Management.m in Sources */,
 				232D173E1A2B4D97002B3617 /* CoreDataTVCell.m in Sources */,
+				233C54A71AE8566A008CD1E1 /* Deck+REST.m in Sources */,
 				23CF66CD1A2D2C1C00D98B3C /* ThumbsViewController.m in Sources */,
 				23CF66C21A2D2C1C00D98B3C /* ReaderMainPagebar.m in Sources */,
 				231595C51A04EE1B00618676 /* CardREST.m in Sources */,
@@ -963,6 +1013,7 @@
 				23CF66B81A2D2C1C00D98B3C /* ReaderAppDelegate.m in Sources */,
 				23CF66C01A2D2C1C00D98B3C /* ReaderDocument.m in Sources */,
 				2334C68C19FED7470060D609 /* LoginVC.m in Sources */,
+				233C54911AE8510F008CD1E1 /* DecksVC.m in Sources */,
 				232D16EA1A221B85002B3617 /* MatchesTVC.m in Sources */,
 				23CF66CE1A2D2C1C00D98B3C /* UIXToolbarView.m in Sources */,
 			);
@@ -1089,7 +1140,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iOS Development: Niko Zarzani (E95MND3TWB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ForceOfWill/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1187,11 +1238,12 @@
 		2334C64519FCFD7B0060D609 /* ForceOfWill.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				233C54931AE851B8008CD1E1 /* ForceOfWill 4.xcdatamodel */,
 				232D172E1A2B49F0002B3617 /* ForceOfWill 3.xcdatamodel */,
 				232D16EB1A2758A2002B3617 /* ForceOfWill 2.xcdatamodel */,
 				2334C64619FCFD7B0060D609 /* ForceOfWill.xcdatamodel */,
 			);
-			currentVersion = 232D172E1A2B49F0002B3617 /* ForceOfWill 3.xcdatamodel */;
+			currentVersion = 233C54931AE851B8008CD1E1 /* ForceOfWill 4.xcdatamodel */;
 			path = ForceOfWill.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

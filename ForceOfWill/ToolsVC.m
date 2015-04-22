@@ -8,6 +8,7 @@
 
 #import "ToolsVC.h"
 #import "CardsVC.h"
+#import "DecksVC.h"
 #import "LifePointsVC.h"
 #import "FOWTVTVC.h"
 #import "MatchesTVC.h"
@@ -27,6 +28,13 @@
     CardsVC * cVC = [self.storyboard instantiateViewControllerWithIdentifier:@"cards"];
     
     [self.navigationController pushViewController:cVC animated:YES];
+}
+
+- (IBAction)decksSelected:(id)sender {
+    
+    DecksVC * dVC = [self.storyboard instantiateViewControllerWithIdentifier:@"decks"];
+    
+    [self.navigationController pushViewController:dVC animated:YES];
 }
 
 - (IBAction)FOWTVSelected:(id)sender {

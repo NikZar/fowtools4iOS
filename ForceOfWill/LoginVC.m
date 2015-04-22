@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 IndieZiOS. All rights reserved.
 //
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "LoginVC.h"
-#import <FacebookSDK/FacebookSDK.h>
 
 @interface LoginVC ()
 
@@ -27,13 +28,9 @@
 
 -(void)setupFBLogin
 {
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    
-    loginView.frame = CGRectMake(80, 100, 200, 60);
-    
-    //loginView.delegate = self;
-    
-    [self.view addSubview:loginView];
+//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+//    loginButton.frame = CGRectMake(0, 100, 200, 40);
+//    [self.view addSubview:loginButton];
 }
 
 /*

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
 #import <CoreData/CoreData.h>
 
-@interface CardsVC : UICollectionViewController <FBLoginViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, UISearchDisplayDelegate>
+@interface CardsVC : UICollectionViewController <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, UISearchDisplayDelegate>
 
 @end

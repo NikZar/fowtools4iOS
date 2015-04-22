@@ -13,6 +13,7 @@
 #import "CardCollectionViewCell.h"
 #import "CardREST.h"
 #import "CardDetailVC.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface CardsVC ()
 
@@ -29,6 +30,7 @@ static NSString *CellIdentifier = @"cardSlide";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     AppDelegate * appDelegate =(AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.context = appDelegate.managedObjectContext;
     

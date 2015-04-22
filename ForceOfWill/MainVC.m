@@ -42,13 +42,19 @@
             identifier = @"cardsSlider";
             break;
         case 4:
-            identifier = @"FOWTV";
+            identifier = @"decks";
             break;
         case 5:
-            identifier = @"docs";
+            identifier = @"FOWTV";
             break;
         case 6:
+            identifier = @"docs";
+            break;
+        case 7:
             identifier = @"info";
+            break;
+        case 8:
+            identifier = @"login";
             break;
         default:
             identifier = @"cardsSlider";
