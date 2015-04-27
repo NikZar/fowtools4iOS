@@ -11,6 +11,6 @@
 
 @interface Deck (REST)
 
-- (void)updateWithDeckREST: (DeckREST *)deckREST;
+- (void)updateWithDeckREST: (DeckREST *)deckREST inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

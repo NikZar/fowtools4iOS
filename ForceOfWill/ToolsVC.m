@@ -8,7 +8,7 @@
 
 #import "ToolsVC.h"
 #import "CardsVC.h"
-#import "DecksVC.h"
+#import "DecksTVC.h"
 #import "LifePointsVC.h"
 #import "FOWTVTVC.h"
 #import "MatchesTVC.h"
@@ -32,7 +32,7 @@
 
 - (IBAction)decksSelected:(id)sender {
     
-    DecksVC * dVC = [self.storyboard instantiateViewControllerWithIdentifier:@"decks"];
+    DecksTVC * dVC = [self.storyboard instantiateViewControllerWithIdentifier:@"decks"];
     
     [self.navigationController pushViewController:dVC animated:YES];
 }

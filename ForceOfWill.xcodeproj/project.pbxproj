@@ -30,6 +30,12 @@
 		231595F31A05AF9E00618676 /* Icon180.png in Resources */ = {isa = PBXBuildFile; fileRef = 231595ED1A05AF9E00618676 /* Icon180.png */; };
 		231595F61A05B0DD00618676 /* Icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 231595F41A05B0DD00618676 /* Icon76.png */; };
 		231595F71A05B0DD00618676 /* Icon152.png in Resources */ = {isa = PBXBuildFile; fileRef = 231595F51A05B0DD00618676 /* Icon152.png */; };
+		2325F3061AEA691600538335 /* DecksTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325F3051AEA691600538335 /* DecksTVC.m */; };
+		2325F3091AEA6AD100538335 /* DeckTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325F3081AEA6AD100538335 /* DeckTVCell.m */; };
+		2325F30C1AEA6C9500538335 /* DeckTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325F30B1AEA6C9500538335 /* DeckTVC.m */; };
+		2325F30F1AEB9BBB00538335 /* DeckCardREST.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325F30E1AEB9BBB00538335 /* DeckCardREST.m */; };
+		2325F3121AEB9C6F00538335 /* DeckCard+REST.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325F3111AEB9C6F00538335 /* DeckCard+REST.m */; };
+		2325F3161AEBA36400538335 /* DeckCardTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325F3151AEBA36400538335 /* DeckCardTVCell.m */; };
 		232D16D11A20CE7C002B3617 /* fowtv.png in Resources */ = {isa = PBXBuildFile; fileRef = 232D16D01A20CE7C002B3617 /* fowtv.png */; };
 		232D16D51A20D41D002B3617 /* FOWTVTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D16D41A20D41D002B3617 /* FOWTVTVC.m */; };
 		232D16D81A20D4E4002B3617 /* FOWTVDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 232D16D71A20D4E4002B3617 /* FOWTVDetailVC.m */; };
@@ -69,7 +75,6 @@
 		2334C68C19FED7470060D609 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C68B19FED7470060D609 /* LoginVC.m */; };
 		2334C69419FEE1B10060D609 /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C69219FEE1B10060D609 /* CardCollectionViewCell.m */; };
 		2334C6A41A0057B20060D609 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C6A31A0057B20060D609 /* Card.m */; };
-		233C54911AE8510F008CD1E1 /* DecksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C54901AE8510F008CD1E1 /* DecksVC.m */; };
 		233C549E1AE85534008CD1E1 /* DeckREST.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C549D1AE85534008CD1E1 /* DeckREST.m */; };
 		233C54A11AE855EA008CD1E1 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C54A01AE855EA008CD1E1 /* Deck.m */; };
 		233C54A41AE855EA008CD1E1 /* DeckCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C54A31AE855EA008CD1E1 /* DeckCard.m */; };
@@ -115,6 +120,10 @@
 		23CF66D41A2D2C8400D98B3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CF66D31A2D2C8400D98B3C /* QuartzCore.framework */; };
 		23CF66D61A2D2C8B00D98B3C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CF66D51A2D2C8B00D98B3C /* MessageUI.framework */; };
 		23CF66DA1A2D2E2D00D98B3C /* FOWDocsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF66D91A2D2E2D00D98B3C /* FOWDocsVC.m */; };
+		23EF87161AEC09E50032A700 /* TimerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EF87151AEC09E50032A700 /* TimerVC.m */; };
+		23F086A51AED70BF00DF315C /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23F086A41AED70BF00DF315C /* timer.mp3 */; };
+		23F086AA1AED744300DF315C /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F086A71AED744300DF315C /* DACircularProgressView.m */; };
+		23F086AB1AED744300DF315C /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F086A91AED744300DF315C /* DALabeledCircularProgressView.m */; };
 		8725599147B8FBBFC8F6335E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C01DACD757BE7DC90F49ADA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +165,18 @@
 		231595ED1A05AF9E00618676 /* Icon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon180.png; sourceTree = "<group>"; };
 		231595F41A05B0DD00618676 /* Icon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon76.png; sourceTree = "<group>"; };
 		231595F51A05B0DD00618676 /* Icon152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon152.png; sourceTree = "<group>"; };
+		2325F3041AEA691600538335 /* DecksTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecksTVC.h; sourceTree = "<group>"; };
+		2325F3051AEA691600538335 /* DecksTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecksTVC.m; sourceTree = "<group>"; };
+		2325F3071AEA6AD100538335 /* DeckTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckTVCell.h; sourceTree = "<group>"; };
+		2325F3081AEA6AD100538335 /* DeckTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckTVCell.m; sourceTree = "<group>"; };
+		2325F30A1AEA6C9500538335 /* DeckTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckTVC.h; sourceTree = "<group>"; };
+		2325F30B1AEA6C9500538335 /* DeckTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckTVC.m; sourceTree = "<group>"; };
+		2325F30D1AEB9BBB00538335 /* DeckCardREST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckCardREST.h; sourceTree = "<group>"; };
+		2325F30E1AEB9BBB00538335 /* DeckCardREST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckCardREST.m; sourceTree = "<group>"; };
+		2325F3101AEB9C6F00538335 /* DeckCard+REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DeckCard+REST.h"; sourceTree = "<group>"; };
+		2325F3111AEB9C6F00538335 /* DeckCard+REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DeckCard+REST.m"; sourceTree = "<group>"; };
+		2325F3141AEBA36400538335 /* DeckCardTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckCardTVCell.h; sourceTree = "<group>"; };
+		2325F3151AEBA36400538335 /* DeckCardTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckCardTVCell.m; sourceTree = "<group>"; };
 		232D16D01A20CE7C002B3617 /* fowtv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fowtv.png; sourceTree = "<group>"; };
 		232D16D31A20D41D002B3617 /* FOWTVTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOWTVTVC.h; sourceTree = "<group>"; };
 		232D16D41A20D41D002B3617 /* FOWTVTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FOWTVTVC.m; sourceTree = "<group>"; };
@@ -226,8 +247,6 @@
 		2334C69219FEE1B10060D609 /* CardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewCell.m; sourceTree = "<group>"; };
 		2334C6A21A0057B20060D609 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		2334C6A31A0057B20060D609 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
-		233C548F1AE8510F008CD1E1 /* DecksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecksVC.h; sourceTree = "<group>"; };
-		233C54901AE8510F008CD1E1 /* DecksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecksVC.m; sourceTree = "<group>"; };
 		233C54931AE851B8008CD1E1 /* ForceOfWill 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ForceOfWill 4.xcdatamodel"; sourceTree = "<group>"; };
 		233C549C1AE85534008CD1E1 /* DeckREST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckREST.h; sourceTree = "<group>"; };
 		233C549D1AE85534008CD1E1 /* DeckREST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckREST.m; sourceTree = "<group>"; };
@@ -306,6 +325,13 @@
 		23CF66D51A2D2C8B00D98B3C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		23CF66D81A2D2E2D00D98B3C /* FOWDocsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOWDocsVC.h; sourceTree = "<group>"; };
 		23CF66D91A2D2E2D00D98B3C /* FOWDocsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FOWDocsVC.m; sourceTree = "<group>"; };
+		23EF87141AEC09E50032A700 /* TimerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerVC.h; sourceTree = "<group>"; };
+		23EF87151AEC09E50032A700 /* TimerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerVC.m; sourceTree = "<group>"; };
+		23F086A41AED70BF00DF315C /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
+		23F086A61AED744300DF315C /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACircularProgressView.h; path = "../../../Downloads/DACircularProgress-master/DACircularProgress/DACircularProgressView.h"; sourceTree = "<group>"; };
+		23F086A71AED744300DF315C /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACircularProgressView.m; path = "../../../Downloads/DACircularProgress-master/DACircularProgress/DACircularProgressView.m"; sourceTree = "<group>"; };
+		23F086A81AED744300DF315C /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALabeledCircularProgressView.h; path = "../../../Downloads/DACircularProgress-master/DACircularProgress/DALabeledCircularProgressView.h"; sourceTree = "<group>"; };
+		23F086A91AED744300DF315C /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALabeledCircularProgressView.m; path = "../../../Downloads/DACircularProgress-master/DACircularProgress/DALabeledCircularProgressView.m"; sourceTree = "<group>"; };
 		2C01DACD757BE7DC90F49ADA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E50458B6D09B1B9EDF8C43F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D8941BB08898AC1850682928 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -417,6 +443,17 @@
 			name = "App Icons";
 			sourceTree = "<group>";
 		};
+		2325F3131AEBA31900538335 /* Deck */ = {
+			isa = PBXGroup;
+			children = (
+				2325F30A1AEA6C9500538335 /* DeckTVC.h */,
+				2325F30B1AEA6C9500538335 /* DeckTVC.m */,
+				2325F3141AEBA36400538335 /* DeckCardTVCell.h */,
+				2325F3151AEBA36400538335 /* DeckCardTVCell.m */,
+			);
+			name = Deck;
+			sourceTree = "<group>";
+		};
 		232D16D21A20D3EF002B3617 /* FOW TV */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +470,7 @@
 		232D16D91A20D8C6002B3617 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				23F086AC1AED744F00DF315C /* DACircularProgress */,
 				232D16DA1A20D8E8002B3617 /* Constants.h */,
 				232D17051A27DDF5002B3617 /* Enums.h */,
 				232D173B1A2B4D70002B3617 /* CoreDataTCV */,
@@ -553,6 +591,7 @@
 		2334C63E19FCFD7B0060D609 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				23EF87171AECE7170032A700 /* Audio */,
 				23CF66811A2D29A600D98B3C /* Documents */,
 				2334C66719FCFD9D0060D609 /* Images */,
 				2334C65019FCFD7B0060D609 /* LaunchScreen.xib */,
@@ -606,14 +645,15 @@
 				2334C64B19FCFD7B0060D609 /* Main.storyboard */,
 				231595CB1A0520FE00618676 /* Navigation */,
 				23C58CAB1A118212003ABF31 /* Tools */,
-				231595C61A04EE9400618676 /* Login */,
-				2334C69019FEE17F0060D609 /* Cards */,
-				233C548E1AE850D1008CD1E1 /* Decks */,
 				231595BF1A04ECF900618676 /* Life Points */,
 				232D16E71A221B46002B3617 /* Matches */,
+				23EF87131AEC098B0032A700 /* Timer */,
+				2334C69019FEE17F0060D609 /* Cards */,
+				233C548E1AE850D1008CD1E1 /* Decks */,
 				232D16D21A20D3EF002B3617 /* FOW TV */,
 				23CF66D71A2D2E0F00D98B3C /* FOW Docs */,
 				233D7E2A1A46DD41008D04E3 /* Info */,
+				231595C61A04EE9400618676 /* Login */,
 				232D16D91A20D8C6002B3617 /* Utilities */,
 				232D17241A2B32FA002B3617 /* Unit Tests */,
 			);
@@ -647,8 +687,11 @@
 		233C548E1AE850D1008CD1E1 /* Decks */ = {
 			isa = PBXGroup;
 			children = (
-				233C548F1AE8510F008CD1E1 /* DecksVC.h */,
-				233C54901AE8510F008CD1E1 /* DecksVC.m */,
+				2325F3131AEBA31900538335 /* Deck */,
+				2325F3041AEA691600538335 /* DecksTVC.h */,
+				2325F3051AEA691600538335 /* DecksTVC.m */,
+				2325F3071AEA6AD100538335 /* DeckTVCell.h */,
+				2325F3081AEA6AD100538335 /* DeckTVCell.m */,
 			);
 			name = Decks;
 			sourceTree = "<group>";
@@ -656,14 +699,18 @@
 		233C54921AE8516D008CD1E1 /* Deck */ = {
 			isa = PBXGroup;
 			children = (
-				233C54A21AE855EA008CD1E1 /* DeckCard.h */,
-				233C54A31AE855EA008CD1E1 /* DeckCard.m */,
 				233C549F1AE855EA008CD1E1 /* Deck.h */,
 				233C54A01AE855EA008CD1E1 /* Deck.m */,
 				233C549C1AE85534008CD1E1 /* DeckREST.h */,
 				233C549D1AE85534008CD1E1 /* DeckREST.m */,
 				233C54A51AE8566A008CD1E1 /* Deck+REST.h */,
 				233C54A61AE8566A008CD1E1 /* Deck+REST.m */,
+				233C54A21AE855EA008CD1E1 /* DeckCard.h */,
+				233C54A31AE855EA008CD1E1 /* DeckCard.m */,
+				2325F30D1AEB9BBB00538335 /* DeckCardREST.h */,
+				2325F30E1AEB9BBB00538335 /* DeckCardREST.m */,
+				2325F3101AEB9C6F00538335 /* DeckCard+REST.h */,
+				2325F3111AEB9C6F00538335 /* DeckCard+REST.m */,
 			);
 			name = Deck;
 			sourceTree = "<group>";
@@ -767,6 +814,34 @@
 				233D7E261A4656C5008D04E3 /* FOWDocsTVC.m */,
 			);
 			name = "FOW Docs";
+			sourceTree = "<group>";
+		};
+		23EF87131AEC098B0032A700 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				23EF87141AEC09E50032A700 /* TimerVC.h */,
+				23EF87151AEC09E50032A700 /* TimerVC.m */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		23EF87171AECE7170032A700 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				23F086A41AED70BF00DF315C /* timer.mp3 */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		23F086AC1AED744F00DF315C /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				23F086A61AED744300DF315C /* DACircularProgressView.h */,
+				23F086A71AED744300DF315C /* DACircularProgressView.m */,
+				23F086A81AED744300DF315C /* DALabeledCircularProgressView.h */,
+				23F086A91AED744300DF315C /* DALabeledCircularProgressView.m */,
+			);
+			name = DACircularProgress;
 			sourceTree = "<group>";
 		};
 		E26378513230B312E7FCF9C3 /* Frameworks */ = {
@@ -879,6 +954,7 @@
 				231595DE1A05457300618676 /* Icon-72@2x.png in Resources */,
 				23CF66871A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf in Resources */,
 				231595DF1A05457300618676 /* Icon-Small-50.png in Resources */,
+				23F086A51AED70BF00DF315C /* timer.mp3 in Resources */,
 				23C58CA71A117E12003ABF31 /* lifepoints.png in Resources */,
 				232D16D11A20CE7C002B3617 /* fowtv.png in Resources */,
 				2334C64D19FCFD7B0060D609 /* Main.storyboard in Resources */,
@@ -962,7 +1038,9 @@
 				232D171A1A27E7B2002B3617 /* Match.m in Sources */,
 				231595CE1A05213800618676 /* LeftMenuVC.m in Sources */,
 				2334C66F19FD100C0060D609 /* MainVC.m in Sources */,
+				2325F30C1AEA6C9500538335 /* DeckTVC.m in Sources */,
 				231595C21A04ED2A00618676 /* LifePointsVC.m in Sources */,
+				2325F3091AEA6AD100538335 /* DeckTVCell.m in Sources */,
 				23CF66C61A2D2C1C00D98B3C /* ReaderThumbQueue.m in Sources */,
 				2334C67819FD3A530060D609 /* CardsVC.m in Sources */,
 				231595D11A05290000618676 /* Card+REST.m in Sources */,
@@ -971,9 +1049,11 @@
 				2334C6A41A0057B20060D609 /* Card.m in Sources */,
 				23CF66DA1A2D2E2D00D98B3C /* FOWDocsVC.m in Sources */,
 				23CF66BD1A2D2C1C00D98B3C /* ReaderContentPage.m in Sources */,
+				23F086AA1AED744300DF315C /* DACircularProgressView.m in Sources */,
 				233D7E271A4656C5008D04E3 /* FOWDocsTVC.m in Sources */,
 				23CF66C51A2D2C1C00D98B3C /* ReaderThumbFetch.m in Sources */,
 				23CF66BA1A2D2C1C00D98B3C /* ReaderDemoController.m in Sources */,
+				2325F3121AEB9C6F00538335 /* DeckCard+REST.m in Sources */,
 				23CF66CB1A2D2C1C00D98B3C /* ReaderViewController.m in Sources */,
 				23CF66C71A2D2C1C00D98B3C /* ReaderThumbRender.m in Sources */,
 				232D17231A29313E002B3617 /* MatchTVCell.m in Sources */,
@@ -983,11 +1063,13 @@
 				2334C64719FCFD7B0060D609 /* ForceOfWill.xcdatamodeld in Sources */,
 				232D17371A2B4BA3002B3617 /* CoreDataTVC.m in Sources */,
 				23CF66BE1A2D2C1C00D98B3C /* ReaderContentTile.m in Sources */,
+				2325F3061AEA691600538335 /* DecksTVC.m in Sources */,
 				23CF66CA1A2D2C1C00D98B3C /* ReaderThumbView.m in Sources */,
 				232D16E21A21F67D002B3617 /* YTVideoTVCell.m in Sources */,
 				23CF66CC1A2D2C1C00D98B3C /* ThumbsMainToolbar.m in Sources */,
 				2334C69419FEE1B10060D609 /* CardCollectionViewCell.m in Sources */,
 				23CF66C81A2D2C1C00D98B3C /* ReaderThumbRequest.m in Sources */,
+				23F086AB1AED744300DF315C /* DALabeledCircularProgressView.m in Sources */,
 				23CF66C41A2D2C1C00D98B3C /* ReaderThumbCache.m in Sources */,
 				233C549E1AE85534008CD1E1 /* DeckREST.m in Sources */,
 				232D16D81A20D4E4002B3617 /* FOWTVDetailVC.m in Sources */,
@@ -1007,14 +1089,16 @@
 				23CF66C21A2D2C1C00D98B3C /* ReaderMainPagebar.m in Sources */,
 				231595C51A04EE1B00618676 /* CardREST.m in Sources */,
 				23CF66BF1A2D2C1C00D98B3C /* ReaderContentView.m in Sources */,
+				2325F30F1AEB9BBB00538335 /* DeckCardREST.m in Sources */,
 				2334C64119FCFD7B0060D609 /* main.m in Sources */,
 				23CF66BB1A2D2C1C00D98B3C /* CGPDFDocument.m in Sources */,
 				23CF66C11A2D2C1C00D98B3C /* ReaderDocumentOutline.m in Sources */,
 				23CF66B81A2D2C1C00D98B3C /* ReaderAppDelegate.m in Sources */,
 				23CF66C01A2D2C1C00D98B3C /* ReaderDocument.m in Sources */,
+				2325F3161AEBA36400538335 /* DeckCardTVCell.m in Sources */,
 				2334C68C19FED7470060D609 /* LoginVC.m in Sources */,
-				233C54911AE8510F008CD1E1 /* DecksVC.m in Sources */,
 				232D16EA1A221B85002B3617 /* MatchesTVC.m in Sources */,
+				23EF87161AEC09E50032A700 /* TimerVC.m in Sources */,
 				23CF66CE1A2D2C1C00D98B3C /* UIXToolbarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,12 +31,27 @@
 @property (weak, nonatomic) IBOutlet UITextField *player1NameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *player2NameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *turnCounter;
+@property (weak, nonatomic) IBOutlet UIButton *startNewGameButton;
+
+@property (strong, nonatomic) NSTimer *timer;
+
+@property (strong, nonatomic) NSDate *endDate;
 
 @property (weak, nonatomic) MatchManager *matchManager;
 
 @end
 
 @implementation LifePointsVC
+
+#pragma mark - NSUserDefaults properties
+
+-(NSDate *)endDate
+{
+    NSDate *endDate = [[NSUserDefaults standardUserDefaults] valueForKey: kTimerEndDate];
+    return endDate ? endDate : [NSDate distantPast];
+}
+
+#pragma mark - Navigation
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,12 +68,20 @@
     
     [self updateScores];
     
+    NSInteger secondsToEnd = ((NSInteger)[self.endDate timeIntervalSinceNow]);
+    if(secondsToEnd > 0){
+        [self startTimerUpdateUI];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self forceNameSync];
     [self forceLPSync];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self stopTimer];
+    });
     
     [super viewWillDisappear:animated];
 }
@@ -67,6 +90,56 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Timer
+
+-(void)startTimerUpdateUI
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //Set up a timer that calls the updateTime method every second to update the label
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                      target:self
+                                                    selector:@selector(updateTime)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    });
+}
+
+
+- (void)stopTimer
+{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+-(void)updateTime
+{
+    //Get the time left until the specified date
+    NSInteger secondsToEnd = ((NSInteger)[self.endDate timeIntervalSinceNow]);
+    
+    if(secondsToEnd >= 0){
+        NSInteger seconds = secondsToEnd % 60;
+        NSInteger minutes = (secondsToEnd / 60);
+        
+        //Update the label with the remaining time
+        [UIView setAnimationsEnabled:NO];
+        [self.startNewGameButton setTitle:[NSString stringWithFormat:@"NEW GAME (%ldm %lds)", (long)minutes, (long)seconds] forState:UIControlStateNormal];
+        [UIView setAnimationsEnabled:YES];
+        [self.startNewGameButton layoutIfNeeded];
+    }
+    else {
+        [self.startNewGameButton setTitle:@"NEW GAME" forState:UIControlStateNormal];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self stopTimer];
+        });
+    }
+    
+}
+
+#pragma mark - Lifepoints
 
 - (void)updateScores
 {
@@ -137,6 +210,23 @@
     self.player1LP = [NSNumber numberWithInt:([self.player1LP intValue] + [@100 intValue])];
     [self updateUI];
 }
+
+- (IBAction)plus500P1:(id)sender {
+    if([self.player1LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP1:@500] withColor:[UIColor greenColor]];
+    }
+    self.player1LP = [NSNumber numberWithInt:([self.player1LP intValue] + [@500 intValue])];
+    [self updateUI];
+}
+
+- (IBAction)plus1000P1:(id)sender {
+    if([self.player1LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP1:@1000] withColor:[UIColor greenColor]];
+    }
+    self.player1LP = [NSNumber numberWithInt:([self.player1LP intValue] + [@1000 intValue])];
+    [self updateUI];
+}
+
 - (IBAction)plusP2:(id)sender {
     if([self.player2LP compare:@0] != NSOrderedSame){
         [self showMessage:[self numberToShowP2:@100] withColor:[UIColor greenColor]];
@@ -144,6 +234,23 @@
     self.player2LP = [NSNumber numberWithInt:([self.player2LP intValue] + [@100 intValue])];
     [self updateUI];
 }
+
+- (IBAction)plus500P2:(id)sender {
+    if([self.player2LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP2:@500] withColor:[UIColor greenColor]];
+    }
+    self.player2LP = [NSNumber numberWithInt:([self.player2LP intValue] + [@500 intValue])];
+    [self updateUI];
+}
+
+- (IBAction)plus1000P2:(id)sender {
+    if([self.player2LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP2:@1000] withColor:[UIColor greenColor]];
+    }
+    self.player2LP = [NSNumber numberWithInt:([self.player2LP intValue] + [@1000 intValue])];
+    [self updateUI];
+}
+
 - (IBAction)minusP1:(id)sender {
     if([self.player1LP compare:@0] != NSOrderedSame){
         [self showMessage:[self numberToShowP1:@-100] withColor:[UIColor redColor]];
@@ -151,11 +258,44 @@
     self.player1LP = [NSNumber numberWithInt:([self.player1LP intValue] - [@100 intValue])];
     [self updateUI];
 }
+
+- (IBAction)minus500P1:(id)sender {
+    if([self.player1LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP1:@-500] withColor:[UIColor redColor]];
+    }
+    self.player1LP = [NSNumber numberWithInt:([self.player1LP intValue] - [@500 intValue])];
+    [self updateUI];
+}
+
+- (IBAction)minus1000P1:(id)sender {
+    if([self.player1LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP1:@-1000] withColor:[UIColor redColor]];
+    }
+    self.player1LP = [NSNumber numberWithInt:([self.player1LP intValue] - [@1000 intValue])];
+    [self updateUI];
+}
+
 - (IBAction)minusP2:(id)sender {
     if([self.player2LP compare:@0] != NSOrderedSame){
         [self showMessage:[self numberToShowP2:@-100] withColor:[UIColor redColor]];
     }
     self.player2LP = [NSNumber numberWithInt:([self.player2LP intValue] - [@100 intValue])];
+    [self updateUI];
+}
+
+- (IBAction)minus500P2:(id)sender {
+    if([self.player2LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP2:@-500] withColor:[UIColor redColor]];
+    }
+    self.player2LP = [NSNumber numberWithInt:([self.player2LP intValue] - [@500 intValue])];
+    [self updateUI];
+}
+
+- (IBAction)minus1000P2:(id)sender {
+    if([self.player2LP compare:@0] != NSOrderedSame){
+        [self showMessage:[self numberToShowP2:@-1000] withColor:[UIColor redColor]];
+    }
+    self.player2LP = [NSNumber numberWithInt:([self.player2LP intValue] - [@1000 intValue])];
     [self updateUI];
 }
 

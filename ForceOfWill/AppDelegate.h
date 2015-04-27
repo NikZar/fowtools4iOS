@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSString * baseUrlString;
 @property (strong, nonatomic) NSString * baseImageUrlString;
 
+@property (strong, nonatomic) NSDate *endTimerDate;
+
 @property (strong, nonatomic) NSString *facebookToken;
 
 - (void)saveContext;

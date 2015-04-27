@@ -13,9 +13,16 @@
 #import <CoreData/CoreData.h>
 #import "CardREST.h"
 #import "DeckREST.h"
+#import "DeckCardREST.h"
 #import "MatchManager.h"
+#import "Constants.h"
+#import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 
 @end
 
@@ -24,11 +31,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self configureGlobals];
-//    
-//#if DEBUG
-//    self.facebookToken = @"CAAIEZCsE3Yh0BALpwcYOIb3kQVdZB5CAVZAkiEZCHvZBSXeeEG62ffwy9yfHFh6eVJ6aA7DFSJ1iJuv2Xh5rpqGaJTXUqOmRWnYd84nXxeGqy7HHjkx28UnNmxvKWMWZC1uoUCPGsSk94QZCRFFoPGdiV2ZCUs1peUvw04OMK3yiS9okQnZAxIe8WMe5JdsBunisYC8i21X4nfHdrcQUseM5u";
-//#endif
-    // Override point for customization after application launch.
+
+    // are you running on iOS8?
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    else // iOS 7 or earlier
+    {
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:myTypes];
+    }
+    
+    
     [FBSDKLoginButton class];
     
     [self configureRK];
@@ -82,15 +98,11 @@
                                                        @"Cardtext":@"text",
                                                        @"Name":@"name"}];
     
-    // register mappings with the provider using a response descriptor
-    RKResponseDescriptor *cardsResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:cardMapping
-                                                 method:RKRequestMethodGET
-                                            pathPattern:@"/api/cards"
-                                                keyPath:@""
-                                            statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    // setup object mappings
+    RKObjectMapping *deckCardMapping = [RKObjectMapping mappingForClass:[DeckCardREST class]];
+    [deckCardMapping addAttributeMappingsFromDictionary:@{ @"qty": @"qty"}];
+    [deckCardMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"card" toKeyPath:@"card" withMapping:cardMapping]];
     
-    [objectManager addResponseDescriptor:cardsResponseDescriptor];
     
     // setup object mappings
     RKObjectMapping *deckMapping = [RKObjectMapping mappingForClass:[DeckREST class]];
@@ -100,7 +112,23 @@
                                                        @"privacy":@"privacy",
                                                        @"author":@"author"}];
     
-    // register mappings with the provider using a response descriptor
+    
+    
+    [deckMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"cards" toKeyPath:@"cards" withMapping:deckCardMapping]];
+    [deckMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"side" toKeyPath:@"side" withMapping:deckCardMapping]];
+    
+    
+    // CARDS API: register mappings with the provider using a response descriptor
+    RKResponseDescriptor *cardsResponseDescriptor =
+    [RKResponseDescriptor responseDescriptorWithMapping:cardMapping
+                                                 method:RKRequestMethodGET
+                                            pathPattern:@"/api/cards"
+                                                keyPath:@""
+                                            statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    [objectManager addResponseDescriptor:cardsResponseDescriptor];
+    
+    // DECKS API: register mappings with the provider using a response descriptor
     RKResponseDescriptor *decksResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:deckMapping
                                                  method:RKRequestMethodGET
@@ -230,6 +258,38 @@
             abort();
         }
     }
+}
+
+#pragma mark - Notifications
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        
+        NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"timer" ofType:@"mp3"];
+        NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+        
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL
+                                                                       error:nil];
+        self.audioPlayer.numberOfLoops = 1; // -1 Infinite
+        
+        [self.audioPlayer play];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder"
+                                                        message:notification.alertBody
+                                                       delegate:self cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self.audioPlayer stop];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:[NSDate distantPast] forKey:kTimerEndDate];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

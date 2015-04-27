@@ -23,4 +23,8 @@
 #define kP2Color [UIColor colorWithRed:122.0/255.0 green:217.0/255.0 blue:255.0/255.0 alpha:1.0]
 #define kDefaultInitialPlayer FOWPlayer1
 
+
+#define kTurnDuration @"kTurnDuration"
+#define kTimerEndDate @"kTimerEndDate"
+
 #endif

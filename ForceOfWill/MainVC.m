@@ -39,21 +39,24 @@
             identifier = @"matches";
             break;
         case 3:
-            identifier = @"cardsSlider";
+            identifier = @"timer";
             break;
         case 4:
-            identifier = @"decks";
+            identifier = @"cardsSlider";
             break;
         case 5:
-            identifier = @"FOWTV";
+            identifier = @"decks";
             break;
         case 6:
-            identifier = @"docs";
+            identifier = @"FOWTV";
             break;
         case 7:
-            identifier = @"info";
+            identifier = @"docs";
             break;
         case 8:
+            identifier = @"info";
+            break;
+        case 9:
             identifier = @"login";
             break;
         default:

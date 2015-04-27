@@ -18,4 +18,22 @@
     self.text = cardREST.text ? cardREST.text : self.text;
 }
 
++(Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Card"];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier LIKE %@", identifier];
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setFetchLimit:1];
+    
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
+    
+    if (!results || ([results count] == 0)) {
+        return nil;
+    } else {
+        return [results firstObject];
+    }
+}
+
 @end

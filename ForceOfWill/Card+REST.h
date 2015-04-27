@@ -13,4 +13,6 @@
 
 - (void)updateWithCardREST: (CardREST *)cardREST;
 
++ (Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context;
+
 @end
