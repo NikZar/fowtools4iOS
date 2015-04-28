@@ -83,7 +83,6 @@
 		233D7E271A4656C5008D04E3 /* FOWDocsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233D7E261A4656C5008D04E3 /* FOWDocsTVC.m */; };
 		233D7E291A465AFC008D04E3 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 233D7E281A465AFC008D04E3 /* documents.png */; };
 		233D7E2D1A46DD5E008D04E3 /* InfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233D7E2C1A46DD5E008D04E3 /* InfoVC.m */; };
-		23AE75F11ABE13D600521657 /* FOW_Rules.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23AE75F01ABE13D600521657 /* FOW_Rules.pdf */; };
 		23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */; };
 		23C58CA01A1164F3003ABF31 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9F1A1164F3003ABF31 /* search.png */; };
 		23C58CA31A11790B003ABF31 /* CardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C58CA21A11790B003ABF31 /* CardDetailVC.m */; };
@@ -124,6 +123,7 @@
 		23F086A51AED70BF00DF315C /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23F086A41AED70BF00DF315C /* timer.mp3 */; };
 		23F086AA1AED744300DF315C /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F086A71AED744300DF315C /* DACircularProgressView.m */; };
 		23F086AB1AED744300DF315C /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F086A91AED744300DF315C /* DALabeledCircularProgressView.m */; };
+		23F086AE1AEEEB7700DF315C /* FOW_Rules_CR_5.01.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23F086AD1AEEEB7700DF315C /* FOW_Rules_CR_5.01.pdf */; };
 		8725599147B8FBBFC8F6335E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C01DACD757BE7DC90F49ADA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -262,7 +262,6 @@
 		233D7E281A465AFC008D04E3 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
 		233D7E2B1A46DD5E008D04E3 /* InfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoVC.h; sourceTree = "<group>"; };
 		233D7E2C1A46DD5E008D04E3 /* InfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoVC.m; sourceTree = "<group>"; };
-		23AE75F01ABE13D600521657 /* FOW_Rules.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Rules.pdf; sourceTree = "<group>"; };
 		23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23C58C9F1A1164F3003ABF31 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		23C58CA11A11790B003ABF31 /* CardDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailVC.h; sourceTree = "<group>"; };
@@ -332,6 +331,7 @@
 		23F086A71AED744300DF315C /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACircularProgressView.m; path = "../../../Downloads/DACircularProgress-master/DACircularProgress/DACircularProgressView.m"; sourceTree = "<group>"; };
 		23F086A81AED744300DF315C /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALabeledCircularProgressView.h; path = "../../../Downloads/DACircularProgress-master/DACircularProgress/DALabeledCircularProgressView.h"; sourceTree = "<group>"; };
 		23F086A91AED744300DF315C /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALabeledCircularProgressView.m; path = "../../../Downloads/DACircularProgress-master/DACircularProgress/DALabeledCircularProgressView.m"; sourceTree = "<group>"; };
+		23F086AD1AEEEB7700DF315C /* FOW_Rules_CR_5.01.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = FOW_Rules_CR_5.01.pdf; path = ../../../Downloads/FOW_Rules_CR_5.01.pdf; sourceTree = "<group>"; };
 		2C01DACD757BE7DC90F49ADA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E50458B6D09B1B9EDF8C43F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D8941BB08898AC1850682928 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -738,7 +738,7 @@
 			children = (
 				23CF66881A2D2C1C00D98B3C /* Classes */,
 				23CF668F1A2D2C1C00D98B3C /* Sources */,
-				23AE75F01ABE13D600521657 /* FOW_Rules.pdf */,
+				23F086AD1AEEEB7700DF315C /* FOW_Rules_CR_5.01.pdf */,
 				23CF66841A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf */,
 				23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */,
 			);
@@ -949,13 +949,13 @@
 				231595CA1A0514E600618676 /* flip.png in Resources */,
 				23C58CA01A1164F3003ABF31 /* search.png in Resources */,
 				231595F61A05B0DD00618676 /* Icon76.png in Resources */,
-				23AE75F11ABE13D600521657 /* FOW_Rules.pdf in Resources */,
 				231595E01A05457300618676 /* Icon-Small-50@2x.png in Resources */,
 				231595DE1A05457300618676 /* Icon-72@2x.png in Resources */,
 				23CF66871A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf in Resources */,
 				231595DF1A05457300618676 /* Icon-Small-50.png in Resources */,
 				23F086A51AED70BF00DF315C /* timer.mp3 in Resources */,
 				23C58CA71A117E12003ABF31 /* lifepoints.png in Resources */,
+				23F086AE1AEEEB7700DF315C /* FOW_Rules_CR_5.01.pdf in Resources */,
 				232D16D11A20CE7C002B3617 /* fowtv.png in Resources */,
 				2334C64D19FCFD7B0060D609 /* Main.storyboard in Resources */,
 				231595E31A05457300618676 /* Icon.png in Resources */,

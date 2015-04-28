@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.docs = @[@"FOW_Rules",@"FOW_Penalty_Guidelines",@"FOW_Tournament_Policy"];
+    self.docs = @[@"FOW_Rules_CR_5.01",@"FOW_Penalty_Guidelines",@"FOW_Tournament_Policy"];
 }
 
 - (void)didReceiveMemoryWarning {
