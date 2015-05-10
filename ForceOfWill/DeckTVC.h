@@ -12,5 +12,6 @@
 @interface DeckTVC : UITableViewController
 
 @property (strong, nonatomic) Deck* deck;
+@property (weak,nonatomic) NSManagedObjectContext *context;
 
 @end

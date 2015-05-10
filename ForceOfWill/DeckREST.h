@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Card.h"
+#import "Card+REST.h"
 
 @interface DeckREST : NSObject
 
@@ -19,6 +19,6 @@
 @property (nonatomic, retain) NSDate * lastUpdate;
 @property (nonatomic, retain) NSSet *cards;
 @property (nonatomic, retain) NSSet *side;
-@property (nonatomic, retain) Card *ruler;
+@property (nonatomic, retain) CardREST *ruler;
 
 @end

@@ -12,5 +12,6 @@
 @interface CardDetailVC : UIViewController
 
 @property (weak, nonatomic) Card *card;
+@property (weak, nonatomic) NSManagedObjectContext * context;
 
 @end

@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString * imageUrl;
 @property (nonatomic, strong) NSString * identifier;
 @property (nonatomic, strong) NSString * text;
+@property (nonatomic, strong) NSString * type;
 
 @end

@@ -12,6 +12,7 @@
 @interface DeckTVCell : UITableViewCell
 
 @property (weak, nonatomic) Deck *deck;
+@property (weak, nonatomic) NSManagedObjectContext * context;
 
 - (void)updateCell;
 

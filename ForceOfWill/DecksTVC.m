@@ -52,8 +52,6 @@
                                                parameters:queryParams
                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                       //                                                      [NSThread detachNewThreadSelector:@selector(syncCards:) toTarget:self withObject:mappingResult.array];
-                                                      UIApplication* app = [UIApplication sharedApplication];
-                                                      app.networkActivityIndicatorVisible = NO;
                                                       [self syncDecks: mappingResult.array];
                                                   }
                                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -101,6 +99,9 @@
                 NSLog(@"Error in mainContext: %@", error.localizedDescription);
             }
         }];
+        
+        UIApplication* app = [UIApplication sharedApplication];
+        app.networkActivityIndicatorVisible = NO;
     }];
 }
 
@@ -139,7 +140,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DeckTVCell *cell = (DeckTVCell *)[tableView dequeueReusableCellWithIdentifier:@"deckCell" forIndexPath:indexPath];
-    
+    cell.context = self.context;
     cell.deck = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell updateCell];
     cell.backgroundColor = [UIColor blackColor];
@@ -191,6 +192,7 @@
     if([segue.identifier isEqualToString:@"deckDetail"]){
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         DeckTVC *destinationViewController = (DeckTVC *)[segue destinationViewController];
+        destinationViewController.context = self.context;
         destinationViewController.deck = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
     }
 }
@@ -210,6 +212,10 @@
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Deck" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
+    
+    NSPredicate *minimumCardsPredicate = [NSPredicate predicateWithFormat:@"cardsCount >= 40"];
+    
+    [fetchRequest setPredicate:minimumCardsPredicate];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"lastUpdate" ascending:NO];

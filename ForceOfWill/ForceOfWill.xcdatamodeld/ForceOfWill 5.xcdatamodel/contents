@@ -7,6 +7,7 @@
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Deck" representedClassName="Deck" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +46,7 @@
         <relationship name="match" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="turns" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Card" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Deck" positionX="-54" positionY="72" width="128" height="180"/>
         <element name="DeckCard" positionX="-45" positionY="81" width="128" height="75"/>
         <element name="LifeChange" positionX="-36" positionY="54" width="128" height="133"/>

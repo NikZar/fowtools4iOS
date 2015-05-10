@@ -2,7 +2,7 @@
 //  Deck.m
 //  ForceOfWill
 //
-//  Created by Niko Zarzani on 4/23/15.
+//  Created by Niko Zarzani on 5/10/15.
 //  Copyright (c) 2015 IndieZiOS. All rights reserved.
 //
 
@@ -13,14 +13,16 @@
 
 @implementation Deck
 
-@dynamic title;
-@dynamic privacy;
-@dynamic notes;
-@dynamic identifier;
 @dynamic author;
+@dynamic identifier;
 @dynamic lastUpdate;
+@dynamic notes;
+@dynamic privacy;
+@dynamic title;
+@dynamic cardsCount;
+@dynamic sideCount;
 @dynamic cards;
-@dynamic side;
 @dynamic ruler;
+@dynamic side;
 
 @end

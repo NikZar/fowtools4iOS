@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[DeckTVC viewDidLoad]:DeckTVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self.deck.cards allObjects]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

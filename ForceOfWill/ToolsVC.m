@@ -13,6 +13,7 @@
 #import "FOWTVTVC.h"
 #import "MatchesTVC.h"
 #import "FOWDocsTVC.h"
+#import "TimerVC.h"
 
 @implementation ToolsVC
 
@@ -53,5 +54,10 @@
     FOWDocsTVC * docsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"documents"];
     
     [self.navigationController pushViewController:docsTVC animated:YES];
+}
+- (IBAction)timerSelected:(id)sender {
+    TimerVC *timerVC = [self.storyboard instantiateViewControllerWithIdentifier:@"timer"];
+    
+    [self.navigationController pushViewController:timerVC animated:YES];
 }
 @end

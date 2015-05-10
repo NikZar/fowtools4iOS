@@ -215,6 +215,7 @@ static NSString *CellIdentifier = @"cardSlide";
         CardDetailVC *cdVC = [segue destinationViewController];
         
         NSIndexPath * selIndexPath = [[self.collectionView indexPathsForSelectedItems] firstObject];
+        cdVC.context = self.context;
         cdVC.card = [self.fetchedResultsController objectAtIndexPath:selIndexPath];
         
         [self hideSearchBar];

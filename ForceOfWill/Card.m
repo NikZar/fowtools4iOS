@@ -2,8 +2,8 @@
 //  Card.m
 //  ForceOfWill
 //
-//  Created by Niko Zarzani on 10/29/14.
-//  Copyright (c) 2014 IndieZiOS. All rights reserved.
+//  Created by Niko Zarzani on 5/6/15.
+//  Copyright (c) 2015 IndieZiOS. All rights reserved.
 //
 
 #import "Card.h"
@@ -12,10 +12,11 @@
 @implementation Card
 
 @dynamic code;
-@dynamic name;
-@dynamic imageUrl;
 @dynamic identifier;
-@dynamic text;
 @dynamic image;
+@dynamic imageUrl;
+@dynamic name;
+@dynamic text;
+@dynamic type;
 
 @end

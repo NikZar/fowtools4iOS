@@ -16,6 +16,7 @@
     self.imageUrl = cardREST.imageUrl ? cardREST.imageUrl : self.imageUrl;
     self.identifier = cardREST.identifier ? cardREST.identifier : self.identifier;
     self.text = cardREST.text ? cardREST.text : self.text;
+    self.type = cardREST.type ? cardREST.type : self.type;
 }
 
 +(Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context

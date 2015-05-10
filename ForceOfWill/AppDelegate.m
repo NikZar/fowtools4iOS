@@ -96,7 +96,8 @@
                                                        @"Image path": @"imageUrl",
                                                        @"_id":@"identifier",
                                                        @"Cardtext":@"text",
-                                                       @"Name":@"name"}];
+                                                       @"Name":@"name",
+                                                       @"Type":@"type"}];
     
     // setup object mappings
     RKObjectMapping *deckCardMapping = [RKObjectMapping mappingForClass:[DeckCardREST class]];
@@ -116,7 +117,7 @@
     
     [deckMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"cards" toKeyPath:@"cards" withMapping:deckCardMapping]];
     [deckMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"side" toKeyPath:@"side" withMapping:deckCardMapping]];
-    
+    [deckMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"ruler" toKeyPath:@"ruler" withMapping:cardMapping]];
     
     // CARDS API: register mappings with the provider using a response descriptor
     RKResponseDescriptor *cardsResponseDescriptor =
@@ -271,7 +272,7 @@
         
         self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL
                                                                        error:nil];
-        self.audioPlayer.numberOfLoops = 1; // -1 Infinite
+        self.audioPlayer.numberOfLoops = -1; // -1 Infinite
         
         [self.audioPlayer play];
         
