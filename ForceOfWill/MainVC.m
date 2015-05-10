@@ -76,7 +76,7 @@
 
 -(NSIndexPath *)initialIndexPathForLeftMenu
 {
-    return [NSIndexPath indexPathForRow:5 inSection:0];
+    return [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
 // Enabling Deepnes on left menu
