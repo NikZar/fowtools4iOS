@@ -38,6 +38,15 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Playback started" object:self];
     [self.playerView playVideo];
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.playerView stopVideo];
+    [self.playerView clearVideo];
+    self.playerView.delegate = nil;
+    self.playerView = nil;
+    [super viewWillDisappear:animated];
+}
 /*
 #pragma mark - Navigation
 

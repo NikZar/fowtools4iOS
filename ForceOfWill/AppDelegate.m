@@ -97,7 +97,14 @@
                                                        @"_id":@"identifier",
                                                        @"Cardtext":@"text",
                                                        @"Name":@"name",
-                                                       @"Type":@"type"}];
+                                                       @"Type":@"type",
+                                                       @"ATK":@"atk",
+                                                       @"DEF":@"def",
+                                                       @"Subtype":@"subtype",
+                                                       @"Race":@"race",
+                                                       @"Attribute":@"attribute",
+                                                       @"CostTXT":@"costTXT",
+                                                       @"Total Cost":@"totalCost"}];
     
     // setup object mappings
     RKObjectMapping *deckCardMapping = [RKObjectMapping mappingForClass:[DeckCardREST class]];

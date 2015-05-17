@@ -42,22 +42,24 @@
 
 -(void)loadDecks
 {
+
+    UIApplication* app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = YES;
+
+    NSDictionary *queryParams = nil;
     if ([FBSDKAccessToken currentAccessToken]) {
-        UIApplication* app = [UIApplication sharedApplication];
-        app.networkActivityIndicatorVisible = YES;
-        
-        NSDictionary *queryParams = @{@"token" : [[FBSDKAccessToken currentAccessToken] tokenString]};
-        
-        [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/decks"
-                                               parameters:queryParams
-                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                      //                                                      [NSThread detachNewThreadSelector:@selector(syncCards:) toTarget:self withObject:mappingResult.array];
-                                                      [self syncDecks: mappingResult.array];
-                                                  }
-                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                      NSLog(@"What do you mean by 'there is no coffee?': %@", error);
-                                                  }];
+        queryParams = @{@"token" : [[FBSDKAccessToken currentAccessToken] tokenString]};
     }
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/decks"
+                                           parameters:queryParams
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  //                                                      [NSThread detachNewThreadSelector:@selector(syncCards:) toTarget:self withObject:mappingResult.array];
+                                                  [self syncDecks: mappingResult.array];
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  NSLog(@"What do you mean by 'there is no coffee?': %@", error);
+                                              }];
+
     
     
 }
@@ -81,14 +83,14 @@
                             inManagedObjectContext:temporaryContext];
                 }
                 [deck updateWithDeckREST:deckREST inManagedObjectContext: temporaryContext];
+                                
+                // push to parent
+                NSError *error = nil;
+                if (![temporaryContext save:&error])
+                {
+                    NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
+                }
             }
-        }
-        
-        // push to parent
-        NSError *error = nil;
-        if (![temporaryContext save:&error])
-        {
-            NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
         }
         
         // save parent to disk asynchronously

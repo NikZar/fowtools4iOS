@@ -35,12 +35,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"docDetail"]){
+//    if([segue.identifier isEqualToString:@"docDetail"]){
         FOWDocsVC * docVC = (FOWDocsVC *)segue.destinationViewController;
         NSIndexPath * selectedIndexPath = [[self.tableView indexPathsForSelectedRows] firstObject];
         docVC.documentTitle = [self.docs objectAtIndex: selectedIndexPath.row];
         docVC.documentType = @"pdf";
-    }
+//    }
 }
 
 

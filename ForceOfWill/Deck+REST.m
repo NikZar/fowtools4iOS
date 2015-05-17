@@ -28,6 +28,12 @@
     //CARDS
     NSNumber *cardsCount = @0;
     self.cards = [[NSSet alloc] init];
+    
+    BOOL isWindSet = NO;
+    BOOL isDarknessSet = NO;
+    BOOL isFireSet = NO;
+    BOOL isWaterSet = NO;
+    BOOL isLightSet = NO;
     for (DeckCardREST *deckCardREST in deckREST.cards) {
         DeckCard *deckCard = [NSEntityDescription
                                      insertNewObjectForEntityForName:@"DeckCard"
@@ -35,10 +41,58 @@
         [deckCard updateWithDeckCardREST:deckCardREST inManagedObjectContext:context];
         [self addCardsObject:deckCard];
         
+        if(!isWindSet){
+            if ([deckCard.card.attribute containsString:@"Wind"] || [deckCard.card.attribute containsString:@"wind"]) {
+                self.isWind = [NSNumber numberWithBool:YES];
+                isWindSet = YES;
+            }
+        }
+        if(!isDarknessSet){
+            if ([deckCard.card.attribute containsString:@"Dark"] || [deckCard.card.attribute containsString:@"dark"]) {
+                self.isDarkness = [NSNumber numberWithBool:YES];
+                isDarknessSet = YES;
+            }
+        }
+        if(!isFireSet){
+            if ([deckCard.card.attribute containsString:@"Fire"] || [deckCard.card.attribute containsString:@"fire"]) {
+                self.isFire = [NSNumber numberWithBool:YES];
+                isFireSet = YES;
+            }
+        }
+        if(!isWaterSet){
+            if ([deckCard.card.attribute containsString:@"Water"] || [deckCard.card.attribute containsString:@"water"]) {
+                self.isWater = [NSNumber numberWithBool:YES];
+                isWaterSet = YES;
+            }
+        }
+        if(!isLightSet){
+            if ([deckCard.card.attribute containsString:@"Light"] || [deckCard.card.attribute containsString:@"light"]) {
+                self.isLight = [NSNumber numberWithBool:YES];
+                isLightSet = YES;
+            }
+        }
+        
         if([deckCard.card.type isEqualToString:@"Resonator"] || [deckCard.card.type isEqualToString:@"Addition"] || [deckCard.card.type isEqualToString:@"Spell"]){
             cardsCount = [NSNumber numberWithInt: [cardsCount intValue] + [deckCard.qty intValue] ];
         }
     }
+    
+    if(!isWindSet){
+        self.isWind = [NSNumber numberWithBool:NO];
+    }
+    if(!isDarknessSet){
+        self.isDarkness = [NSNumber numberWithBool:NO];
+    }
+    if(!isFireSet){
+        self.isFire = [NSNumber numberWithBool:NO];
+    }
+    if(!isWaterSet){
+        self.isWater = [NSNumber numberWithBool:NO];
+    }
+    if(!isLightSet){
+        self.isLight = [NSNumber numberWithBool:NO];
+    }
+
     self.cardsCount = cardsCount;
     
     

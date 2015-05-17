@@ -7,7 +7,6 @@
 //
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "LoginVC.h"
 
 @interface LoginVC ()

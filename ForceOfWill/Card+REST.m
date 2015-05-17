@@ -17,6 +17,11 @@
     self.identifier = cardREST.identifier ? cardREST.identifier : self.identifier;
     self.text = cardREST.text ? cardREST.text : self.text;
     self.type = cardREST.type ? cardREST.type : self.type;
+    self.subtype = cardREST.subtype ? cardREST.subtype : self.subtype;
+    self.race = cardREST.race ? cardREST.race : self.race;
+    self.atk = cardREST.atk ? cardREST.atk : self.atk;
+    self.def = cardREST.def ? cardREST.def : self.def;
+    self.attribute = cardREST.attribute ? cardREST.attribute : self.attribute;
 }
 
 +(Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context

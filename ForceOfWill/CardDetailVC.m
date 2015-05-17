@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *subtypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *atkDefLabel;
 @property (weak, nonatomic) IBOutlet UITextView *cardTextView;
+@property (weak, nonatomic) IBOutlet UILabel *attributeLabel;
 
 @end
 
@@ -25,11 +26,18 @@
 
 -(void)viewDidLoad
 {
+    [super viewDidLoad];
     self.navigationItem.title = self.card.name;
     
     self.nameLabel.text = self.card.name;
     self.typeLabel.text = self.card.type;
-    self.subtypeLabel.text = @"";
+    self.subtypeLabel.text = [NSString stringWithFormat:@"%@%@", self.card.subtype , self.card.race];
+    self.attributeLabel.text = self.card.attribute;
+    if([self.card.type isEqualToString: @"Resonator"] || [self.card.type isEqualToString: @"J-Ruler"] ){
+        self.atkDefLabel.text = [NSString stringWithFormat:@"%@/%@", self.card.atk, self.card.def];
+    } else {
+        self.atkDefLabel.text = @"";
+    }
     self.cardTextView.text = self.card.text;
     
     self.cardImageView.image = [UIImage imageNamed:@"fow_back"];
@@ -61,7 +69,7 @@
    
         self.card.image = data;
         self.cardImageView.image = [UIImage imageWithData:data];
-        
+        [self.cardImageView setNeedsDisplay];
         // push to parent
         NSError *error = nil;
         if (![temporaryContext save:&error])

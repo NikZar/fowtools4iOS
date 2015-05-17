@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
 //    
 //    for (DeckCard *deckCard in self.deck.cards) {
 //        NSLog(@"%@ - %@", deckCard.qty , deckCard.card.name);

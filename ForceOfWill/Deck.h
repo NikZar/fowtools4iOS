@@ -2,7 +2,7 @@
 //  Deck.h
 //  ForceOfWill
 //
-//  Created by Niko Zarzani on 5/10/15.
+//  Created by Niko Zarzani on 5/16/15.
 //  Copyright (c) 2015 IndieZiOS. All rights reserved.
 //
 
@@ -14,13 +14,18 @@
 @interface Deck : NSManagedObject
 
 @property (nonatomic, retain) NSString * author;
+@property (nonatomic, retain) NSNumber * cardsCount;
 @property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSDate * lastUpdate;
 @property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSString * privacy;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * cardsCount;
 @property (nonatomic, retain) NSNumber * sideCount;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSNumber * isWater;
+@property (nonatomic, retain) NSNumber * isFire;
+@property (nonatomic, retain) NSNumber * isDarkness;
+@property (nonatomic, retain) NSNumber * isWind;
+@property (nonatomic, retain) NSNumber * isLight;
 @property (nonatomic, retain) NSSet *cards;
 @property (nonatomic, retain) Card *ruler;
 @property (nonatomic, retain) NSSet *side;

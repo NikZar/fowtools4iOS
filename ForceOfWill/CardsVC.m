@@ -51,6 +51,8 @@ static NSString *CellIdentifier = @"cardSlide";
  
     //if(delegate.facebookToken){
         //NSDictionary *queryParams = @{@"token" : delegate.facebookToken};
+    
+    __block CardsVC *blockSelf = self;
         
         [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/cards"
                                                parameters:nil
@@ -58,7 +60,7 @@ static NSString *CellIdentifier = @"cardSlide";
 //                                                      [NSThread detachNewThreadSelector:@selector(syncCards:) toTarget:self withObject:mappingResult.array];
                                                       UIApplication* app = [UIApplication sharedApplication];
                                                       app.networkActivityIndicatorVisible = NO;
-                                                      [self syncCards: mappingResult.array];
+                                                      [blockSelf syncCards: mappingResult.array];
                                                   }
                                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                       NSLog(@"What do you mean by 'there is no coffee?': %@", error);
@@ -75,10 +77,10 @@ static NSString *CellIdentifier = @"cardSlide";
 - (void)syncCards: (NSArray *)cardsREST
 {
     
-    __block NSManagedObjectContext *mainContext = self.context;
-    __block CardsVC *this = self;
-    NSManagedObjectContext *temporaryContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    temporaryContext.parentContext = self.context;
+    __block CardsVC *blockSelf = self;
+    __block NSManagedObjectContext *mainContext = blockSelf.context;
+    __block NSManagedObjectContext *temporaryContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    temporaryContext.parentContext = blockSelf.context;
     
     [temporaryContext performBlock:^{
         // do something that takes some time asynchronously using the temp context
@@ -106,7 +108,7 @@ static NSString *CellIdentifier = @"cardSlide";
             {
                 NSLog(@"Error in mainContext: %@", error.localizedDescription);
             }
-            [NSThread detachNewThreadSelector:@selector(loadImages) toTarget:this withObject:nil];
+            //[NSThread detachNewThreadSelector:@selector(loadImages) toTarget:blockSelf withObject:nil];
         }];
     }];
 }
@@ -131,14 +133,14 @@ static NSString *CellIdentifier = @"cardSlide";
 
 -(void)loadImages
 {
-    __block NSManagedObjectContext *mainContext = self.context;
-    
-    NSManagedObjectContext *temporaryContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    temporaryContext.parentContext = self.context;
+    __block CardsVC *blockSelf = self;
+    __block NSManagedObjectContext *mainContext = blockSelf.context;
+    __block NSManagedObjectContext *temporaryContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    temporaryContext.parentContext = blockSelf.context;
     
     [temporaryContext performBlock:^{
         // do something that takes some time asynchronously using the temp context
-        for (Card * card in [self.fetchedResultsController fetchedObjects]) {
+        for (Card * card in [blockSelf.fetchedResultsController fetchedObjects]) {
             if(card && !card.image){
                 AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 NSString *path = [NSString stringWithFormat:@"%@%@", delegate.baseImageUrlString, card.imageUrl ];
@@ -203,6 +205,7 @@ static NSString *CellIdentifier = @"cardSlide";
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     cell.card = (Card *)object;
+    cell.context = self.context;
     
     [cell updateCell];
 
@@ -343,15 +346,28 @@ static NSString *CellIdentifier = @"cardSlide";
     [self performFetch];
 }
 
+#pragma mark - Filters
+- (void)openFilters
+{
+    NSLog(@"open filters");
+}
+
 #pragma mark - UI Methods
 
 - (void)setupNavigationBar
 {
-    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    //search
+    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(-10, 0, 25, 25)];
     searchButton.tintColor = [UIColor blackColor];
     [searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
     [searchButton addTarget:self action:@selector(showSearchBar) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+    
+    UIButton *filterButton = [[UIButton alloc] initWithFrame:CGRectMake(25, 10, 25, 20)];
+    filterButton.tintColor = [UIColor blackColor];
+    [filterButton setImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
+    [filterButton addTarget:self action:@selector(openFilters) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:filterButton],[[UIBarButtonItem alloc] initWithCustomView:searchButton]];
 }
 
 @end

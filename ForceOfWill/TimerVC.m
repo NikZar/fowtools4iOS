@@ -58,6 +58,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     
     [self updateSettingLabel];
     
@@ -79,6 +80,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self stopTimer];
     });

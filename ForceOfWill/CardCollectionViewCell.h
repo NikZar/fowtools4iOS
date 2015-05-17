@@ -12,6 +12,7 @@
 @interface CardCollectionViewCell : UICollectionViewCell //<UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) Card * card;
+@property (weak, nonatomic) NSManagedObjectContext *context;
 @property (weak, nonatomic) IBOutlet UIImageView *cardImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIView *slideView;
