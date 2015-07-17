@@ -11,4 +11,8 @@
 
 @interface CardsVC : UICollectionViewController <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate, UISearchDisplayDelegate>
 
+@property (strong, nonatomic) NSMutableArray *filters;
+
+- (void)resetFilters;
+
 @end

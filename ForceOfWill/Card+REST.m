@@ -22,6 +22,8 @@
     self.atk = cardREST.atk ? cardREST.atk : self.atk;
     self.def = cardREST.def ? cardREST.def : self.def;
     self.attribute = cardREST.attribute ? cardREST.attribute : self.attribute;
+    self.set = cardREST.set ? cardREST.set : self.set;
+    self.num = cardREST.num ? cardREST.num : self.num;
 }
 
 +(Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context

@@ -104,7 +104,9 @@
                                                        @"Race":@"race",
                                                        @"Attribute":@"attribute",
                                                        @"CostTXT":@"costTXT",
-                                                       @"Total Cost":@"totalCost"}];
+                                                       @"Total Cost":@"totalCost",
+                                                       @"Set":@"set",
+                                                       @"Num":@"num"}];
     
     // setup object mappings
     RKObjectMapping *deckCardMapping = [RKObjectMapping mappingForClass:[DeckCardREST class]];
@@ -118,7 +120,8 @@
                                                        @"notes": @"notes",
                                                        @"_id":@"identifier",
                                                        @"privacy":@"privacy",
-                                                       @"author":@"author"}];
+                                                       @"author":@"author",
+                                                       @"date":@"lastUpdate"}];
     
     
     

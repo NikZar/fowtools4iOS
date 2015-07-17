@@ -27,4 +27,9 @@
 #define kTurnDuration @"kTurnDuration"
 #define kTimerEndDate @"kTimerEndDate"
 
+#define kTextFilter @"filterText"
+#define kSliderFilter @"filterSlider"
+#define kSwitchFilter @"filterSwitch"
+#define kSegmentedFilter @"filterSegmentedControl"
+
 #endif

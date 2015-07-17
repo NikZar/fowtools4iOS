@@ -43,6 +43,11 @@
 
 @implementation LifePointsVC
 
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait | UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
+}
+
 #pragma mark - NSUserDefaults properties
 
 -(NSDate *)endDate

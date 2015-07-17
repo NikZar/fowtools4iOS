@@ -14,6 +14,7 @@
 #import "MatchesTVC.h"
 #import "FOWDocsTVC.h"
 #import "TimerVC.h"
+#import "AppDelegate.h"
 
 @implementation ToolsVC
 
@@ -60,4 +61,15 @@
     
     [self.navigationController pushViewController:timerVC animated:YES];
 }
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 @end

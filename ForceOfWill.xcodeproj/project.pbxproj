@@ -88,6 +88,11 @@
 		233D7E271A4656C5008D04E3 /* FOWDocsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233D7E261A4656C5008D04E3 /* FOWDocsTVC.m */; };
 		233D7E291A465AFC008D04E3 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 233D7E281A465AFC008D04E3 /* documents.png */; };
 		233D7E2D1A46DD5E008D04E3 /* InfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 233D7E2C1A46DD5E008D04E3 /* InfoVC.m */; };
+		235FB07D1B32199A00F8CD9B /* FilterTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235FB07C1B32199A00F8CD9B /* FilterTextTableViewCell.m */; };
+		235FB0801B3219AB00F8CD9B /* FilterSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235FB07F1B3219AB00F8CD9B /* FilterSliderTableViewCell.m */; };
+		235FB0831B3219B700F8CD9B /* FilterSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235FB0821B3219B700F8CD9B /* FilterSwitchTableViewCell.m */; };
+		235FB0861B3224EF00F8CD9B /* FilterSegmentedControlTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235FB0851B3224EF00F8CD9B /* FilterSegmentedControlTableViewCell.m */; };
+		235FB0891B36DFBB00F8CD9B /* NoRotationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235FB0881B36DFBB00F8CD9B /* NoRotationNavigationController.m */; };
 		23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */; };
 		23C58CA01A1164F3003ABF31 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9F1A1164F3003ABF31 /* search.png */; };
 		23C58CA31A11790B003ABF31 /* CardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C58CA21A11790B003ABF31 /* CardDetailVC.m */; };
@@ -125,6 +130,8 @@
 		23CF66D61A2D2C8B00D98B3C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CF66D51A2D2C8B00D98B3C /* MessageUI.framework */; };
 		23CF66DA1A2D2E2D00D98B3C /* FOWDocsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF66D91A2D2E2D00D98B3C /* FOWDocsVC.m */; };
 		23D4A95D1B09526A00830FAE /* ForceOfWill.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D4A9541B09526A00830FAE /* ForceOfWill.xcdatamodeld */; };
+		23D4A9601B09583500830FAE /* FiltersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D4A95F1B09583500830FAE /* FiltersTVC.m */; };
+		23D4A9631B09590300830FAE /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D4A9621B09590300830FAE /* filter.png */; };
 		23EF87161AEC09E50032A700 /* TimerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EF87151AEC09E50032A700 /* TimerVC.m */; };
 		8725599147B8FBBFC8F6335E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C01DACD757BE7DC90F49ADA /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -268,6 +275,16 @@
 		233D7E281A465AFC008D04E3 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
 		233D7E2B1A46DD5E008D04E3 /* InfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoVC.h; sourceTree = "<group>"; };
 		233D7E2C1A46DD5E008D04E3 /* InfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoVC.m; sourceTree = "<group>"; };
+		235FB07B1B32199A00F8CD9B /* FilterTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTextTableViewCell.h; sourceTree = "<group>"; };
+		235FB07C1B32199A00F8CD9B /* FilterTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTextTableViewCell.m; sourceTree = "<group>"; };
+		235FB07E1B3219AB00F8CD9B /* FilterSliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSliderTableViewCell.h; sourceTree = "<group>"; };
+		235FB07F1B3219AB00F8CD9B /* FilterSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSliderTableViewCell.m; sourceTree = "<group>"; };
+		235FB0811B3219B700F8CD9B /* FilterSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSwitchTableViewCell.h; sourceTree = "<group>"; };
+		235FB0821B3219B700F8CD9B /* FilterSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSwitchTableViewCell.m; sourceTree = "<group>"; };
+		235FB0841B3224EF00F8CD9B /* FilterSegmentedControlTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSegmentedControlTableViewCell.h; sourceTree = "<group>"; };
+		235FB0851B3224EF00F8CD9B /* FilterSegmentedControlTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSegmentedControlTableViewCell.m; sourceTree = "<group>"; };
+		235FB0871B36DFBB00F8CD9B /* NoRotationNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRotationNavigationController.h; sourceTree = "<group>"; };
+		235FB0881B36DFBB00F8CD9B /* NoRotationNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoRotationNavigationController.m; sourceTree = "<group>"; };
 		23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23C58C9F1A1164F3003ABF31 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		23C58CA11A11790B003ABF31 /* CardDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailVC.h; sourceTree = "<group>"; };
@@ -338,6 +355,9 @@
 		23D4A95A1B09526A00830FAE /* ForceOfWill 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ForceOfWill 7.xcdatamodel"; sourceTree = "<group>"; };
 		23D4A95B1B09526A00830FAE /* ForceOfWill 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ForceOfWill 8.xcdatamodel"; sourceTree = "<group>"; };
 		23D4A95C1B09526A00830FAE /* ForceOfWill.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ForceOfWill.xcdatamodel; sourceTree = "<group>"; };
+		23D4A95E1B09583500830FAE /* FiltersTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersTVC.h; sourceTree = "<group>"; };
+		23D4A95F1B09583500830FAE /* FiltersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersTVC.m; sourceTree = "<group>"; };
+		23D4A9621B09590300830FAE /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		23EF87141AEC09E50032A700 /* TimerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerVC.h; sourceTree = "<group>"; };
 		23EF87151AEC09E50032A700 /* TimerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerVC.m; sourceTree = "<group>"; };
 		2C01DACD757BE7DC90F49ADA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +429,8 @@
 				2334C66E19FD100C0060D609 /* MainVC.m */,
 				231595CC1A05213800618676 /* LeftMenuVC.h */,
 				231595CD1A05213800618676 /* LeftMenuVC.m */,
+				235FB0871B36DFBB00F8CD9B /* NoRotationNavigationController.h */,
+				235FB0881B36DFBB00F8CD9B /* NoRotationNavigationController.m */,
 			);
 			name = Navigation;
 			sourceTree = "<group>";
@@ -629,6 +651,7 @@
 		2334C66719FCFD9D0060D609 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				23D4A9621B09590300830FAE /* filter.png */,
 				232378AE1AFF9E70004BAEB1 /* timer.png */,
 				233C54A81AE85B05008CD1E1 /* decks.png */,
 				233D7E281A465AFC008D04E3 /* documents.png */,
@@ -690,6 +713,7 @@
 				2334C69219FEE1B10060D609 /* CardCollectionViewCell.m */,
 				23C58CA11A11790B003ABF31 /* CardDetailVC.h */,
 				23C58CA21A11790B003ABF31 /* CardDetailVC.m */,
+				23D4A9611B09585100830FAE /* Filters */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
@@ -824,6 +848,23 @@
 				233D7E261A4656C5008D04E3 /* FOWDocsTVC.m */,
 			);
 			name = "FOW Docs";
+			sourceTree = "<group>";
+		};
+		23D4A9611B09585100830FAE /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				23D4A95E1B09583500830FAE /* FiltersTVC.h */,
+				23D4A95F1B09583500830FAE /* FiltersTVC.m */,
+				235FB07B1B32199A00F8CD9B /* FilterTextTableViewCell.h */,
+				235FB07C1B32199A00F8CD9B /* FilterTextTableViewCell.m */,
+				235FB07E1B3219AB00F8CD9B /* FilterSliderTableViewCell.h */,
+				235FB07F1B3219AB00F8CD9B /* FilterSliderTableViewCell.m */,
+				235FB0811B3219B700F8CD9B /* FilterSwitchTableViewCell.h */,
+				235FB0821B3219B700F8CD9B /* FilterSwitchTableViewCell.m */,
+				235FB0841B3224EF00F8CD9B /* FilterSegmentedControlTableViewCell.h */,
+				235FB0851B3224EF00F8CD9B /* FilterSegmentedControlTableViewCell.m */,
+			);
+			name = Filters;
 			sourceTree = "<group>";
 		};
 		23EF87131AEC098B0032A700 /* Timer */ = {
@@ -964,6 +1005,7 @@
 				23CF66871A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf in Resources */,
 				231595DF1A05457300618676 /* Icon-Small-50.png in Resources */,
 				23C58CA71A117E12003ABF31 /* lifepoints.png in Resources */,
+				23D4A9631B09590300830FAE /* filter.png in Resources */,
 				232378AF1AFF9E70004BAEB1 /* timer.png in Resources */,
 				232D16D11A20CE7C002B3617 /* fowtv.png in Resources */,
 				230FCFC11AF97C50000E148F /* timer.mp3 in Resources */,
@@ -1060,8 +1102,10 @@
 				231595D11A05290000618676 /* Card+REST.m in Sources */,
 				232D170B1A27E30D002B3617 /* LifeChange+Management.m in Sources */,
 				23C58CA31A11790B003ABF31 /* CardDetailVC.m in Sources */,
+				235FB07D1B32199A00F8CD9B /* FilterTextTableViewCell.m in Sources */,
 				23CF66DA1A2D2E2D00D98B3C /* FOWDocsVC.m in Sources */,
 				23CF66BD1A2D2C1C00D98B3C /* ReaderContentPage.m in Sources */,
+				23D4A9601B09583500830FAE /* FiltersTVC.m in Sources */,
 				233D7E271A4656C5008D04E3 /* FOWDocsTVC.m in Sources */,
 				23CF66C51A2D2C1C00D98B3C /* ReaderThumbFetch.m in Sources */,
 				23CF66BA1A2D2C1C00D98B3C /* ReaderDemoController.m in Sources */,
@@ -1069,6 +1113,7 @@
 				23D4A95D1B09526A00830FAE /* ForceOfWill.xcdatamodeld in Sources */,
 				23CF66CB1A2D2C1C00D98B3C /* ReaderViewController.m in Sources */,
 				23CF66C71A2D2C1C00D98B3C /* ReaderThumbRender.m in Sources */,
+				235FB0831B3219B700F8CD9B /* FilterSwitchTableViewCell.m in Sources */,
 				232D17231A29313E002B3617 /* MatchTVCell.m in Sources */,
 				23CF66C31A2D2C1C00D98B3C /* ReaderMainToolbar.m in Sources */,
 				232D16DF1A20E564002B3617 /* YTVideoREST.m in Sources */,
@@ -1077,6 +1122,7 @@
 				23CF66BE1A2D2C1C00D98B3C /* ReaderContentTile.m in Sources */,
 				2325F3061AEA691600538335 /* DecksTVC.m in Sources */,
 				23CF66CA1A2D2C1C00D98B3C /* ReaderThumbView.m in Sources */,
+				235FB0801B3219AB00F8CD9B /* FilterSliderTableViewCell.m in Sources */,
 				232D16E21A21F67D002B3617 /* YTVideoTVCell.m in Sources */,
 				230FCFBF1AF97C17000E148F /* DALabeledCircularProgressView.m in Sources */,
 				23CF66CC1A2D2C1C00D98B3C /* ThumbsMainToolbar.m in Sources */,
@@ -1097,10 +1143,12 @@
 				232D16FB1A27CF67002B3617 /* Match+Management.m in Sources */,
 				232D173E1A2B4D97002B3617 /* CoreDataTVCell.m in Sources */,
 				233C54A71AE8566A008CD1E1 /* Deck+REST.m in Sources */,
+				235FB0861B3224EF00F8CD9B /* FilterSegmentedControlTableViewCell.m in Sources */,
 				23CF66CD1A2D2C1C00D98B3C /* ThumbsViewController.m in Sources */,
 				23CF66C21A2D2C1C00D98B3C /* ReaderMainPagebar.m in Sources */,
 				231595C51A04EE1B00618676 /* CardREST.m in Sources */,
 				23CF66BF1A2D2C1C00D98B3C /* ReaderContentView.m in Sources */,
+				235FB0891B36DFBB00F8CD9B /* NoRotationNavigationController.m in Sources */,
 				2325F30F1AEB9BBB00538335 /* DeckCardREST.m in Sources */,
 				2334C64119FCFD7B0060D609 /* main.m in Sources */,
 				23CF66BB1A2D2C1C00D98B3C /* CGPDFDocument.m in Sources */,

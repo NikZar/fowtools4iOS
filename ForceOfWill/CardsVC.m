@@ -14,11 +14,13 @@
 #import "CardREST.h"
 #import "CardDetailVC.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "FiltersTVC.h"
+#import "Constants.h"
 
 @interface CardsVC ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (weak,nonatomic) NSManagedObjectContext *context;
+@property (weak, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) UISearchDisplayController *mySearchDisplayController;
 @property (strong, nonatomic) UISearchBar *searchBar;
 
@@ -30,6 +32,8 @@ static NSString *CellIdentifier = @"cardSlide";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self resetFilters];
     
     AppDelegate * appDelegate =(AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.context = appDelegate.managedObjectContext;
@@ -42,6 +46,25 @@ static NSString *CellIdentifier = @"cardSlide";
     [self loadCards];
 }
 
+-(void)resetFilters
+{
+    self.filters = [    @[
+                          [@{@"title": @"name", @"type": kTextFilter, @"value":@""} mutableCopy],
+                          [@{@"title": @"text", @"type": kTextFilter, @"value":@""} mutableCopy],
+                          [@{@"title": @"subtype", @"type": kTextFilter, @"value":@""} mutableCopy],
+                          [@{@"title": @"race", @"type": kTextFilter, @"value":@""} mutableCopy],
+                          [@{@"title": @"attribute", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Light",@"Dark",@"Wind",@"Fire",@"Water"]} mutableCopy],
+                          [@{@"title": @"type", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Ruler",@"Resonator",@"Spell",@"Addition",@"Regalia",@"Stone"]} mutableCopy],
+                          [@{@"title": @"expansion", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"MPR",@"TAT",@"CMF",@"WOW",@"3",@"2",@"1"]} mutableCopy],
+                          [@{@"title": @"min cost", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@20, @"scale":@1} mutableCopy],
+                          [@{@"title": @"max cost", @"type": kSliderFilter, @"value":@20, @"min":@0, @"max":@20,@"scale":@1} mutableCopy],
+                          [@{@"title": @"min atk", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@100,@"scale":@100} mutableCopy],
+                          [@{@"title": @"max atk", @"type": kSliderFilter, @"value":@100, @"min":@0, @"max":@100, @"scale":@100} mutableCopy],
+                          [@{@"title": @"min def", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@100, @"scale":@100} mutableCopy],
+                          [@{@"title": @"max def", @"type": kSliderFilter, @"value":@100, @"min":@0, @"max":@100, @"scale":@100} mutableCopy]
+                          ]
+                    mutableCopy];
+}
 
 -(void)loadCards
 {
@@ -241,11 +264,37 @@ static NSString *CellIdentifier = @"cardSlide";
                                    entityForName:@"Card" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"code" ascending:YES];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    NSSortDescriptor *sortSet = [[NSSortDescriptor alloc]
+                              initWithKey:@"set" ascending:NO];
+    NSSortDescriptor *sortNum = [[NSSortDescriptor alloc]
+                                 initWithKey:@"num" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortSet, sortNum, nil]];
     
     [fetchRequest setFetchBatchSize:20];
+    
+    NSPredicate * filtersPredicate;
+    
+    for (NSDictionary *filter in self.filters) {
+        NSString *type = filter[@"type"];
+        NSPredicate * filterPredicate;
+        
+        if([type isEqualToString:kTextFilter]){
+            NSString * attribute = (NSString *)filter[@"title"];
+            NSString * value = (NSString *)filter[@"value"];
+            if(value && ![value isEqualToString:@""]){
+                filterPredicate = [NSPredicate predicateWithFormat:@"%@ CONTAINS[cd] %@", attribute, value];
+            }
+        }
+
+        if(filtersPredicate && filterPredicate){
+            filtersPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[filtersPredicate, filterPredicate]];
+        } else if (filterPredicate){
+            filtersPredicate = filterPredicate;
+        }
+    }
+    if(filtersPredicate){
+        [fetchRequest setPredicate:filtersPredicate];
+    }
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -349,7 +398,10 @@ static NSString *CellIdentifier = @"cardSlide";
 #pragma mark - Filters
 - (void)openFilters
 {
-    NSLog(@"open filters");
+    FiltersTVC * filtersTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"filters"];
+    filtersTVC.cardsVC = self;
+    
+    [self.navigationController pushViewController:filtersTVC animated:YES];
 }
 
 #pragma mark - UI Methods

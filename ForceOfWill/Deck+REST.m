@@ -19,6 +19,7 @@
     self.notes = deckREST.notes ? deckREST.notes : self.notes;
     self.identifier = deckREST.identifier ? deckREST.identifier : self.identifier;
     self.author = deckREST.author ? deckREST.author : self.author;
+    self.lastUpdate = deckREST.lastUpdate ? deckREST.lastUpdate : self.lastUpdate;
     
     for (DeckCard *deckCard in self.cards) {
         [context deleteObject:deckCard];

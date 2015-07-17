@@ -4,12 +4,12 @@ PODS:
   - Bolts (1.1.4)
   - Facebook-iOS-SDK (4.0.1):
     - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit
-    - Facebook-iOS-SDK/LoginKit
-    - Facebook-iOS-SDK/ShareKit
+    - Facebook-iOS-SDK/CoreKit (= 4.0.1)
+    - Facebook-iOS-SDK/LoginKit (= 4.0.1)
+    - Facebook-iOS-SDK/ShareKit (= 4.0.1)
   - Facebook-iOS-SDK/CoreKit (4.0.1):
     - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit/no-arc
+    - Facebook-iOS-SDK/CoreKit/no-arc (= 4.0.1)
   - Facebook-iOS-SDK/CoreKit/no-arc (4.0.1):
     - Bolts (~> 1.0)
   - Facebook-iOS-SDK/LoginKit (4.0.1):
@@ -19,7 +19,7 @@ PODS:
     - Bolts (~> 1.0)
     - Facebook-iOS-SDK/CoreKit
   - RestKit (0.20.3):
-    - RestKit/Core
+    - RestKit/Core (= 0.20.3)
   - RestKit/Core (0.20.3):
     - RestKit/CoreData
     - RestKit/Network
@@ -35,12 +35,14 @@ PODS:
     - TransitionKit (= 1.1.1)
   - SOCKit (1.1)
   - TransitionKit (1.1.1)
+  - TTRangeSlider (1.0.2)
   - youtube-ios-player-helper (0.1.1)
 
 DEPENDENCIES:
   - AMSlideMenu (~> 1.5.3)
   - Facebook-iOS-SDK (~> 4.0.1)
   - RestKit (~> 0.20.0)
+  - TTRangeSlider
   - youtube-ios-player-helper (~> 0.1.1)
 
 SPEC CHECKSUMS:
@@ -51,6 +53,7 @@ SPEC CHECKSUMS:
   RestKit: ddc3c3a2b6cbe4578c4193d8e0dfe93d79333c3b
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   TransitionKit: aec4d65b2be460fec0db04f905e8bedca601d669
+  TTRangeSlider: e41d992cc0047da48884ad507f968db5ab08441b
   youtube-ios-player-helper: d7350b9f9070edf482e5d0bd5e8948c0ba1437f3
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.37.1

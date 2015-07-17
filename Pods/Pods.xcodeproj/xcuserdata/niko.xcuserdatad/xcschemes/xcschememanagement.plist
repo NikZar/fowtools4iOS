@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TTRangeSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TransitionKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2017F050E900926F34891A65</key>
+		<key>1CCBD8C4BE1DA49DC2A83E98</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>276E18187469012C71BDC3FF</key>
+		<key>2E2A94BB686D052968F97D30</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C15A0147002ED99910DEB2C</key>
+		<key>50DEE08573C189ED7E60F1B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5050E4D7F9DE331DD0DC0A47</key>
+		<key>5DB1556BE7C86C28EED24908</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76AE1AD7DE6E64CD6441FC02</key>
+		<key>774335AE720D26A7DAAD06DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D3DC1129627241DF076D131</key>
+		<key>B8112D761809B96A01002FAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>83B53169668C424BE61DB77A</key>
+		<key>C0DB1655FDDB8D9C2538D0A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C10956E54B33C490DB0A5CCA</key>
+		<key>C7315EE8EEB934D325B5CDB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF3DE92FA1BF695A00E7F330</key>
+		<key>DC4FCC4B988A9679D26A6ABF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD8B33E2C0867ECD1A110DFA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
