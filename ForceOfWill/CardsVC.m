@@ -46,6 +46,11 @@ static NSString *CellIdentifier = @"cardSlide";
     [self loadCards];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self updateFilterPredicate];
+}
+
 -(void)resetFilters
 {
     self.filters = [    @[
@@ -55,7 +60,9 @@ static NSString *CellIdentifier = @"cardSlide";
                           [@{@"title": @"race", @"type": kTextFilter, @"value":@""} mutableCopy],
                           [@{@"title": @"attribute", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Light",@"Dark",@"Wind",@"Fire",@"Water"]} mutableCopy],
                           [@{@"title": @"type", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Ruler",@"Resonator",@"Spell",@"Addition",@"Regalia",@"Stone"]} mutableCopy],
-                          [@{@"title": @"expansion", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"MPR",@"TAT",@"CMF",@"WOW",@"3",@"2",@"1"]} mutableCopy],
+                          [@{@"title": @"expansionS", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Dual Deck Faria vs Melgis"]} mutableCopy],
+                          [@{@"title": @"expansionS", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Vingolf 01", @"The Millennia of Ages", @"The Moon Princess Returns",@"The Castle of Heaven and The Two Tower",@"The Crimson Moon Fairy Tale"]} mutableCopy],
+                          [@{@"title": @"expansionS", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"The Shaft of Light of Valhalla",@"War of Valhalla",@"Dawn of Valhalla"]} mutableCopy],
                           [@{@"title": @"min cost", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@20, @"scale":@1} mutableCopy],
                           [@{@"title": @"max cost", @"type": kSliderFilter, @"value":@20, @"min":@0, @"max":@20,@"scale":@1} mutableCopy],
                           [@{@"title": @"min atk", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@100,@"scale":@100} mutableCopy],
@@ -201,18 +208,21 @@ static NSString *CellIdentifier = @"cardSlide";
 
 #pragma mark - UICollectionVIew
 
-//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViews sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 //    return self.collectionView.frame.size;
 //}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
+    [collectionView.collectionViewLayout invalidateLayout];
+
     NSInteger sections = [[self.fetchedResultsController sections] count];
     return sections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    [collectionView.collectionViewLayout invalidateLayout];
     
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     NSInteger rows =[sectionInfo numberOfObjects];
@@ -223,6 +233,8 @@ static NSString *CellIdentifier = @"cardSlide";
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [collectionView.collectionViewLayout invalidateLayout];
+
     CardCollectionViewCell *cell = (CardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -272,29 +284,29 @@ static NSString *CellIdentifier = @"cardSlide";
     
     [fetchRequest setFetchBatchSize:20];
     
-    NSPredicate * filtersPredicate;
-    
-    for (NSDictionary *filter in self.filters) {
-        NSString *type = filter[@"type"];
-        NSPredicate * filterPredicate;
-        
-        if([type isEqualToString:kTextFilter]){
-            NSString * attribute = (NSString *)filter[@"title"];
-            NSString * value = (NSString *)filter[@"value"];
-            if(value && ![value isEqualToString:@""]){
-                filterPredicate = [NSPredicate predicateWithFormat:@"%@ CONTAINS[cd] %@", attribute, value];
-            }
-        }
-
-        if(filtersPredicate && filterPredicate){
-            filtersPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[filtersPredicate, filterPredicate]];
-        } else if (filterPredicate){
-            filtersPredicate = filterPredicate;
-        }
-    }
-    if(filtersPredicate){
-        [fetchRequest setPredicate:filtersPredicate];
-    }
+//    NSPredicate * filtersPredicate;
+//    
+//    for (NSDictionary *filter in self.filters) {
+//        NSString *type = filter[@"type"];
+//        NSPredicate * filterPredicate;
+//        
+//        if([type isEqualToString:kTextFilter]){
+//            NSString * attribute = (NSString *)filter[@"title"];
+//            NSString * value = (NSString *)filter[@"value"];
+//            if(value && ![value isEqualToString:@""]){
+//                filterPredicate = [NSPredicate predicateWithFormat:@"%@ like '%@'", attribute, value];
+//            }
+//        }
+//
+//        if(filtersPredicate && filterPredicate){
+//            filtersPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[filtersPredicate, filterPredicate]];
+//        } else if (filterPredicate){
+//            filtersPredicate = filterPredicate;
+//        }
+//    }
+//    if(filtersPredicate){
+//        [fetchRequest setPredicate:filtersPredicate];
+//    }
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -402,6 +414,44 @@ static NSString *CellIdentifier = @"cardSlide";
     filtersTVC.cardsVC = self;
     
     [self.navigationController pushViewController:filtersTVC animated:YES];
+}
+
+- (void)updateFilterPredicate
+{
+    NSPredicate * filtersPredicate;
+    
+    for (NSDictionary *filter in self.filters) {
+        NSString *type = filter[@"type"];
+        NSPredicate * filterPredicate;
+        
+        if([type isEqualToString:kTextFilter]){
+            NSString * attribute = (NSString *)filter[@"title"];
+            NSString * value = (NSString *)filter[@"value"];
+            if(value && ![value isEqualToString:@""]){
+                filterPredicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", attribute, value];
+            }
+        }
+        
+        if([type isEqualToString:kSegmentedFilter]){
+            NSString * attribute = (NSString *)filter[@"title"];
+            NSString * value = (NSString *)filter[@"value"];
+            if(value && ![value isEqualToString:@""]  && ![value isEqualToString:@"All"]){
+                
+                filterPredicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", attribute, value];
+            }
+        }
+        
+        if(filtersPredicate && filterPredicate){
+            filtersPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[filtersPredicate, filterPredicate]];
+        } else if (filterPredicate){
+            filtersPredicate = filterPredicate;
+        }
+    }
+    NSString * check = [filtersPredicate predicateFormat];
+
+    [self.fetchedResultsController.fetchRequest setPredicate:filtersPredicate];
+   
+    [self performFetch];
 }
 
 #pragma mark - UI Methods

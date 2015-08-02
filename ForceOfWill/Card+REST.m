@@ -21,6 +21,7 @@
     self.race = cardREST.race ? cardREST.race : self.race;
     self.atk = cardREST.atk ? cardREST.atk : self.atk;
     self.def = cardREST.def ? cardREST.def : self.def;
+    self.expansionS = cardREST.expansionS ? cardREST.expansionS : self.expansionS;
     self.attribute = cardREST.attribute ? cardREST.attribute : self.attribute;
     self.set = cardREST.set ? cardREST.set : self.set;
     self.num = cardREST.num ? cardREST.num : self.num;

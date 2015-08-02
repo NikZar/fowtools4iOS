@@ -7,7 +7,6 @@
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costTXT" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="def" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="expansion" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="freeCost" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -66,7 +65,7 @@
         <relationship name="match" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="turns" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-63" positionY="-18" width="128" height="345"/>
+        <element name="Card" positionX="-63" positionY="-18" width="128" height="330"/>
         <element name="Deck" positionX="-54" positionY="72" width="128" height="285"/>
         <element name="DeckCard" positionX="-45" positionY="81" width="128" height="75"/>
         <element name="LifeChange" positionX="-36" positionY="54" width="128" height="133"/>

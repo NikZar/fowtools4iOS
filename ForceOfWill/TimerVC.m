@@ -158,7 +158,6 @@
     UIApplication* application = [UIApplication sharedApplication];
     UILocalNotification *notification = [[UILocalNotification alloc]init];
     notification.soundName = UILocalNotificationDefaultSoundName;
-    notification.repeatInterval = NSDayCalendarUnit;
     [notification setAlertBody:@"Timer elapsed!"];
     [notification setFireDate:alertTime];
     [notification setTimeZone:[NSTimeZone  defaultTimeZone]];

@@ -27,10 +27,15 @@
 {
     [super viewWillAppear:animated];
     
-    UIBarButtonItem * resetButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self.cardsVC action:@selector(resetFilters)];
+    UIBarButtonItem * resetButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(resetFilters)];
     self.navigationItem.rightBarButtonItems = @[resetButton];
 }
 
+- (void)resetFilters
+{
+    [self.cardsVC resetFilters];
+    [self.tableView reloadData];
+}
 
 
 - (void)didReceiveMemoryWarning {

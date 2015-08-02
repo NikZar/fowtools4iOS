@@ -102,6 +102,7 @@
                                                        @"DEF":@"def",
                                                        @"Subtype":@"subtype",
                                                        @"Race":@"race",
+                                                       @"Expansion":@"expansionS",
                                                        @"Attribute":@"attribute",
                                                        @"CostTXT":@"costTXT",
                                                        @"Total Cost":@"totalCost",

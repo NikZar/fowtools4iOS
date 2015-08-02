@@ -2,7 +2,7 @@
 //  Card.m
 //  ForceOfWill
 //
-//  Created by Niko Zarzani on 5/11/15.
+//  Created by Niko Zarzani on 8/2/15.
 //  Copyright (c) 2015 IndieZiOS. All rights reserved.
 //
 
@@ -11,25 +11,25 @@
 
 @implementation Card
 
+@dynamic atk;
+@dynamic attribute;
+@dynamic attributeCost;
 @dynamic code;
+@dynamic costTXT;
+@dynamic def;
+@dynamic freeCost;
 @dynamic identifier;
 @dynamic image;
 @dynamic imageUrl;
 @dynamic name;
-@dynamic text;
-@dynamic type;
-@dynamic subtype;
-@dynamic race;
-@dynamic attribute;
-@dynamic atk;
-@dynamic def;
-@dynamic costTXT;
-@dynamic attributeCost;
-@dynamic freeCost;
-@dynamic totalCost;
-@dynamic expansion;
-@dynamic rarity;
 @dynamic num;
+@dynamic race;
+@dynamic rarity;
 @dynamic set;
+@dynamic subtype;
+@dynamic text;
+@dynamic totalCost;
+@dynamic type;
+@dynamic expansionS;
 
 @end

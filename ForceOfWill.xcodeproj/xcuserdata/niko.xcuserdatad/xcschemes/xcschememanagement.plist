@@ -4,19 +4,39 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FOW Tools WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>ForceOfWill Production.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>1</integer>
 		</dict>
 		<key>ForceOfWill.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Glance - FOW Tools WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>Notification - FOW Tools WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>231FF11A1B59B66400A2B949</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2334C63A19FCFD7B0060D609</key>
 		<dict>
 			<key>primary</key>

@@ -26,7 +26,7 @@
 @property (nonatomic, retain) NSNumber * attributeCost;
 @property (nonatomic, retain) NSNumber * freeCost;
 @property (nonatomic, retain) NSNumber * totalCost;
-@property (nonatomic, retain) NSNumber * expansion;
+@property (nonatomic, retain) NSString * expansionS;
 @property (nonatomic, retain) NSString * rarity;
 @property (nonatomic, retain) NSNumber * num;
 @property (nonatomic, retain) NSNumber * set;
