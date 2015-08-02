@@ -54,21 +54,129 @@ static NSString *CellIdentifier = @"cardSlide";
 -(void)resetFilters
 {
     self.filters = [    @[
-                          [@{@"title": @"name", @"type": kTextFilter, @"value":@""} mutableCopy],
-                          [@{@"title": @"text", @"type": kTextFilter, @"value":@""} mutableCopy],
-                          [@{@"title": @"subtype", @"type": kTextFilter, @"value":@""} mutableCopy],
-                          [@{@"title": @"race", @"type": kTextFilter, @"value":@""} mutableCopy],
-                          [@{@"title": @"attribute", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Light",@"Dark",@"Wind",@"Fire",@"Water"]} mutableCopy],
-                          [@{@"title": @"type", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Ruler",@"Resonator",@"Spell",@"Addition",@"Regalia",@"Stone"]} mutableCopy],
-                          [@{@"title": @"expansionS", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Dual Deck Faria vs Melgis"]} mutableCopy],
-                          [@{@"title": @"expansionS", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"Vingolf 01", @"The Millennia of Ages", @"The Moon Princess Returns",@"The Castle of Heaven and The Two Tower",@"The Crimson Moon Fairy Tale"]} mutableCopy],
-                          [@{@"title": @"expansionS", @"type": kSegmentedFilter, @"value":@"All", @"options":@[@"All", @"The Shaft of Light of Valhalla",@"War of Valhalla",@"Dawn of Valhalla"]} mutableCopy],
-                          [@{@"title": @"min cost", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@20, @"scale":@1} mutableCopy],
-                          [@{@"title": @"max cost", @"type": kSliderFilter, @"value":@20, @"min":@0, @"max":@20,@"scale":@1} mutableCopy],
-                          [@{@"title": @"min atk", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@100,@"scale":@100} mutableCopy],
-                          [@{@"title": @"max atk", @"type": kSliderFilter, @"value":@100, @"min":@0, @"max":@100, @"scale":@100} mutableCopy],
-                          [@{@"title": @"min def", @"type": kSliderFilter, @"value":@0, @"min":@0, @"max":@100, @"scale":@100} mutableCopy],
-                          [@{@"title": @"max def", @"type": kSliderFilter, @"value":@100, @"min":@0, @"max":@100, @"scale":@100} mutableCopy]
+                          [@{@"title": @"name",
+                             @"attributeName": @"name",
+                             @"type": kTextFilter,
+                             @"value":@""} mutableCopy],
+                          
+                          [@{@"title": @"text",
+                             @"attributeName": @"text",
+                             @"type": kTextFilter,
+                             @"value":@""} mutableCopy],
+                          
+                          [@{@"title": @"subtype",
+                             @"attributeName": @"subtype",
+                             @"type": kTextFilter,
+                             @"value":@""} mutableCopy],
+                          
+                          [@{@"title": @"race",
+                             @"attributeName": @"race",
+                             @"type": kTextFilter,
+                             @"value":@""} mutableCopy],
+                          
+                          [@{@"title": @"attribute",
+                             @"attributeName": @"attribute",
+                             @"type": kSegmentedFilter,
+                             @"value":@"All",
+                             @"options":@[@"All",
+                                          @"Light",
+                                          @"Dark",
+                                          @"Wind",
+                                          @"Fire",
+                                          @"Water"]} mutableCopy],
+                          
+                          [@{@"title": @"type",
+                             @"attributeName": @"type",
+                             @"type": kSegmentedFilter,
+                             @"value":@"All",
+                             @"options":@[@"All",
+                                          @"Ruler",
+                                          @"Resonator",
+                                          @"Spell",
+                                          @"Addition",
+                                          @"Regalia",
+                                          @"Stone"]} mutableCopy],
+                          
+                          [@{@"title": @"Expansion",
+                             @"attributeName": @"expansionS",
+                             @"type": kSegmentedFilter,
+                             @"value":@"All",
+                             @"options":@[@"All",
+                                          @"Dual Deck Faria vs Melgis"]} mutableCopy],
+                          
+                          [@{@"title": @"Expansion",
+                             @"attributeName": @"expansionS",
+                             @"type": kSegmentedFilter,
+                             @"value":@"All",
+                             @"options":@[@"All",
+                                          @"Vingolf 01",
+                                          @"The Millennia of Ages",
+                                          @"The Moon Princess Returns",
+                                          @"The Castle of Heaven and The Two Tower",
+                                          @"The Crimson Moon Fairy Tale"]} mutableCopy],
+                          
+                          [@{@"title": @"Expansion",
+                             @"attributeName": @"expansionS",
+                             @"type": kSegmentedFilter,
+                             @"value":@"All",
+                             @"options":@[@"All",
+                                          @"The Shaft of Light of Valhalla",
+                                          @"War of Valhalla",
+                                          @"Dawn of Valhalla"]} mutableCopy],
+                          
+                          [@{@"title": @"Min cost",
+                             @"attributeName": @"totalCost",
+                             @"type": kSliderFilter,
+                             @"comparison":@">=",
+                             @"value":@0,
+                             @"min":@0,
+                             @"max":@20,
+                             @"scale":@1} mutableCopy],
+                          
+                          [@{@"title": @"Max cost",
+                             @"attributeName": @"totalCost",
+                             @"type": kSliderFilter,
+                             @"comparison":@"<=",
+                             @"value":@20,
+                             @"min":@0,
+                             @"max":@20,
+                             @"scale":@1} mutableCopy],
+                          
+                          [@{@"title": @"min atk",
+                             @"attributeName": @"atk",
+                             @"type": kSliderFilter,
+                             @"comparison":@">=",
+                             @"value":@0,
+                             @"min":@0,
+                             @"max":@100,
+                             @"scale":@100} mutableCopy],
+                          
+                          [@{@"title": @"max atk",
+                             @"type": kSliderFilter,
+                             @"attributeName": @"atk",
+                             @"comparison":@"<=",
+                             @"value":@100,
+                             @"min":@0,
+                             @"max":@100,
+                             @"scale":@100} mutableCopy],
+                          
+                          [@{@"title": @"min def",
+                             @"attributeName": @"def",
+                             @"type": kSliderFilter,
+                             @"comparison":@">=",
+                             @"value":@0,
+                             @"min":@0,
+                             @"max":@100,
+                             @"scale":@100} mutableCopy],
+                          
+                          [@{@"title": @"max def",
+                             @"attributeName": @"def",
+                             @"type": kSliderFilter,
+                             @"comparison":@"<=",
+                             @"value":@100,
+                             @"min":@0,
+                             @"max":@100,
+                             @"scale":@100} mutableCopy]
                           ]
                     mutableCopy];
 }
@@ -238,8 +346,9 @@ static NSString *CellIdentifier = @"cardSlide";
     CardCollectionViewCell *cell = (CardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-    cell.card = (Card *)object;
+    Card * card = (Card *)object;
+    NSLog(@"%@", card.type);
+    cell.card = card;
     cell.context = self.context;
     
     [cell updateCell];
@@ -425,7 +534,7 @@ static NSString *CellIdentifier = @"cardSlide";
         NSPredicate * filterPredicate;
         
         if([type isEqualToString:kTextFilter]){
-            NSString * attribute = (NSString *)filter[@"title"];
+            NSString * attribute = (NSString *)filter[@"attributeName"];
             NSString * value = (NSString *)filter[@"value"];
             if(value && ![value isEqualToString:@""]){
                 filterPredicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", attribute, value];
@@ -433,11 +542,24 @@ static NSString *CellIdentifier = @"cardSlide";
         }
         
         if([type isEqualToString:kSegmentedFilter]){
-            NSString * attribute = (NSString *)filter[@"title"];
+            NSString * attribute = (NSString *)filter[@"attributeName"];
             NSString * value = (NSString *)filter[@"value"];
             if(value && ![value isEqualToString:@""]  && ![value isEqualToString:@"All"]){
                 
                 filterPredicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", attribute, value];
+            }
+        }
+        
+        if([type isEqualToString:kSliderFilter]){
+            NSString * attribute = (NSString *)filter[@"attributeName"];
+            NSString * comparison = (NSString *)filter[@"comparison"];
+            NSNumber * value = (NSNumber *)filter[@"value"];
+            NSNumber * scale = (NSNumber *)filter[@"scale"];
+            NSInteger mul = [value integerValue] * [scale integerValue];
+            NSNumber * comparisonValue = [NSNumber numberWithLong:mul];
+            if(value){
+                NSString *formatString = [@"%K * %@" stringByReplacingOccurrencesOfString:@"*" withString:comparison];
+                filterPredicate = [NSPredicate predicateWithFormat:formatString, attribute, comparisonValue];
             }
         }
         
@@ -448,6 +570,7 @@ static NSString *CellIdentifier = @"cardSlide";
         }
     }
     NSString * check = [filtersPredicate predicateFormat];
+    NSLog(@"%@", check);
 
     [self.fetchedResultsController.fetchRequest setPredicate:filtersPredicate];
    

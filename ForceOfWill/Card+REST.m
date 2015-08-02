@@ -25,6 +25,7 @@
     self.attribute = cardREST.attribute ? cardREST.attribute : self.attribute;
     self.set = cardREST.set ? cardREST.set : self.set;
     self.num = cardREST.num ? cardREST.num : self.num;
+    self.totalCost = cardREST.totalCost ? cardREST.totalCost : self.totalCost;
 }
 
 +(Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context
