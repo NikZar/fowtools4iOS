@@ -41,7 +41,6 @@
 		231FF11C1B59B66400A2B949 /* FOW Tools WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 231FF11B1B59B66400A2B949 /* FOW Tools WatchKit App.app */; };
 		231FF1241B59B66400A2B949 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231FF1221B59B66400A2B949 /* Interface.storyboard */; };
 		231FF1261B59B66400A2B949 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231FF1251B59B66400A2B949 /* Images.xcassets */; };
-		231FF1291B59B66400A2B949 /* FOW Tools WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 231FF10C1B59B66400A2B949 /* FOW Tools WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		232378A31AFF7707004BAEB1 /* fow_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 232378A21AFF7707004BAEB1 /* fow_back.png */; };
 		232378AD1AFF7CFB004BAEB1 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 232378AC1AFF7CFB004BAEB1 /* Deck.m */; };
 		232378AF1AFF9E70004BAEB1 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 232378AE1AFF9E70004BAEB1 /* timer.png */; };
@@ -80,7 +79,7 @@
 		2334C66919FCFDAA0060D609 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2334C66819FCFDAA0060D609 /* Default.png */; };
 		2334C66F19FD100C0060D609 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C66E19FD100C0060D609 /* MainVC.m */; };
 		2334C67219FD386A0060D609 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 2334C67119FD386A0060D609 /* menu.png */; };
-		2334C67819FD3A530060D609 /* CardsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C67719FD3A530060D609 /* CardsVC.m */; };
+		2334C67819FD3A530060D609 /* CardsCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2334C67719FD3A530060D609 /* CardsCVC.m */; };
 		2334C67E19FD50A10060D609 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2334C67D19FD50A10060D609 /* CoreData.framework */; };
 		2334C68019FD50AF0060D609 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2334C67F19FD50AF0060D609 /* CFNetwork.framework */; };
 		2334C68219FD50BE0060D609 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2334C68119FD50BE0060D609 /* MobileCoreServices.framework */; };
@@ -140,6 +139,7 @@
 		23CF66DA1A2D2E2D00D98B3C /* FOWDocsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF66D91A2D2E2D00D98B3C /* FOWDocsVC.m */; };
 		23D4A9601B09583500830FAE /* FiltersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D4A95F1B09583500830FAE /* FiltersTVC.m */; };
 		23D4A9631B09590300830FAE /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D4A9621B09590300830FAE /* filter.png */; };
+		23DC1E011B701BED0027DE0D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23DC1E001B701BED0027DE0D /* Settings.bundle */; };
 		23EF87161AEC09E50032A700 /* TimerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EF87151AEC09E50032A700 /* TimerVC.m */; };
 		8725599147B8FBBFC8F6335E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C01DACD757BE7DC90F49ADA /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -151,13 +151,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 231FF11A1B59B66400A2B949;
 			remoteInfo = "FOW Tools WatchKit App";
-		};
-		231FF1271B59B66400A2B949 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2334C63319FCFD7B0060D609 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 231FF10B1B59B66400A2B949;
-			remoteInfo = "FOW Tools WatchKit Extension";
 		};
 		2334C65819FCFD7C0060D609 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -175,7 +168,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				231FF1291B59B66400A2B949 /* FOW Tools WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,8 +289,8 @@
 		2334C66D19FD100C0060D609 /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
 		2334C66E19FD100C0060D609 /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
 		2334C67119FD386A0060D609 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
-		2334C67619FD3A530060D609 /* CardsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsVC.h; sourceTree = "<group>"; };
-		2334C67719FD3A530060D609 /* CardsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsVC.m; sourceTree = "<group>"; };
+		2334C67619FD3A530060D609 /* CardsCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsCVC.h; sourceTree = "<group>"; };
+		2334C67719FD3A530060D609 /* CardsCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsCVC.m; sourceTree = "<group>"; };
 		2334C67D19FD50A10060D609 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2334C67F19FD50AF0060D609 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2334C68119FD50BE0060D609 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -407,6 +399,7 @@
 		23D4A95E1B09583500830FAE /* FiltersTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersTVC.h; sourceTree = "<group>"; };
 		23D4A95F1B09583500830FAE /* FiltersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersTVC.m; sourceTree = "<group>"; };
 		23D4A9621B09590300830FAE /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
+		23DC1E001B701BED0027DE0D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		23EF87141AEC09E50032A700 /* TimerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerVC.h; sourceTree = "<group>"; };
 		23EF87151AEC09E50032A700 /* TimerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerVC.m; sourceTree = "<group>"; };
 		2C01DACD757BE7DC90F49ADA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -774,20 +767,21 @@
 			children = (
 				2334C64219FCFD7B0060D609 /* AppDelegate.h */,
 				2334C64319FCFD7B0060D609 /* AppDelegate.m */,
-				2334C64B19FCFD7B0060D609 /* Main.storyboard */,
-				231595CB1A0520FE00618676 /* Navigation */,
-				23C58CAB1A118212003ABF31 /* Tools */,
-				231595BF1A04ECF900618676 /* Life Points */,
-				232D16E71A221B46002B3617 /* Matches */,
-				23EF87131AEC098B0032A700 /* Timer */,
 				2334C69019FEE17F0060D609 /* Cards */,
 				233C548E1AE850D1008CD1E1 /* Decks */,
-				232D16D21A20D3EF002B3617 /* FOW TV */,
 				23CF66D71A2D2E0F00D98B3C /* FOW Docs */,
+				232D16D21A20D3EF002B3617 /* FOW TV */,
 				233D7E2A1A46DD41008D04E3 /* Info */,
+				231595BF1A04ECF900618676 /* Life Points */,
 				231595C61A04EE9400618676 /* Login */,
-				232D16D91A20D8C6002B3617 /* Utilities */,
+				2334C64B19FCFD7B0060D609 /* Main.storyboard */,
+				232D16E71A221B46002B3617 /* Matches */,
+				231595CB1A0520FE00618676 /* Navigation */,
+				23DC1E021B7023920027DE0D /* Settings */,
+				23EF87131AEC098B0032A700 /* Timer */,
+				23C58CAB1A118212003ABF31 /* Tools */,
 				232D17241A2B32FA002B3617 /* Unit Tests */,
+				232D16D91A20D8C6002B3617 /* Utilities */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -806,8 +800,8 @@
 		2334C69019FEE17F0060D609 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				2334C67619FD3A530060D609 /* CardsVC.h */,
-				2334C67719FD3A530060D609 /* CardsVC.m */,
+				2334C67619FD3A530060D609 /* CardsCVC.h */,
+				2334C67719FD3A530060D609 /* CardsCVC.m */,
 				2334C69119FEE1B10060D609 /* CardCollectionViewCell.h */,
 				2334C69219FEE1B10060D609 /* CardCollectionViewCell.m */,
 				23C58CA11A11790B003ABF31 /* CardDetailVC.h */,
@@ -966,6 +960,14 @@
 			name = Filters;
 			sourceTree = "<group>";
 		};
+		23DC1E021B7023920027DE0D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				23DC1E001B701BED0027DE0D /* Settings.bundle */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		23EF87131AEC098B0032A700 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,7 +1063,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				231FF1281B59B66400A2B949 /* PBXTargetDependency */,
 			);
 			name = ForceOfWill;
 			productName = ForceOfWill;
@@ -1188,6 +1189,7 @@
 				231595E61A05457300618676 /* iTunesArtwork@2x in Resources */,
 				231595DD1A05457300618676 /* Icon-72.png in Resources */,
 				232378A31AFF7707004BAEB1 /* fow_back.png in Resources */,
+				23DC1E011B701BED0027DE0D /* Settings.bundle in Resources */,
 				231595F01A05AF9E00618676 /* Icon80.png in Resources */,
 				231595E51A05457300618676 /* iTunesArtwork in Resources */,
 				23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */,
@@ -1268,7 +1270,7 @@
 				231595C21A04ED2A00618676 /* LifePointsVC.m in Sources */,
 				2325F3091AEA6AD100538335 /* DeckTVCell.m in Sources */,
 				23CF66C61A2D2C1C00D98B3C /* ReaderThumbQueue.m in Sources */,
-				2334C67819FD3A530060D609 /* CardsVC.m in Sources */,
+				2334C67819FD3A530060D609 /* CardsCVC.m in Sources */,
 				231595D11A05290000618676 /* Card+REST.m in Sources */,
 				2390F8261B6E5FF3006C2037 /* Card.m in Sources */,
 				232D170B1A27E30D002B3617 /* LifeChange+Management.m in Sources */,
@@ -1350,11 +1352,6 @@
 			isa = PBXTargetDependency;
 			target = 231FF11A1B59B66400A2B949 /* FOW Tools WatchKit App */;
 			targetProxy = 231FF11D1B59B66400A2B949 /* PBXContainerItemProxy */;
-		};
-		231FF1281B59B66400A2B949 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 231FF10B1B59B66400A2B949 /* FOW Tools WatchKit Extension */;
-			targetProxy = 231FF1271B59B66400A2B949 /* PBXContainerItemProxy */;
 		};
 		2334C65919FCFD7C0060D609 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1498,7 +1495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1533,7 +1530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1549,7 +1546,7 @@
 				CODE_SIGN_IDENTITY = "iOS Development: Niko Zarzani (E95MND3TWB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ForceOfWill/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1566,7 +1563,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ForceOfWill/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

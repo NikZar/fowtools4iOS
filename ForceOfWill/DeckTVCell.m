@@ -69,36 +69,36 @@
     __block NSString * loadingId = blockSelf.deck.ruler.identifier;
     
     [temporaryContext performBlock:^{
-
-        AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSString *path = [NSString stringWithFormat:@"%@%@", delegate.baseImageUrlString, blockSelf.deck.ruler.imageUrl ];
-        NSURL *url = [NSURL URLWithString: path];
-        UIApplication* app = [UIApplication sharedApplication];
-        app.networkActivityIndicatorVisible = YES;
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        app.networkActivityIndicatorVisible = NO;
-        
-        if(blockSelf.deck.ruler.identifier == loadingId){
-            blockSelf.deck.ruler.image = data;
-            blockSelf.rulerImageView.image = [UIImage imageWithData:data];
+        @autoreleasepool {
+            AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            NSString *path = [NSString stringWithFormat:@"%@%@", delegate.baseImageUrlString, blockSelf.deck.ruler.imageUrl ];
+            NSURL *url = [NSURL URLWithString: path];
+            UIApplication* app = [UIApplication sharedApplication];
+            app.networkActivityIndicatorVisible = YES;
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            app.networkActivityIndicatorVisible = NO;
             
-            // push to parent
-            NSError *error = nil;
-            if (![temporaryContext save:&error])
-            {
-                NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
-            }
-            
-            // save parent to disk asynchronously
-            [mainContext performBlock:^{
-                NSError *error;
-                if (![mainContext save:&error])
+            if(blockSelf.deck.ruler.identifier == loadingId){
+                blockSelf.deck.ruler.image = data;
+                blockSelf.rulerImageView.image = [UIImage imageWithData:data];
+                
+                // push to parent
+                NSError *error = nil;
+                if (![temporaryContext save:&error])
                 {
-                    NSLog(@"Error in mainContext: %@", error.localizedDescription);
+                    NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
                 }
-            }];
+                
+                // save parent to disk asynchronously
+                [mainContext performBlock:^{
+                    NSError *error;
+                    if (![mainContext save:&error])
+                    {
+                        NSLog(@"Error in mainContext: %@", error.localizedDescription);
+                    }
+                }];
+            }
         }
-        
     }];
 }
 

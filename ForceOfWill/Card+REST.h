@@ -15,4 +15,8 @@
 
 + (Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context;
 
++ (void)downloadAllImages;
+
++ (void)syncCards;
+
 @end

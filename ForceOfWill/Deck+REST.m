@@ -36,46 +36,46 @@
     BOOL isWaterSet = NO;
     BOOL isLightSet = NO;
     for (DeckCardREST *deckCardREST in deckREST.cards) {
-        DeckCard *deckCard = [NSEntityDescription
-                                     insertNewObjectForEntityForName:@"DeckCard"
-                                     inManagedObjectContext:context];
-        [deckCard updateWithDeckCardREST:deckCardREST inManagedObjectContext:context];
-        [self addCardsObject:deckCard];
-        
-        if(!isWindSet){
-            if ([deckCard.card.attribute containsString:@"Wind"] || [deckCard.card.attribute containsString:@"wind"]) {
-                self.isWind = [NSNumber numberWithBool:YES];
-                isWindSet = YES;
+            DeckCard *deckCard = [NSEntityDescription
+                                  insertNewObjectForEntityForName:@"DeckCard"
+                                  inManagedObjectContext:context];
+            [deckCard updateWithDeckCardREST:deckCardREST inManagedObjectContext:context];
+            [self addCardsObject:deckCard];
+            
+            if(!isWindSet){
+                if ([deckCard.card.attribute containsString:@"Wind"] || [deckCard.card.attribute containsString:@"wind"]) {
+                    self.isWind = [NSNumber numberWithBool:YES];
+                    isWindSet = YES;
+                }
             }
-        }
-        if(!isDarknessSet){
-            if ([deckCard.card.attribute containsString:@"Dark"] || [deckCard.card.attribute containsString:@"dark"]) {
-                self.isDarkness = [NSNumber numberWithBool:YES];
-                isDarknessSet = YES;
+            if(!isDarknessSet){
+                if ([deckCard.card.attribute containsString:@"Dark"] || [deckCard.card.attribute containsString:@"dark"]) {
+                    self.isDarkness = [NSNumber numberWithBool:YES];
+                    isDarknessSet = YES;
+                }
             }
-        }
-        if(!isFireSet){
-            if ([deckCard.card.attribute containsString:@"Fire"] || [deckCard.card.attribute containsString:@"fire"]) {
-                self.isFire = [NSNumber numberWithBool:YES];
-                isFireSet = YES;
+            if(!isFireSet){
+                if ([deckCard.card.attribute containsString:@"Fire"] || [deckCard.card.attribute containsString:@"fire"]) {
+                    self.isFire = [NSNumber numberWithBool:YES];
+                    isFireSet = YES;
+                }
             }
-        }
-        if(!isWaterSet){
-            if ([deckCard.card.attribute containsString:@"Water"] || [deckCard.card.attribute containsString:@"water"]) {
-                self.isWater = [NSNumber numberWithBool:YES];
-                isWaterSet = YES;
+            if(!isWaterSet){
+                if ([deckCard.card.attribute containsString:@"Water"] || [deckCard.card.attribute containsString:@"water"]) {
+                    self.isWater = [NSNumber numberWithBool:YES];
+                    isWaterSet = YES;
+                }
             }
-        }
-        if(!isLightSet){
-            if ([deckCard.card.attribute containsString:@"Light"] || [deckCard.card.attribute containsString:@"light"]) {
-                self.isLight = [NSNumber numberWithBool:YES];
-                isLightSet = YES;
+            if(!isLightSet){
+                if ([deckCard.card.attribute containsString:@"Light"] || [deckCard.card.attribute containsString:@"light"]) {
+                    self.isLight = [NSNumber numberWithBool:YES];
+                    isLightSet = YES;
+                }
             }
-        }
-        
-        if([deckCard.card.type isEqualToString:@"Resonator"] || [deckCard.card.type isEqualToString:@"Addition"] || [deckCard.card.type isEqualToString:@"Spell"]){
-            cardsCount = [NSNumber numberWithInt: [cardsCount intValue] + [deckCard.qty intValue] ];
-        }
+            
+            if([deckCard.card.type isEqualToString:@"Resonator"] || [deckCard.card.type isEqualToString:@"Addition"] || [deckCard.card.type isEqualToString:@"Spell"]){
+                cardsCount = [NSNumber numberWithInt: [cardsCount intValue] + [deckCard.qty intValue] ];
+            }
     }
     
     if(!isWindSet){
@@ -99,19 +99,23 @@
     
     //SIDE
     for (DeckCard *deckCard in self.side) {
-        [context deleteObject:deckCard];
+        @autoreleasepool {
+            [context deleteObject:deckCard];
+        }
     }
     [self removeSide:self.side];
     self.side = [[NSSet alloc] init];
     NSNumber *sideCount = @0;
     for (DeckCardREST *deckCardREST in deckREST.side) {
-        DeckCard *deckCard = [NSEntityDescription
-                              insertNewObjectForEntityForName:@"DeckCard"
-                              inManagedObjectContext:context];
-        [deckCard updateWithDeckCardREST:deckCardREST inManagedObjectContext:context];
-        [self addSideObject:deckCard];
-        
-        sideCount = [NSNumber numberWithInt: [sideCount intValue] + [deckCard.qty intValue] ];
+        @autoreleasepool {
+            DeckCard *deckCard = [NSEntityDescription
+                                  insertNewObjectForEntityForName:@"DeckCard"
+                                  inManagedObjectContext:context];
+            [deckCard updateWithDeckCardREST:deckCardREST inManagedObjectContext:context];
+            [self addSideObject:deckCard];
+            
+            sideCount = [NSNumber numberWithInt: [sideCount intValue] + [deckCard.qty intValue] ];
+        }
     }
     self.sideCount = sideCount;
     

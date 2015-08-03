@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 IndieZiOS. All rights reserved.
 //
 
-#import "CardsVC.h"
+#import "CardsCVC.h"
 #import <RestKit/RestKit.h>
 #import "Card+REST.h"
 #import "AppDelegate.h"
@@ -17,18 +17,23 @@
 #import "FiltersTVC.h"
 #import "Constants.h"
 
-@interface CardsVC ()
+@interface CardsCVC ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) UISearchDisplayController *mySearchDisplayController;
 @property (strong, nonatomic) UISearchBar *searchBar;
 
+//Optimized FRC
+@property NSMutableArray *sectionChanges;
+@property NSMutableArray *itemChanges;
+
 @end
 
 static NSString *CellIdentifier = @"cardSlide";
+static NSString *CellLoadingIdentifier = @"cardLoadingSlide";
 
-@implementation CardsVC
+@implementation CardsCVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,7 +48,7 @@ static NSString *CellIdentifier = @"cardSlide";
     self.mySearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     self.mySearchDisplayController.delegate = self;
     [self setupNavigationBar];
-    [self loadCards];
+    [Card syncCards];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -181,138 +186,6 @@ static NSString *CellIdentifier = @"cardSlide";
                     mutableCopy];
 }
 
--(void)loadCards
-{
-    UIApplication* app = [UIApplication sharedApplication];
-    app.networkActivityIndicatorVisible = YES;
-    //AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
- 
-    //if(delegate.facebookToken){
-        //NSDictionary *queryParams = @{@"token" : delegate.facebookToken};
-    
-    __block CardsVC *blockSelf = self;
-        
-        [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/cards"
-                                               parameters:nil
-                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//                                                      [NSThread detachNewThreadSelector:@selector(syncCards:) toTarget:self withObject:mappingResult.array];
-                                                      UIApplication* app = [UIApplication sharedApplication];
-                                                      app.networkActivityIndicatorVisible = NO;
-                                                      [blockSelf syncCards: mappingResult.array];
-                                                  }
-                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                      NSLog(@"What do you mean by 'there is no coffee?': %@", error);
-                                                  }];
-    //}
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)syncCards: (NSArray *)cardsREST
-{
-    
-    __block CardsVC *blockSelf = self;
-    __block NSManagedObjectContext *mainContext = blockSelf.context;
-    __block NSManagedObjectContext *temporaryContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    temporaryContext.parentContext = blockSelf.context;
-    
-    [temporaryContext performBlock:^{
-        // do something that takes some time asynchronously using the temp context
-        for (CardREST *cardREST in cardsREST) {
-            Card *card = [self getCardWithID: cardREST.identifier inManagedObjectContext:temporaryContext];
-            if(!card){
-                card = [NSEntityDescription
-                        insertNewObjectForEntityForName:@"Card"
-                        inManagedObjectContext:temporaryContext];
-            }
-            [card updateWithCardREST:cardREST];
-        }
-        
-        // push to parent
-        NSError *error = nil;
-        if (![temporaryContext save:&error])
-        {
-            NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
-        }
-        
-        // save parent to disk asynchronously
-        [mainContext performBlock:^{
-            NSError *error;
-            if (![mainContext save:&error])
-            {
-                NSLog(@"Error in mainContext: %@", error.localizedDescription);
-            }
-            //[NSThread detachNewThreadSelector:@selector(loadImages) toTarget:blockSelf withObject:nil];
-        }];
-    }];
-}
-
--(Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context
-{
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Card"];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier LIKE %@", identifier];
-    [fetchRequest setPredicate:predicate];
-    [fetchRequest setFetchLimit:1];
-    
-    NSError *error = nil;
-    NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
-    
-    if (!results || ([results count] == 0)) {
-        return nil;
-    } else {
-        return [results firstObject];
-    }
-}
-
--(void)loadImages
-{
-    __block CardsVC *blockSelf = self;
-    __block NSManagedObjectContext *mainContext = blockSelf.context;
-    __block NSManagedObjectContext *temporaryContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    temporaryContext.parentContext = blockSelf.context;
-    
-    [temporaryContext performBlock:^{
-        // do something that takes some time asynchronously using the temp context
-        for (Card * card in [blockSelf.fetchedResultsController fetchedObjects]) {
-            if(card && !card.image){
-                AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                NSString *path = [NSString stringWithFormat:@"%@%@", delegate.baseImageUrlString, card.imageUrl ];
-                NSURL *url = [NSURL URLWithString: path];
-                UIApplication* app = [UIApplication sharedApplication];
-                app.networkActivityIndicatorVisible = YES;
-                NSData *data = [NSData dataWithContentsOfURL:url];
-                app.networkActivityIndicatorVisible = NO;
-                
-                card.image = data;
-                
-                // push to parent
-                NSError *error = nil;
-                if (![temporaryContext save:&error])
-                {
-                    NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
-                }
-                
-                // save parent to disk asynchronously
-                [mainContext performBlock:^{
-                    NSError *error;
-                    if (![mainContext save:&error])
-                    {
-                        NSLog(@"Error in mainContext: %@", error.localizedDescription);
-                    }
-                }];
-            } else {
-                //NSLog(@"Image already downloaded!");
-            }
-        }
-        
-       
-    }];
-}
 
 #pragma mark - UICollectionVIew
 
@@ -322,18 +195,18 @@ static NSString *CellIdentifier = @"cardSlide";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    [collectionView.collectionViewLayout invalidateLayout];
-
     NSInteger sections = [[self.fetchedResultsController sections] count];
     return sections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    [collectionView.collectionViewLayout invalidateLayout];
-    
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     NSInteger rows =[sectionInfo numberOfObjects];
+    
+    if(rows <= 0){
+        return 1;
+    }
     
     return rows;
 }
@@ -341,13 +214,15 @@ static NSString *CellIdentifier = @"cardSlide";
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [collectionView.collectionViewLayout invalidateLayout];
+    
+    if([[self.fetchedResultsController fetchedObjects] count] == 0){
+        return [collectionView dequeueReusableCellWithReuseIdentifier:CellLoadingIdentifier forIndexPath:indexPath];
+    }
 
     CardCollectionViewCell *cell = (CardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     Card * card = (Card *)object;
-    NSLog(@"%@", card.type);
     cell.card = card;
     cell.context = self.context;
     
@@ -393,30 +268,6 @@ static NSString *CellIdentifier = @"cardSlide";
     
     [fetchRequest setFetchBatchSize:20];
     
-//    NSPredicate * filtersPredicate;
-//    
-//    for (NSDictionary *filter in self.filters) {
-//        NSString *type = filter[@"type"];
-//        NSPredicate * filterPredicate;
-//        
-//        if([type isEqualToString:kTextFilter]){
-//            NSString * attribute = (NSString *)filter[@"title"];
-//            NSString * value = (NSString *)filter[@"value"];
-//            if(value && ![value isEqualToString:@""]){
-//                filterPredicate = [NSPredicate predicateWithFormat:@"%@ like '%@'", attribute, value];
-//            }
-//        }
-//
-//        if(filtersPredicate && filterPredicate){
-//            filtersPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[filtersPredicate, filterPredicate]];
-//        } else if (filterPredicate){
-//            filtersPredicate = filterPredicate;
-//        }
-//    }
-//    if(filtersPredicate){
-//        [fetchRequest setPredicate:filtersPredicate];
-//    }
-    
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:managedObjectContext sectionNameKeyPath:nil
@@ -446,25 +297,81 @@ static NSString *CellIdentifier = @"cardSlide";
     [self.collectionView reloadData];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    [self.collectionView reloadData];
-
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    _sectionChanges = [[NSMutableArray alloc] init];
+    _itemChanges = [[NSMutableArray alloc] init];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-
-    [self.collectionView reloadData];
-
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type {
+    NSMutableDictionary *change = [[NSMutableDictionary alloc] init];
+    change[@(type)] = @(sectionIndex);
+    [_sectionChanges addObject:change];
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.collectionView reloadData];
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    NSMutableDictionary *change = [[NSMutableDictionary alloc] init];
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            change[@(type)] = newIndexPath;
+            break;
+        case NSFetchedResultsChangeDelete:
+            change[@(type)] = indexPath;
+            break;
+        case NSFetchedResultsChangeUpdate:
+            change[@(type)] = indexPath;
+            break;
+        case NSFetchedResultsChangeMove:
+            change[@(type)] = @[indexPath, newIndexPath];
+            break;
+    }
+    [_itemChanges addObject:change];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.collectionView performBatchUpdates:^{
+        for (NSDictionary *change in _sectionChanges) {
+            [change enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                NSFetchedResultsChangeType type = [key unsignedIntegerValue];
+                switch(type) {
+                    case NSFetchedResultsChangeInsert:
+                        [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:[obj unsignedIntegerValue]]];
+                        break;
+                    case NSFetchedResultsChangeDelete:
+                        [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:[obj unsignedIntegerValue]]];
+                        break;
+                }
+            }];
+        }
+        for (NSDictionary *change in _itemChanges) {
+            [change enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                NSFetchedResultsChangeType type = [key unsignedIntegerValue];
+                switch(type) {
+                    case NSFetchedResultsChangeInsert:
+                        [self.collectionView insertItemsAtIndexPaths:@[obj]];
+                        break;
+                    case NSFetchedResultsChangeDelete:
+                        [self.collectionView deleteItemsAtIndexPaths:@[obj]];
+                        break;
+                    case NSFetchedResultsChangeUpdate:
+                        [self.collectionView reloadItemsAtIndexPaths:@[obj]];
+                        break;
+                    case NSFetchedResultsChangeMove:
+                        [self.collectionView moveItemAtIndexPath:obj[0] toIndexPath:obj[1]];
+                        break;
+                }
+            }];
+        }
+    } completion:^(BOOL finished) {
+        _sectionChanges = nil;
+        _itemChanges = nil;
+    }];
 }
 
 #pragma mark - Search

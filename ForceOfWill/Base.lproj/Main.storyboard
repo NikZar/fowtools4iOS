@@ -292,6 +292,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deckCell" rowHeight="114" id="3ed-b6-UoY" customClass="DeckTVCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -431,6 +432,26 @@
                                     <outlet property="windBullet" destination="j8I-XU-cKd" id="2Sj-ji-njf"/>
                                     <segue destination="mth-H0-M6O" kind="show" identifier="deckDetail" id="cKb-Fb-94J"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deckLoadingCell" rowHeight="114" id="Nyn-wR-g3G">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nyn-wR-g3G" id="Z57-92-KRZ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BOu-NG-dow">
+                                            <rect key="frame" x="282" y="38" width="37" height="37"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="37" id="aQe-s2-hIH"/>
+                                                <constraint firstAttribute="width" constant="37" id="n9D-nC-DhZ"/>
+                                            </constraints>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="BOu-NG-dow" secondAttribute="centerY" constant="0.25" id="jPx-xI-v12"/>
+                                        <constraint firstAttribute="centerX" secondItem="BOu-NG-dow" secondAttribute="centerX" constant="-0.5" id="wwK-cg-PFK"/>
+                                    </constraints>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1393,7 +1414,7 @@
         <!--Cards-->
         <scene sceneID="uzW-yX-03c">
             <objects>
-                <collectionViewController storyboardIdentifier="cards" id="Trq-45-YiW" customClass="CardsVC" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="cards" id="Trq-45-YiW" customClass="CardsCVC" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" id="Dou-BN-oOt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1506,6 +1527,28 @@
                                     <outlet property="textView" destination="p3M-TW-dQG" id="mZl-1b-Yse"/>
                                     <segue destination="UfO-GN-U4z" kind="show" identifier="card" id="yYf-6e-YqF"/>
                                 </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="cardLoadingSlide" id="X1t-y3-7QY">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WEL-jP-Rax">
+                                            <rect key="frame" x="132" y="281" width="37" height="37"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="37" id="odO-6o-gWm"/>
+                                                <constraint firstAttribute="width" constant="37" id="rRZ-Z5-cOX"/>
+                                            </constraints>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="WEL-jP-Rax" secondAttribute="centerY" constant="0.5" id="Bvm-ng-2Ar"/>
+                                    <constraint firstAttribute="centerX" secondItem="WEL-jP-Rax" secondAttribute="centerX" constant="-0.5" id="O6b-98-Vn2"/>
+                                </constraints>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -2600,8 +2643,8 @@
         <image name="timer.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yYf-6e-YqF"/>
         <segue reference="FXj-gy-OQP"/>
+        <segue reference="YmJ-8H-EjO"/>
         <segue reference="AyS-jm-uu7"/>
     </inferredMetricsTieBreakers>
 </document>

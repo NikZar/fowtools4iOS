@@ -7,7 +7,7 @@
 //
 
 #import "ToolsVC.h"
-#import "CardsVC.h"
+#import "CardsCVC.h"
 #import "DecksTVC.h"
 #import "LifePointsVC.h"
 #import "FOWTVTVC.h"
@@ -15,8 +15,15 @@
 #import "FOWDocsTVC.h"
 #import "TimerVC.h"
 #import "AppDelegate.h"
+#import "Card+REST.h"
+#import "Constants.h"
 
 @implementation ToolsVC
+
+- (void)viewDidLoad
+{
+    [Card syncCards];
+}
 
 - (IBAction)lifePointsSelected:(id)sender {
     
@@ -27,7 +34,7 @@
 
 - (IBAction)cardsSelected:(id)sender {
 
-    CardsVC * cVC = [self.storyboard instantiateViewControllerWithIdentifier:@"cards"];
+    CardsCVC * cVC = [self.storyboard instantiateViewControllerWithIdentifier:@"cards"];
     
     [self.navigationController pushViewController:cVC animated:YES];
 }

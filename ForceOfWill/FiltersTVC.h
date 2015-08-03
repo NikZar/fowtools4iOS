@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CardsVC.h"
+#import "CardsCVC.h"
 
 @interface FiltersTVC : UITableViewController
 
-@property (weak, nonatomic) CardsVC *cardsVC;
+@property (weak, nonatomic) CardsCVC *cardsVC;
 
 @end

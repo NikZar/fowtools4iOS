@@ -23,6 +23,9 @@
 
 @end
 
+static NSString *CellIdentifier = @"deckCell";
+static NSString *CellLoadingIdentifier = @"deckLoadingCell";
+
 @implementation DecksTVC
 
 - (void)viewDidLoad {
@@ -30,6 +33,7 @@
     // Do any additional setup after loading the view.
     AppDelegate * appDelegate =(AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.context = appDelegate.managedObjectContext;
+    self.tableView.backgroundColor = [UIColor blackColor];
     
     [self loadDecks];
 }
@@ -37,6 +41,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    NSLog(@"didReceiveMemoryWarning");
 }
 
 
@@ -57,7 +62,7 @@
                                                   [self syncDecks: mappingResult.array];
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  NSLog(@"What do you mean by 'there is no coffee?': %@", error);
+                                                  NSLog(@"Restkit error': %@", error);
                                               }];
 
     
@@ -73,26 +78,37 @@
     
     [temporaryContext performBlock:^{
         // do something that takes some time asynchronously using the temp context
+        int i = 0;
         for (DeckREST *deckREST in decksREST) {
-            if([deckREST.cards count] >= 1){
-                
-                Deck *deck = [self getDeckWithID: deckREST.identifier inManagedObjectContext:temporaryContext];
-                if(!deck){
-                    deck = [NSEntityDescription
-                            insertNewObjectForEntityForName:@"Deck"
-                            inManagedObjectContext:temporaryContext];
-                }
-                [deck updateWithDeckREST:deckREST inManagedObjectContext: temporaryContext];
-                                
-                // push to parent
-                NSError *error = nil;
-                if (![temporaryContext save:&error])
-                {
-                    NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
+            @autoreleasepool {
+                if([deckREST.cards count] >= 1){
+                    
+                    Deck *deck = [self getDeckWithID: deckREST.identifier inManagedObjectContext:temporaryContext];
+                    if(!deck){
+                        deck = [NSEntityDescription
+                                insertNewObjectForEntityForName:@"Deck"
+                                inManagedObjectContext:temporaryContext];
+                    }
+                    [deck updateWithDeckREST:deckREST inManagedObjectContext: temporaryContext];
+
+                    i++;
+                    NSLog(@"%d", i);
                 }
             }
         }
         
+        // push to parent
+        NSError *error = nil;
+        if (![temporaryContext save:&error])
+        {
+            NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
+        }
+        
+        for (NSManagedObject * deck in [temporaryContext registeredObjects]) {
+            [temporaryContext refreshObject:deck mergeChanges:NO];
+        }
+        [temporaryContext reset];
+
         // save parent to disk asynchronously
         [mainContext performBlock:^{
             NSError *error;
@@ -109,19 +125,21 @@
 
 -(Deck *)getDeckWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context
 {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Deck"];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier LIKE %@", identifier];
-    [fetchRequest setPredicate:predicate];
-    [fetchRequest setFetchLimit:1];
-    
-    NSError *error = nil;
-    NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
-    
-    if (!results || ([results count] == 0)) {
-        return nil;
-    } else {
-        return [results firstObject];
+    @autoreleasepool {
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Deck"];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier LIKE %@", identifier];
+        [fetchRequest setPredicate:predicate];
+        [fetchRequest setFetchLimit:1];
+        
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
+        
+        if (!results || ([results count] == 0)) {
+            return nil;
+        } else {
+            return [results firstObject];
+        }
     }
 }
 
@@ -135,13 +153,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     NSInteger rows =[sectionInfo numberOfObjects];
-    
+    if(rows <= 0){
+        return 1;
+    }
     return rows;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DeckTVCell *cell = (DeckTVCell *)[tableView dequeueReusableCellWithIdentifier:@"deckCell" forIndexPath:indexPath];
+    if([[self.fetchedResultsController fetchedObjects] count] == 0){
+        return [tableView dequeueReusableCellWithIdentifier:CellLoadingIdentifier forIndexPath:indexPath];
+    }
+    DeckTVCell *cell = (DeckTVCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.context = self.context;
     cell.deck = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell updateCell];

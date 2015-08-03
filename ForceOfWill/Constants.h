@@ -27,9 +27,14 @@
 #define kTurnDuration @"kTurnDuration"
 #define kTimerEndDate @"kTimerEndDate"
 
+//Settings
+#define kDownloadCardsPreference @"download_cards_preference"
+
 #define kTextFilter @"filterText"
 #define kSliderFilter @"filterSlider"
 #define kSwitchFilter @"filterSwitch"
 #define kSegmentedFilter @"filterSegmentedControl"
+
+
 
 #endif
