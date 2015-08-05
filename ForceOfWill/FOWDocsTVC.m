@@ -8,6 +8,7 @@
 
 #import "FOWDocsTVC.h"
 #import "FOWDocsVC.h"
+#import "DocumentTableViewCell.h"
 
 @interface FOWDocsTVC ()
 
@@ -15,17 +16,39 @@
 
 @end
 
+static NSString *CellIdentifier = @"docCell";
+
 @implementation FOWDocsTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.docs = @[@"FOW_Rules_CR_5.01",@"FOW_Penalty_Guidelines",@"FOW_Tournament_Policy"];
+    self.docs = @[@"FOW_Comprehensive_Rule",@"FOW_Penalty_Guidelines",@"FOW_Tournament_Policy",@"FOW_Specific_Floor_Rules"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.docs count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DocumentTableViewCell *cell = (DocumentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSString *fileName = (NSString *)[self.docs objectAtIndex: indexPath.row];
+    cell.titleLabel.text = [fileName stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+
+    return cell;
 }
 
 

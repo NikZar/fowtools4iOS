@@ -11,6 +11,8 @@
 
 @interface FOWDocsVC ()
 
+@property (strong, nonatomic) ReaderViewController *readerViewController;
+
 @end
 
 @implementation FOWDocsVC
@@ -24,22 +26,35 @@
     
     if (document != nil)
     {
-        ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
-        readerViewController.delegate = self;
+        self.readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+        self.readerViewController.delegate = self;
         
-        readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        self.readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        self.readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         
-        [self presentViewController:readerViewController animated:YES completion:^{
-            
+        [self presentViewController:self.readerViewController animated:YES completion:^{
+            [UIView beginAnimations:@"View Flip" context:nil];
+            [UIView setAnimationDuration:0.3];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+            [UIView setAnimationTransition:
+             UIViewAnimationTransitionCurlUp forView:self.readerViewController.view cache:NO];
+            [UIView commitAnimations];
         }];
     }
 }
 
 - (void)dismissReaderViewController:(ReaderViewController *)viewController {
+    [UIView beginAnimations:@"View Flip" context:nil];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationTransition:
+     UIViewAnimationTransitionCurlUp forView:self.readerViewController.view cache:NO];
+    [UIView commitAnimations];
+    
     [self dismissViewControllerAnimated:YES completion:^{
+        
     }];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning {

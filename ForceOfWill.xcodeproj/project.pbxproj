@@ -10,7 +10,6 @@
 		230FCFBE1AF97C17000E148F /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FCFBB1AF97C17000E148F /* DACircularProgressView.m */; };
 		230FCFBF1AF97C17000E148F /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FCFBD1AF97C17000E148F /* DALabeledCircularProgressView.m */; };
 		230FCFC11AF97C50000E148F /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 230FCFC01AF97C50000E148F /* timer.mp3 */; };
-		230FCFC31AF97C7C000E148F /* FOW_Rules_CR_5.01.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 230FCFC21AF97C7C000E148F /* FOW_Rules_CR_5.01.pdf */; };
 		231595C21A04ED2A00618676 /* LifePointsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 231595C11A04ED2A00618676 /* LifePointsVC.m */; };
 		231595C51A04EE1B00618676 /* CardREST.m in Sources */ = {isa = PBXBuildFile; fileRef = 231595C41A04EE1B00618676 /* CardREST.m */; };
 		231595CA1A0514E600618676 /* flip.png in Resources */ = {isa = PBXBuildFile; fileRef = 231595C91A0514E600618676 /* flip.png */; };
@@ -101,13 +100,17 @@
 		235FB0891B36DFBB00F8CD9B /* NoRotationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235FB0881B36DFBB00F8CD9B /* NoRotationNavigationController.m */; };
 		2390F81B1B6E5D61006C2037 /* ForceOfWill.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2390F8121B6E5D61006C2037 /* ForceOfWill.xcdatamodeld */; };
 		2390F8261B6E5FF3006C2037 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2390F8251B6E5FF3006C2037 /* Card.m */; };
+		23A747FB1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23A747FA1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf */; };
+		23A748011B716E75000EC107 /* FOW_Penalty Guidelines.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23A748001B716E75000EC107 /* FOW_Penalty Guidelines.pdf */; };
+		23A748031B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23A748021B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf */; };
+		23A748061B716FE3000EC107 /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A748051B716FE3000EC107 /* DocumentTableViewCell.m */; };
+		23A7480B1B729CD1000EC107 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A7480A1B729CD1000EC107 /* LGSideMenuController.m */; };
 		23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */; };
 		23C58CA01A1164F3003ABF31 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9F1A1164F3003ABF31 /* search.png */; };
 		23C58CA31A11790B003ABF31 /* CardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C58CA21A11790B003ABF31 /* CardDetailVC.m */; };
 		23C58CA51A117E08003ABF31 /* cards.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58CA41A117E08003ABF31 /* cards.png */; };
 		23C58CA71A117E12003ABF31 /* lifepoints.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58CA61A117E12003ABF31 /* lifepoints.png */; };
 		23C58CAA1A11820C003ABF31 /* ToolsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C58CA91A11820C003ABF31 /* ToolsVC.m */; };
-		23CF66851A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23CF66841A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf */; };
 		23CF66871A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */; };
 		23CF66B81A2D2C1C00D98B3C /* ReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF668A1A2D2C1C00D98B3C /* ReaderAppDelegate.m */; };
 		23CF66B91A2D2C1C00D98B3C /* ReaderBookDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF668C1A2D2C1C00D98B3C /* ReaderBookDelegate.m */; };
@@ -180,7 +183,6 @@
 		230FCFBC1AF97C17000E148F /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
 		230FCFBD1AF97C17000E148F /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
 		230FCFC01AF97C50000E148F /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
-		230FCFC21AF97C7C000E148F /* FOW_Rules_CR_5.01.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = FOW_Rules_CR_5.01.pdf; path = Sources/FOW_Rules_CR_5.01.pdf; sourceTree = "<group>"; };
 		231595C01A04ED2A00618676 /* LifePointsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifePointsVC.h; sourceTree = "<group>"; };
 		231595C11A04ED2A00618676 /* LifePointsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifePointsVC.m; sourceTree = "<group>"; };
 		231595C31A04EE1B00618676 /* CardREST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardREST.h; sourceTree = "<group>"; };
@@ -334,6 +336,13 @@
 		2390F8231B6E5FB0006C2037 /* ForceOfWill 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ForceOfWill 10.xcdatamodel"; sourceTree = "<group>"; };
 		2390F8241B6E5FF3006C2037 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		2390F8251B6E5FF3006C2037 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		23A747FA1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Comprehensive_Rule.pdf; sourceTree = "<group>"; };
+		23A748001B716E75000EC107 /* FOW_Penalty Guidelines.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "FOW_Penalty Guidelines.pdf"; sourceTree = "<group>"; };
+		23A748021B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Specific_Floor_Rules.pdf; sourceTree = "<group>"; };
+		23A748041B716FE3000EC107 /* DocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTableViewCell.h; sourceTree = "<group>"; };
+		23A748051B716FE3000EC107 /* DocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTableViewCell.m; sourceTree = "<group>"; };
+		23A748091B729CD1000EC107 /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
+		23A7480A1B729CD1000EC107 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
 		23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23C58C9F1A1164F3003ABF31 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		23C58CA11A11790B003ABF31 /* CardDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailVC.h; sourceTree = "<group>"; };
@@ -342,7 +351,6 @@
 		23C58CA61A117E12003ABF31 /* lifepoints.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifepoints.png; sourceTree = "<group>"; };
 		23C58CA81A11820C003ABF31 /* ToolsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsVC.h; sourceTree = "<group>"; };
 		23C58CA91A11820C003ABF31 /* ToolsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsVC.m; sourceTree = "<group>"; };
-		23CF66841A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Penalty_Guidelines.pdf; sourceTree = "<group>"; };
 		23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Tournament_Policy.pdf; sourceTree = "<group>"; };
 		23CF66891A2D2C1C00D98B3C /* ReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderAppDelegate.h; sourceTree = "<group>"; };
 		23CF668A1A2D2C1C00D98B3C /* ReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderAppDelegate.m; sourceTree = "<group>"; };
@@ -765,6 +773,7 @@
 		2334C67019FD10170060D609 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				23A748081B729CB4000EC107 /* SideMenu */,
 				2334C64219FCFD7B0060D609 /* AppDelegate.h */,
 				2334C64319FCFD7B0060D609 /* AppDelegate.m */,
 				2334C69019FEE17F0060D609 /* Cards */,
@@ -851,6 +860,15 @@
 			name = Info;
 			sourceTree = "<group>";
 		};
+		23A748081B729CB4000EC107 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				23A748091B729CD1000EC107 /* LGSideMenuController.h */,
+				23A7480A1B729CD1000EC107 /* LGSideMenuController.m */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
 		23C58CAB1A118212003ABF31 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,11 +881,12 @@
 		23CF66811A2D29A600D98B3C /* Documents */ = {
 			isa = PBXGroup;
 			children = (
+				23A748001B716E75000EC107 /* FOW_Penalty Guidelines.pdf */,
+				23A747FA1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf */,
+				23A748021B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf */,
+				23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */,
 				23CF66881A2D2C1C00D98B3C /* Classes */,
 				23CF668F1A2D2C1C00D98B3C /* Sources */,
-				230FCFC21AF97C7C000E148F /* FOW_Rules_CR_5.01.pdf */,
-				23CF66841A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf */,
-				23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */,
 			);
 			name = Documents;
 			sourceTree = "<group>";
@@ -939,6 +958,8 @@
 				23CF66D91A2D2E2D00D98B3C /* FOWDocsVC.m */,
 				233D7E251A4656C5008D04E3 /* FOWDocsTVC.h */,
 				233D7E261A4656C5008D04E3 /* FOWDocsTVC.m */,
+				23A748041B716FE3000EC107 /* DocumentTableViewCell.h */,
+				23A748051B716FE3000EC107 /* DocumentTableViewCell.m */,
 			);
 			name = "FOW Docs";
 			sourceTree = "<group>";
@@ -1174,15 +1195,14 @@
 				2334C64D19FCFD7B0060D609 /* Main.storyboard in Resources */,
 				231595E31A05457300618676 /* Icon.png in Resources */,
 				2334C65219FCFD7B0060D609 /* LaunchScreen.xib in Resources */,
-				230FCFC31AF97C7C000E148F /* FOW_Rules_CR_5.01.pdf in Resources */,
 				232D16E61A220F38002B3617 /* matches.png in Resources */,
 				23C58CA51A117E08003ABF31 /* cards.png in Resources */,
 				231595E41A05457300618676 /* Icon@2x.png in Resources */,
 				2334C64F19FCFD7B0060D609 /* Images.xcassets in Resources */,
 				231595EE1A05AF9E00618676 /* Icon58.png in Resources */,
+				23A748011B716E75000EC107 /* FOW_Penalty Guidelines.pdf in Resources */,
 				231595E21A05457300618676 /* Icon-Small@2x.png in Resources */,
 				231595F11A05AF9E00618676 /* Icon87.png in Resources */,
-				23CF66851A2D29D900D98B3C /* FOW_Penalty_Guidelines.pdf in Resources */,
 				231595F31A05AF9E00618676 /* Icon180.png in Resources */,
 				231595F21A05AF9E00618676 /* Icon120.png in Resources */,
 				233C54A91AE85B05008CD1E1 /* decks.png in Resources */,
@@ -1190,12 +1210,14 @@
 				231595DD1A05457300618676 /* Icon-72.png in Resources */,
 				232378A31AFF7707004BAEB1 /* fow_back.png in Resources */,
 				23DC1E011B701BED0027DE0D /* Settings.bundle in Resources */,
+				23A748031B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf in Resources */,
 				231595F01A05AF9E00618676 /* Icon80.png in Resources */,
 				231595E51A05457300618676 /* iTunesArtwork in Resources */,
 				23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */,
 				233D7E291A465AFC008D04E3 /* documents.png in Resources */,
 				231595EF1A05AF9E00618676 /* Icon60.png in Resources */,
 				2334C66919FCFDAA0060D609 /* Default.png in Resources */,
+				23A747FB1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf in Resources */,
 				231595F71A05B0DD00618676 /* Icon152.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1261,6 +1283,7 @@
 				23CF66BC1A2D2C1C00D98B3C /* ReaderConstants.m in Sources */,
 				232D171D1A27E7B2002B3617 /* Turn.m in Sources */,
 				23C58CAA1A11820C003ABF31 /* ToolsVC.m in Sources */,
+				23A748061B716FE3000EC107 /* DocumentTableViewCell.m in Sources */,
 				2334C64419FCFD7B0060D609 /* AppDelegate.m in Sources */,
 				232D16D51A20D41D002B3617 /* FOWTVTVC.m in Sources */,
 				232D171A1A27E7B2002B3617 /* Match.m in Sources */,
@@ -1288,6 +1311,7 @@
 				235FB0831B3219B700F8CD9B /* FilterSwitchTableViewCell.m in Sources */,
 				232D17231A29313E002B3617 /* MatchTVCell.m in Sources */,
 				23CF66C31A2D2C1C00D98B3C /* ReaderMainToolbar.m in Sources */,
+				23A7480B1B729CD1000EC107 /* LGSideMenuController.m in Sources */,
 				232D16DF1A20E564002B3617 /* YTVideoREST.m in Sources */,
 				23CF66C91A2D2C1C00D98B3C /* ReaderThumbsView.m in Sources */,
 				232D17371A2B4BA3002B3617 /* CoreDataTVC.m in Sources */,
