@@ -80,7 +80,10 @@
             
             if(blockSelf.deck.ruler.identifier == loadingId){
                 blockSelf.deck.ruler.image = data;
-                blockSelf.rulerImageView.image = [UIImage imageWithData:data];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    blockSelf.rulerImageView.image = [UIImage imageWithData:data];
+                });
                 
                 // push to parent
                 NSError *error = nil;

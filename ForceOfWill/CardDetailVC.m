@@ -8,6 +8,7 @@
 
 #import "CardDetailVC.h"
 #import "AppDelegate.h"
+#import "CardImageVC.h"
 
 @interface CardDetailVC()
 
@@ -27,6 +28,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.navigationItem.title = self.card.name;
     
     self.nameLabel.text = self.card.name;
@@ -87,6 +89,12 @@
         }];
         
     }];
+}
+
+- (IBAction)showCardImage:(id)sender {
+    CardImageVC * cIVC = [self.storyboard instantiateViewControllerWithIdentifier:@"cardImage"];
+    cIVC.card = self.card;
+    [self.navigationController pushViewController:cIVC animated:YES];
 }
 
 @end

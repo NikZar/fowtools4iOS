@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "MatchTVCell.h"
 #import "MatchTVC.h"
+#import "MatchManager.h"
 
 @interface MatchesTVC ()
 
@@ -63,25 +64,31 @@
 }
 
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        Match * match = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        if(match){
+            [self.context deleteObject:match];
+            NSError *error;
+            [self.context save:&error];
+            if(!error){
+                [[MatchManager sharedManager] endMatch];
+            }
+        }
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

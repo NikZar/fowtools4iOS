@@ -48,13 +48,60 @@ static NSString *CellLoadingIdentifier = @"cardLoadingSlide";
     self.mySearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     self.mySearchDisplayController.delegate = self;
     [self setupNavigationBar];
+    
     [Card syncCards];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self updateFilterPredicate];
+    [self registerNotifications];
+    if(self.searchBar.text == nil || [@"" isEqualToString:self.searchBar.text]){
+        [self updateFilterPredicate];
+    }
+    NSLog(@"Top: %f", self.collectionView.contentInset.top);
+
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self unregisterNotifications];
+    [super viewWillDisappear:animated];
+}
+
+#pragma mark - Keyboard Handling
+
+-(void)registerNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+-(void)unregisterNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWasShown:(NSNotification *)notification
+{
+    
+}
+
+- (void) keyboardWillHide:(NSNotification *)notification {
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (sysVer >= 9) {
+        self.collectionView.contentInset = UIEdgeInsetsMake(-120, 0, 0, 0);
+    }
+}
+
+#pragma mark - Filters
 
 -(void)resetFilters
 {
@@ -107,7 +154,9 @@ static NSString *CellLoadingIdentifier = @"cardLoadingSlide";
                              @"type": kSegmentedFilter,
                              @"value":@"All",
                              @"options":@[@"All",
-                                          @"Dual Deck Faria vs Melgis"]} mutableCopy],
+                                          @"Dual Deck Faria vs Melgis",
+                                          @"The Seven Kings of the Lands",
+                                          @"The Twilight Wanderer"]} mutableCopy],
                           
                           [@{@"title": @"Expansion",
                              @"attributeName": @"expansionS",
@@ -295,6 +344,8 @@ static NSString *CellLoadingIdentifier = @"cardLoadingSlide";
         abort();
     }
     [self.collectionView reloadData];
+    [self.collectionView invalidateIntrinsicContentSize];
+
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -345,6 +396,8 @@ static NSString *CellLoadingIdentifier = @"cardLoadingSlide";
                         break;
                     case NSFetchedResultsChangeDelete:
                         [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:[obj unsignedIntegerValue]]];
+                        break;
+                    default:
                         break;
                 }
             }];
@@ -426,6 +479,8 @@ static NSString *CellLoadingIdentifier = @"cardLoadingSlide";
 #pragma mark - Filters
 - (void)openFilters
 {
+    self.searchBar.text = @"";
+    
     FiltersTVC * filtersTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"filters"];
     filtersTVC.cardsVC = self;
     
@@ -476,8 +531,7 @@ static NSString *CellLoadingIdentifier = @"cardLoadingSlide";
             filtersPredicate = filterPredicate;
         }
     }
-    NSString * check = [filtersPredicate predicateFormat];
-    NSLog(@"%@", check);
+//    NSString * check = [filtersPredicate predicateFormat];
 
     [self.fetchedResultsController.fetchRequest setPredicate:filtersPredicate];
    

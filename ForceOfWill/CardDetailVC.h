@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Card.h"
 
-@interface CardDetailVC : UIViewController
+@interface CardDetailVC : UIViewController <UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) Card *card;
+@property (strong, nonatomic) Card *card;
 @property (weak, nonatomic) NSManagedObjectContext * context;
 
 @end

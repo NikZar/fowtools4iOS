@@ -29,11 +29,14 @@
 
 //Settings
 #define kDownloadCardsPreference @"download_cards_preference"
+#define kAlwaysAwakeLPPreference @"keep_awake_lp"
 
 #define kTextFilter @"filterText"
 #define kSliderFilter @"filterSlider"
 #define kSwitchFilter @"filterSwitch"
 #define kSegmentedFilter @"filterSegmentedControl"
+
+#define kResourcePrefix @"fowResource"
 
 
 

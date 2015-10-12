@@ -10,6 +10,11 @@
 #import "AppDelegate.h"
 #import <RestKit/RestKit.h>
 #import "Constants.h"
+#import "SyncManager.h"
+@import CoreSpotlight;
+@import MobileCoreServices;
+
+#define CARD_RESOURCE_NAME @"Card"
 
 @implementation Card (REST)
 
@@ -33,7 +38,7 @@
 
 + (Card *)getCardWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context
 {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Card"];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:CARD_RESOURCE_NAME];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier LIKE %@", identifier];
     [fetchRequest setPredicate:predicate];
@@ -51,24 +56,29 @@
 
 + (void)syncCards
 {
-    UIApplication* app = [UIApplication sharedApplication];
-    app.networkActivityIndicatorVisible = YES;
-    
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/cards"
-                                           parameters:nil
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  UIApplication* app = [UIApplication sharedApplication];
-                                                  app.networkActivityIndicatorVisible = NO;
-                                                  [Card updateCards: mappingResult.array];
-                                              }
-                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  NSLog(@"Restkit error: %@", error);
-                                              }];
+    NSDate *lastUpdate = [[SyncManager sharedManager] lastSyncForResource:CARD_RESOURCE_NAME];
+    if([lastUpdate timeIntervalSinceNow] < -3000)
+    {
+        UIApplication* app = [UIApplication sharedApplication];
+        app.networkActivityIndicatorVisible = YES;
+        
+        [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/cards"
+                                               parameters:nil
+                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                      UIApplication* app = [UIApplication sharedApplication];
+                                                      app.networkActivityIndicatorVisible = NO;
+                                                      [Card updateCards: mappingResult.array];
+                                                  }
+                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                      NSLog(@"Restkit error: %@", error);
+                                                  }];
+    }
     
 }
 
 + (void)updateCards: (NSArray *)cardsREST
 {
+    [[SyncManager sharedManager] updateLastSyncForResource:CARD_RESOURCE_NAME];
     AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *mainContext = [delegate managedObjectContext];
     
@@ -82,10 +92,27 @@
                 Card *card = [Card getCardWithID: cardREST.identifier inManagedObjectContext:temporaryContext];
                 if(!card){
                     card = [NSEntityDescription
-                            insertNewObjectForEntityForName:@"Card"
+                            insertNewObjectForEntityForName:CARD_RESOURCE_NAME
                             inManagedObjectContext:temporaryContext];
                 }
                 [card updateWithCardREST:cardREST];
+                
+                CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc]initWithItemContentType:(NSString *)kUTTypeImage];
+                
+                attributeSet.title = card.name;
+                attributeSet.contentDescription = card.text;
+                
+                attributeSet.keywords = [NSArray arrayWithObjects:card.type, card.attribute,card.expansionS, nil];
+                
+                attributeSet.thumbnailData = card.image;
+                
+                CSSearchableItem *item = [[CSSearchableItem alloc]initWithUniqueIdentifier:card.identifier domainIdentifier:@"com.indiezios.ForceOfWill" attributeSet:attributeSet];
+                if(item){
+                    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:@[item] completionHandler: ^(NSError * __nullable error) {
+                        if (!error)
+                            NSLog(@"Search item indexed");
+                    }];
+                }
             }
         }
         
@@ -123,7 +150,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Card" inManagedObjectContext:mainContext];
+                                   entityForName:CARD_RESOURCE_NAME inManagedObjectContext:mainContext];
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sortSet = [[NSSortDescriptor alloc]

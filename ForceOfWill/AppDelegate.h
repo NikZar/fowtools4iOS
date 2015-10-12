@@ -25,6 +25,7 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (void)configureMatchManger;
 
 
 @end

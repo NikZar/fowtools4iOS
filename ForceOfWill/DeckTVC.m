@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *resonators;
 @property (strong, nonatomic) NSArray *spells;
 @property (strong, nonatomic) NSArray *additions;
+@property (strong, nonatomic) NSArray *regalias;
 
 @end
 
@@ -54,6 +55,11 @@
     orderedSet = [NSOrderedSet orderedSetWithArray:self.spells];
     self.spells = [orderedSet array];
     
+    NSPredicate *regaliaPred = [NSPredicate predicateWithFormat:@"card.type == 'Regalia'"];
+    self.regalias = [[self.deck.cards allObjects] filteredArrayUsingPredicate:regaliaPred];
+    orderedSet = [NSOrderedSet orderedSetWithArray:self.regalias];
+    self.regalias = [orderedSet array];
+    
     NSPredicate *spellPred = [NSPredicate predicateWithFormat:@"card.type == 'Spell'"];
     self.additions = [[self.deck.cards allObjects] filteredArrayUsingPredicate:spellPred];
     orderedSet = [NSOrderedSet orderedSetWithArray:self.additions];
@@ -63,7 +69,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger sections = 7;
+    NSInteger sections = 8;
     return sections;
 }
 
@@ -86,6 +92,9 @@
     }
     if (section == 5) {
         return @"Additions";
+    }
+    if (section == 6) {
+        return @"Regalias";
     }
     else {
         return @"Side";
@@ -110,6 +119,9 @@
     }
     if (section == 5) {
         return [self.additions count];
+    }
+    if (section == 6) {
+        return [self.regalias count];
     }
     else {
         return [self.deck.side count];
@@ -137,7 +149,11 @@
     }
     else if (section == 5) {
         cell.deckCard = [self.additions objectAtIndex:indexPath.row];
-    } else {
+    }
+    else if (section == 6) {
+        cell.deckCard = [self.regalias objectAtIndex:indexPath.row];
+    }
+    else {
         cell.deckCard = [[self.deck.side allObjects] objectAtIndex:indexPath.row];
     }
     
@@ -173,6 +189,9 @@
         }
         else if (section == 5) {
             deckCard = [self.additions objectAtIndex:indexPath.row];
+        }
+        else if (section == 6) {
+            deckCard = [self.regalias objectAtIndex:indexPath.row];
         } else {
             deckCard = [[self.deck.side allObjects] objectAtIndex:indexPath.row];
         }

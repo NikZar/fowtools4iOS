@@ -31,7 +31,7 @@
     self.moc = [[NSManagedObjectContext alloc] init];
     self.moc.persistentStoreCoordinator = psc;
     
-    self.matchManager = [MatchManager sharedMatchManager];
+    self.matchManager = [MatchManager sharedManager];
     self.matchManager.moc = self.moc;
 }
 

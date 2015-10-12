@@ -43,7 +43,7 @@
 
 @implementation LifePointsVC
 
--(NSUInteger)supportedInterfaceOrientations
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationPortrait | UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
 }
@@ -63,10 +63,12 @@
     
     self.delegate = [[UIApplication sharedApplication] delegate];
     
+    [self.delegate configureMatchManger];
+    
     self.player1NameTextField.delegate = self;
     self.player2NameTextField.delegate = self;
     
-    self.matchManager = [MatchManager sharedMatchManager];
+    self.matchManager = [MatchManager sharedManager];
     
     self.turnCounter.clipsToBounds = YES;
     self.turnCounter.layer.cornerRadius = self.turnCounter.bounds.size.width/2;
@@ -79,6 +81,18 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    BOOL keepAwake = [[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysAwakeLPPreference];
+    if(keepAwake)
+    {
+        UIApplication* myApp = [UIApplication sharedApplication];
+        myApp.idleTimerDisabled = YES;
+    }
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self forceNameSync];
@@ -87,6 +101,12 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self stopTimer];
     });
+    
+    if([[NSUserDefaults standardUserDefaults] boolForKey:kAlwaysAwakeLPPreference])
+    {
+        UIApplication* myApp = [UIApplication sharedApplication];
+        myApp.idleTimerDisabled = NO;
+    }
     
     [super viewWillDisappear:animated];
 }

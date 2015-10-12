@@ -68,8 +68,10 @@
                               @"key":kGoogleAPIiOSKey,
                               @"part":@"id,snippet",
                               @"q":queryString,
-                              @"type":@"videos",
-                              @"maxResults":@"30"
+                              @"type":@"video",
+                              @"maxResults":@"40",
+                              @"order":@"date",
+                              @"relevanceLanguage":@"en"
                               };
     
     [objectManager getObjectsAtPath:pathPattern
@@ -79,7 +81,9 @@
                                 UIApplication* app = [UIApplication sharedApplication];
                                 app.networkActivityIndicatorVisible = NO;
                                 self.youtubeVideos = mappingResult.array;
-                                [self.tableView reloadData];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self.tableView reloadData];
+                                });
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 NSLog(@"YouTube API Error': %@", error.localizedDescription);

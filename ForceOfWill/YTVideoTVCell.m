@@ -32,9 +32,12 @@
 
 - (void)loadImage
 {
+    
     NSURL * thumbnauilUrl = [NSURL URLWithString:self.video.thumbnailUrl];
     NSData *imageData = [NSData dataWithContentsOfURL:thumbnauilUrl];
-    self.videoImageView.image = [UIImage imageWithData:imageData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.videoImageView.image = [UIImage imageWithData:imageData];
+    });
 }
 
 @end

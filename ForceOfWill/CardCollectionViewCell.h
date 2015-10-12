@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Card.h"
 
-@interface CardCollectionViewCell : UICollectionViewCell //<UIGestureRecognizerDelegate>
+@interface CardCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) Card * card;
 @property (weak, nonatomic) NSManagedObjectContext *context;

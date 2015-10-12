@@ -26,6 +26,9 @@
 
 @end
 
+#define MODEL_NAME @"ForceOfWill" 
+#define DATABASE_NAME @"ForceOfWill.sqlite"
+
 @implementation AppDelegate
 
 
@@ -48,9 +51,7 @@
     [FBSDKLoginButton class];
     
     [self configureRK];
-    
-    [self configureMatchManger];
-   
+       
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
@@ -153,7 +154,7 @@
 
 - (void)configureMatchManger
 {
-    [[MatchManager sharedMatchManager] setMoc:self.managedObjectContext];
+    [[MatchManager sharedManager] setMoc:self.managedObjectContext];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -206,7 +207,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ForceOfWill" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:MODEL_NAME withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -220,7 +221,7 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ForceOfWill.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:DATABASE_NAME];
     NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES};
 
     NSError *error = nil;
@@ -243,9 +244,43 @@
 
 
 - (NSManagedObjectContext *)managedObjectContext {
+    
     // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
+    }
+    
+    BOOL needsMigration = [self managedObjectContextNeedsMigration];
+    
+    UIView * _hudView;
+    if(needsMigration){
+        UIViewController* controller = ((UINavigationController*)self.window.rootViewController).visibleViewController;
+        UIView* controllerView = controller.view;
+        
+        _hudView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, controllerView.frame.size.width, controllerView.frame.size.height)];
+        _hudView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
+        _hudView.clipsToBounds = YES;
+//        _hudView.layer.cornerRadius = 10.0;
+        
+        UIActivityIndicatorView *_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        
+        float x = (controllerView.frame.size.width - _activityIndicatorView.bounds.size.width) / 2;
+        float y = (controllerView.frame.size.height - _activityIndicatorView.bounds.size.height) / 2;
+        
+        _activityIndicatorView.frame = CGRectMake(x, y, _activityIndicatorView.bounds.size.width, _activityIndicatorView.bounds.size.height);
+        [_hudView addSubview:_activityIndicatorView];
+        [_activityIndicatorView startAnimating];
+        
+        UILabel *_captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, y +50, controllerView.frame.size.width, 22)];
+        _captionLabel.textAlignment = NSTextAlignmentCenter;
+        _captionLabel.numberOfLines = 3;
+        _captionLabel.backgroundColor = [UIColor clearColor];
+        _captionLabel.textColor = [UIColor whiteColor];
+        _captionLabel.textAlignment = NSTextAlignmentCenter;
+        _captionLabel.text = @"Updating app data...";
+        [_hudView addSubview:_captionLabel];
+        
+        [controllerView addSubview:_hudView];
     }
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
@@ -254,8 +289,37 @@
     }
     _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    
+    if(needsMigration){
+//        [UIView animateWithDuration:0.2 animations:^{
+//            _hudView.alpha = 0.0;
+//        } completion:^(BOOL finished) {
+//            [_hudView removeFromSuperview];
+//        }];
+        [_hudView removeFromSuperview];
+    }
+    
     return _managedObjectContext;
 }
+
+#pragma mark - Core Data Migration
+
+- (BOOL)managedObjectContextNeedsMigration
+{
+    NSError *error = nil;
+    
+    NSURL *storeUrl = [[NSBundle mainBundle] URLForResource:MODEL_NAME withExtension:@"momd"];
+    
+    // Determine if a migration is needed
+    NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType
+                                                                                              URL:storeUrl
+                                                                                            error:&error];
+    NSManagedObjectModel *destinationModel = [self.persistentStoreCoordinator managedObjectModel];
+    BOOL pscCompatibile = [destinationModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata];
+    NSLog(@"Migration needed? %d", !pscCompatibile);
+    return !pscCompatibile;
+}
+
 
 #pragma mark - Core Data Saving support
 
@@ -302,6 +366,34 @@
     
     [[NSUserDefaults standardUserDefaults] setValue:[NSDate distantPast] forKey:kTimerEndDate];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - Search
+
+- (BOOL)application:(UIApplication * _Nonnull)application
+willContinueUserActivityWithType:(NSString * _Nonnull)userActivityType
+{
+    NSLog(@"%@:", userActivityType);
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray *restorableObjects))restorationHandler {
+    
+    if(self.window.rootViewController){
+        [self.window.rootViewController restoreUserActivityState:userActivity];
+    }
+    
+    return YES;
+}
+
+-(void)application:(UIApplication *)application didUpdateUserActivity:(NSUserActivity *)userActivity
+{
+    NSLog(@"%@:", userActivity);
+}
+
+-(void)application:(UIApplication *)application didFailToContinueUserActivityWithType:(NSString *)userActivityType error:(NSError *)error
+{
+    NSLog(@"%@: %@", userActivityType,  error);
 }
 
 @end

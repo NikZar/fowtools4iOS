@@ -23,14 +23,16 @@
 
 @synthesize currentMatch = _currentMatch;
 
-+ (id)sharedMatchManager {
-    static MatchManager *sharedMatchManager = nil;
+
++ (id)sharedManager {
+    static id sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedMatchManager = [[self alloc] init];
+        sharedManager = [[self alloc] init];
     });
-    return sharedMatchManager;
+    return sharedManager;
 }
+
 
 - (void)endMatch
 {
@@ -38,12 +40,6 @@
     self.currentMatch = nil;
 }
 
-- (id)init {
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
 
 #pragma mark - Getters
 - (Match *)currentMatch

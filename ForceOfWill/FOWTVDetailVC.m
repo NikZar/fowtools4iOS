@@ -20,10 +20,12 @@
     [super viewDidLoad];
     
     self.playerView.delegate = self;
-    [self.playerView loadWithVideoId:self.video.videoId playerVars:@{
+    if(self.video.videoId){
+        [self.playerView loadWithVideoId:self.video.videoId playerVars:@{
                                                                      @"autoplay":@1,
                                                                      @"theme":@"dark"
                                                                      }];
+    }
     self.playerView.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view.
 }

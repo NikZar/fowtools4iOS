@@ -10,8 +10,11 @@
 #import <CoreData/CoreData.h>
 #import "Match.h"
 #import "Enums.h"
+#import "Manager.h"
 
 @interface MatchManager : NSObject
+
++ (id)sharedManager;
 
 @property (strong, nonatomic) NSNumber *player1LP;
 @property (strong, nonatomic) NSNumber *player2LP;
@@ -23,8 +26,6 @@
 @property (strong, readonly, nonatomic) Turn *currentTurn;
 
 @property (strong, nonatomic) NSManagedObjectContext *moc;
-
-+ (id)sharedMatchManager;
 
 - (void)newTurnForPlayer:(FOWPlayer)player;
 

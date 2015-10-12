@@ -13,4 +13,6 @@
 
 - (void)updateWithDeckREST: (DeckREST *)deckREST inManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (void)syncDecks;
+
 @end

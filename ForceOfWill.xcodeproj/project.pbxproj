@@ -100,11 +100,11 @@
 		235FB0891B36DFBB00F8CD9B /* NoRotationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235FB0881B36DFBB00F8CD9B /* NoRotationNavigationController.m */; };
 		2390F81B1B6E5D61006C2037 /* ForceOfWill.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2390F8121B6E5D61006C2037 /* ForceOfWill.xcdatamodeld */; };
 		2390F8261B6E5FF3006C2037 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2390F8251B6E5FF3006C2037 /* Card.m */; };
-		23A747FB1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23A747FA1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf */; };
 		23A748011B716E75000EC107 /* FOW_Penalty Guidelines.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23A748001B716E75000EC107 /* FOW_Penalty Guidelines.pdf */; };
 		23A748031B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23A748021B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf */; };
 		23A748061B716FE3000EC107 /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A748051B716FE3000EC107 /* DocumentTableViewCell.m */; };
-		23A7480B1B729CD1000EC107 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A7480A1B729CD1000EC107 /* LGSideMenuController.m */; };
+		23BDE0A41BCC4C4F00F079B3 /* FOW_Comprehensive_Rule.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23BDE0A31BCC4C4F00F079B3 /* FOW_Comprehensive_Rule.pdf */; settings = {ASSET_TAGS = (); }; };
+		23C3354E1BB0B9E5006F2B9A /* CardImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C3354D1BB0B9E5006F2B9A /* CardImageVC.m */; settings = {ASSET_TAGS = (); }; };
 		23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */; };
 		23C58CA01A1164F3003ABF31 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C58C9F1A1164F3003ABF31 /* search.png */; };
 		23C58CA31A11790B003ABF31 /* CardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C58CA21A11790B003ABF31 /* CardDetailVC.m */; };
@@ -143,6 +143,9 @@
 		23D4A9601B09583500830FAE /* FiltersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D4A95F1B09583500830FAE /* FiltersTVC.m */; };
 		23D4A9631B09590300830FAE /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D4A9621B09590300830FAE /* filter.png */; };
 		23DC1E011B701BED0027DE0D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23DC1E001B701BED0027DE0D /* Settings.bundle */; };
+		23E1A0C91BAD526A00A9B117 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E1A0C81BAD526A00A9B117 /* CoreSpotlight.framework */; };
+		23E1A0CD1BAD559B00A9B117 /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1A0CC1BAD559B00A9B117 /* SyncManager.m */; settings = {ASSET_TAGS = (); }; };
+		23E1A0D01BAD585400A9B117 /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1A0CF1BAD585400A9B117 /* Manager.m */; settings = {ASSET_TAGS = (); }; };
 		23EF87161AEC09E50032A700 /* TimerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EF87151AEC09E50032A700 /* TimerVC.m */; };
 		8725599147B8FBBFC8F6335E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C01DACD757BE7DC90F49ADA /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -336,13 +339,13 @@
 		2390F8231B6E5FB0006C2037 /* ForceOfWill 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ForceOfWill 10.xcdatamodel"; sourceTree = "<group>"; };
 		2390F8241B6E5FF3006C2037 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		2390F8251B6E5FF3006C2037 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
-		23A747FA1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Comprehensive_Rule.pdf; sourceTree = "<group>"; };
 		23A748001B716E75000EC107 /* FOW_Penalty Guidelines.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "FOW_Penalty Guidelines.pdf"; sourceTree = "<group>"; };
 		23A748021B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Specific_Floor_Rules.pdf; sourceTree = "<group>"; };
 		23A748041B716FE3000EC107 /* DocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTableViewCell.h; sourceTree = "<group>"; };
 		23A748051B716FE3000EC107 /* DocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTableViewCell.m; sourceTree = "<group>"; };
-		23A748091B729CD1000EC107 /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
-		23A7480A1B729CD1000EC107 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
+		23BDE0A31BCC4C4F00F079B3 /* FOW_Comprehensive_Rule.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FOW_Comprehensive_Rule.pdf; sourceTree = "<group>"; };
+		23C3354C1BB0B9E5006F2B9A /* CardImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardImageVC.h; sourceTree = "<group>"; };
+		23C3354D1BB0B9E5006F2B9A /* CardImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardImageVC.m; sourceTree = "<group>"; };
 		23C58C9B1A0DB194003ABF31 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23C58C9F1A1164F3003ABF31 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		23C58CA11A11790B003ABF31 /* CardDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailVC.h; sourceTree = "<group>"; };
@@ -408,6 +411,11 @@
 		23D4A95F1B09583500830FAE /* FiltersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersTVC.m; sourceTree = "<group>"; };
 		23D4A9621B09590300830FAE /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		23DC1E001B701BED0027DE0D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		23E1A0C81BAD526A00A9B117 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		23E1A0CB1BAD559B00A9B117 /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncManager.h; sourceTree = "<group>"; };
+		23E1A0CC1BAD559B00A9B117 /* SyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncManager.m; sourceTree = "<group>"; };
+		23E1A0CE1BAD585400A9B117 /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		23E1A0CF1BAD585400A9B117 /* Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Manager.m; sourceTree = "<group>"; };
 		23EF87141AEC09E50032A700 /* TimerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerVC.h; sourceTree = "<group>"; };
 		23EF87151AEC09E50032A700 /* TimerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerVC.m; sourceTree = "<group>"; };
 		2C01DACD757BE7DC90F49ADA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23E1A0C91BAD526A00A9B117 /* CoreSpotlight.framework in Frameworks */,
 				23CF66D61A2D2C8B00D98B3C /* MessageUI.framework in Frameworks */,
 				23CF66D41A2D2C8400D98B3C /* QuartzCore.framework in Frameworks */,
 				23CF66D21A2D2C6C00D98B3C /* CoreGraphics.framework in Frameworks */,
@@ -464,8 +473,6 @@
 			children = (
 				231595C01A04ED2A00618676 /* LifePointsVC.h */,
 				231595C11A04ED2A00618676 /* LifePointsVC.m */,
-				232D16F61A27CBAD002B3617 /* MatchManager.h */,
-				232D16F71A27CBAD002B3617 /* MatchManager.m */,
 			);
 			name = "Life Points";
 			sourceTree = "<group>";
@@ -773,7 +780,7 @@
 		2334C67019FD10170060D609 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				23A748081B729CB4000EC107 /* SideMenu */,
+				23E1A0CA1BAD554300A9B117 /* Managers */,
 				2334C64219FCFD7B0060D609 /* AppDelegate.h */,
 				2334C64319FCFD7B0060D609 /* AppDelegate.m */,
 				2334C69019FEE17F0060D609 /* Cards */,
@@ -815,6 +822,8 @@
 				2334C69219FEE1B10060D609 /* CardCollectionViewCell.m */,
 				23C58CA11A11790B003ABF31 /* CardDetailVC.h */,
 				23C58CA21A11790B003ABF31 /* CardDetailVC.m */,
+				23C3354C1BB0B9E5006F2B9A /* CardImageVC.h */,
+				23C3354D1BB0B9E5006F2B9A /* CardImageVC.m */,
 				23D4A9611B09585100830FAE /* Filters */,
 			);
 			name = Cards;
@@ -860,15 +869,6 @@
 			name = Info;
 			sourceTree = "<group>";
 		};
-		23A748081B729CB4000EC107 /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				23A748091B729CD1000EC107 /* LGSideMenuController.h */,
-				23A7480A1B729CD1000EC107 /* LGSideMenuController.m */,
-			);
-			name = SideMenu;
-			sourceTree = "<group>";
-		};
 		23C58CAB1A118212003ABF31 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -882,7 +882,7 @@
 			isa = PBXGroup;
 			children = (
 				23A748001B716E75000EC107 /* FOW_Penalty Guidelines.pdf */,
-				23A747FA1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf */,
+				23BDE0A31BCC4C4F00F079B3 /* FOW_Comprehensive_Rule.pdf */,
 				23A748021B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf */,
 				23CF66861A2D2A0000D98B3C /* FOW_Tournament_Policy.pdf */,
 				23CF66881A2D2C1C00D98B3C /* Classes */,
@@ -989,6 +989,19 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		23E1A0CA1BAD554300A9B117 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				232D16F61A27CBAD002B3617 /* MatchManager.h */,
+				232D16F71A27CBAD002B3617 /* MatchManager.m */,
+				23E1A0CB1BAD559B00A9B117 /* SyncManager.h */,
+				23E1A0CC1BAD559B00A9B117 /* SyncManager.m */,
+				23E1A0CE1BAD585400A9B117 /* Manager.h */,
+				23E1A0CF1BAD585400A9B117 /* Manager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 		23EF87131AEC098B0032A700 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,6 +1033,7 @@
 		E26378513230B312E7FCF9C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23E1A0C81BAD526A00A9B117 /* CoreSpotlight.framework */,
 				23CF66D51A2D2C8B00D98B3C /* MessageUI.framework */,
 				23CF66D31A2D2C8400D98B3C /* QuartzCore.framework */,
 				23CF66D11A2D2C6C00D98B3C /* CoreGraphics.framework */,
@@ -1114,6 +1128,7 @@
 		2334C63319FCFD7B0060D609 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = IndieZiOS;
 				TargetAttributes = {
@@ -1211,13 +1226,13 @@
 				232378A31AFF7707004BAEB1 /* fow_back.png in Resources */,
 				23DC1E011B701BED0027DE0D /* Settings.bundle in Resources */,
 				23A748031B716ECA000EC107 /* FOW_Specific_Floor_Rules.pdf in Resources */,
+				23BDE0A41BCC4C4F00F079B3 /* FOW_Comprehensive_Rule.pdf in Resources */,
 				231595F01A05AF9E00618676 /* Icon80.png in Resources */,
 				231595E51A05457300618676 /* iTunesArtwork in Resources */,
 				23C58C9C1A0DB194003ABF31 /* Default-568h@2x.png in Resources */,
 				233D7E291A465AFC008D04E3 /* documents.png in Resources */,
 				231595EF1A05AF9E00618676 /* Icon60.png in Resources */,
 				2334C66919FCFDAA0060D609 /* Default.png in Resources */,
-				23A747FB1B716D1F000EC107 /* FOW_Comprehensive_Rule.pdf in Resources */,
 				231595F71A05B0DD00618676 /* Icon152.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1299,6 +1314,7 @@
 				232D170B1A27E30D002B3617 /* LifeChange+Management.m in Sources */,
 				23C58CA31A11790B003ABF31 /* CardDetailVC.m in Sources */,
 				235FB07D1B32199A00F8CD9B /* FilterTextTableViewCell.m in Sources */,
+				23E1A0CD1BAD559B00A9B117 /* SyncManager.m in Sources */,
 				23CF66DA1A2D2E2D00D98B3C /* FOWDocsVC.m in Sources */,
 				23CF66BD1A2D2C1C00D98B3C /* ReaderContentPage.m in Sources */,
 				23D4A9601B09583500830FAE /* FiltersTVC.m in Sources */,
@@ -1311,7 +1327,6 @@
 				235FB0831B3219B700F8CD9B /* FilterSwitchTableViewCell.m in Sources */,
 				232D17231A29313E002B3617 /* MatchTVCell.m in Sources */,
 				23CF66C31A2D2C1C00D98B3C /* ReaderMainToolbar.m in Sources */,
-				23A7480B1B729CD1000EC107 /* LGSideMenuController.m in Sources */,
 				232D16DF1A20E564002B3617 /* YTVideoREST.m in Sources */,
 				23CF66C91A2D2C1C00D98B3C /* ReaderThumbsView.m in Sources */,
 				232D17371A2B4BA3002B3617 /* CoreDataTVC.m in Sources */,
@@ -1336,6 +1351,7 @@
 				232D17081A27E2EC002B3617 /* Turn+Management.m in Sources */,
 				232378AD1AFF7CFB004BAEB1 /* Deck.m in Sources */,
 				232D17341A2B4AAA002B3617 /* LifeChange.m in Sources */,
+				23E1A0D01BAD585400A9B117 /* Manager.m in Sources */,
 				232D16FB1A27CF67002B3617 /* Match+Management.m in Sources */,
 				232D173E1A2B4D97002B3617 /* CoreDataTVCell.m in Sources */,
 				233C54A71AE8566A008CD1E1 /* Deck+REST.m in Sources */,
@@ -1356,6 +1372,7 @@
 				2390F81B1B6E5D61006C2037 /* ForceOfWill.xcdatamodeld in Sources */,
 				232D16EA1A221B85002B3617 /* MatchesTVC.m in Sources */,
 				23EF87161AEC09E50032A700 /* TimerVC.m in Sources */,
+				23C3354E1BB0B9E5006F2B9A /* CardImageVC.m in Sources */,
 				23CF66CE1A2D2C1C00D98B3C /* UIXToolbarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1584,8 +1601,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = ForceOfWill/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -8,6 +8,12 @@
 
 #import "NoRotationNavigationController.h"
 #import "AppDelegate.h"
+#import "Card+REST.h"
+#import "NoRotationNavigationController.h"
+#import "CardDetailVC.h"
+#import "AppDelegate.h"
+
+@import CoreSpotlight;
 
 @interface NoRotationNavigationController ()
 
@@ -25,7 +31,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)restoreUserActivityState:(NSUserActivity *)userActivity
+{
+    if ([[userActivity activityType] isEqualToString:CSSearchableItemActionType]) {
+        // This activity represents an item indexed using Core Spotlight, so restore the context related to the unique identifier.
+        // The unique identifier of the Core Spotlight item is set in the activity’s userInfo for the key CSSearchableItemActivityIdentifier.
+        
+        NSString *uniqueIdentifier = [userActivity.userInfo objectForKey:CSSearchableItemActivityIdentifier];
+        
+        AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *mainContext = [delegate managedObjectContext];
+        
+        Card * card = [Card getCardWithID:uniqueIdentifier inManagedObjectContext:mainContext];
+        
+        if(card){
+            self.navigationBarHidden = NO;
+            CardDetailVC * cdVC = [self.storyboard instantiateViewControllerWithIdentifier:@"cardDetail"];
+            cdVC.context = mainContext;
+            cdVC.card = card;
+            [self pushViewController:cdVC animated:false];
+        }
+    }
+}
 //- (NSUInteger)supportedInterfaceOrientations
 //{
 //    return [self.topViewController supportedInterfaceOrientations];

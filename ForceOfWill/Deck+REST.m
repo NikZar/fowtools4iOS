@@ -9,6 +9,12 @@
 #import "Deck+REST.h"
 #import "DeckCard+REST.h"
 #import "Card+REST.h"
+#import "AppDelegate.h"
+#import "SyncManager.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <RestKit/RestKit.h>
+
+#define DECK_RESOURCE_NAME @"Deck"
 
 @implementation Deck (REST)
 
@@ -130,5 +136,105 @@
         self.ruler = ruler ? ruler : self.ruler;
     }
 }
+
++(Deck *)getDeckWithID:(NSString *)identifier inManagedObjectContext: (NSManagedObjectContext *)context
+{
+    @autoreleasepool {
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:DECK_RESOURCE_NAME];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier LIKE %@", identifier];
+        [fetchRequest setPredicate:predicate];
+        [fetchRequest setFetchLimit:1];
+        
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
+        
+        if (!results || ([results count] == 0)) {
+            return nil;
+        } else {
+            return [results firstObject];
+        }
+    }
+}
+
++(void)syncDecks
+{
+    NSDate *lastUpdate = [[SyncManager sharedManager] lastSyncForResource:DECK_RESOURCE_NAME];
+    if([lastUpdate timeIntervalSinceNow] < -3000)
+    {
+        UIApplication* app = [UIApplication sharedApplication];
+        app.networkActivityIndicatorVisible = YES;
+        
+        NSDictionary *queryParams = nil;
+        if ([FBSDKAccessToken currentAccessToken]) {
+            queryParams = @{@"token" : [[FBSDKAccessToken currentAccessToken] tokenString]};
+        }
+        [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/decks"
+                                               parameters:queryParams
+                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                      [self updateDecks: mappingResult.array];
+                                                  }
+                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                      NSLog(@"Restkit error': %@", error);
+                                                  }];
+    }
+}
+
++ (void)updateDecks: (NSArray *)decksREST
+{
+    [[SyncManager sharedManager] updateLastSyncForResource:DECK_RESOURCE_NAME];
+    AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *mainContext = [delegate managedObjectContext];
+    
+    __block NSManagedObjectContext *temporaryContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    temporaryContext.parentContext = mainContext;
+    
+    [temporaryContext performBlock:^{
+        // do something that takes some time asynchronously using the temp context
+        int i = 0;
+        for (DeckREST *deckREST in decksREST) {
+            @autoreleasepool {
+                if([deckREST.cards count] >= 1){
+                    
+                    Deck *deck = [self getDeckWithID: deckREST.identifier inManagedObjectContext:temporaryContext];
+                    if(!deck){
+                        deck = [NSEntityDescription
+                                insertNewObjectForEntityForName:@"Deck"
+                                inManagedObjectContext:temporaryContext];
+                    }
+                    [deck updateWithDeckREST:deckREST inManagedObjectContext: temporaryContext];
+                    
+                    i++;
+                }
+            }
+        }
+        
+        // push to parent
+        NSError *error = nil;
+        if (![temporaryContext save:&error])
+        {
+            NSLog(@"Error in temporaryContext: %@", error.localizedDescription);
+        }
+        
+        for (NSManagedObject * deck in [temporaryContext registeredObjects]) {
+            [temporaryContext refreshObject:deck mergeChanges:NO];
+        }
+        [temporaryContext reset];
+        
+        // save parent to disk asynchronously
+        [mainContext performBlock:^{
+            NSError *error;
+            if (![mainContext save:&error])
+            {
+                NSLog(@"Error in mainContext: %@", error.localizedDescription);
+            }
+        }];
+        
+        UIApplication* app = [UIApplication sharedApplication];
+        app.networkActivityIndicatorVisible = NO;
+    }];
+}
+
+
 
 @end
