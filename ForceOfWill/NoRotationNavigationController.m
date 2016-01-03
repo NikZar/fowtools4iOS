@@ -9,7 +9,6 @@
 #import "NoRotationNavigationController.h"
 #import "AppDelegate.h"
 #import "Card+REST.h"
-#import "NoRotationNavigationController.h"
 #import "CardDetailVC.h"
 #import "AppDelegate.h"
 

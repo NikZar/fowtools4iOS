@@ -33,13 +33,6 @@
 		231595F31A05AF9E00618676 /* Icon180.png in Resources */ = {isa = PBXBuildFile; fileRef = 231595ED1A05AF9E00618676 /* Icon180.png */; };
 		231595F61A05B0DD00618676 /* Icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 231595F41A05B0DD00618676 /* Icon76.png */; };
 		231595F71A05B0DD00618676 /* Icon152.png in Resources */ = {isa = PBXBuildFile; fileRef = 231595F51A05B0DD00618676 /* Icon152.png */; };
-		231FF1121B59B66400A2B949 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231FF1111B59B66400A2B949 /* InterfaceController.swift */; };
-		231FF1141B59B66400A2B949 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231FF1131B59B66400A2B949 /* NotificationController.swift */; };
-		231FF1161B59B66400A2B949 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231FF1151B59B66400A2B949 /* GlanceController.swift */; };
-		231FF1181B59B66400A2B949 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231FF1171B59B66400A2B949 /* Images.xcassets */; };
-		231FF11C1B59B66400A2B949 /* FOW Tools WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 231FF11B1B59B66400A2B949 /* FOW Tools WatchKit App.app */; };
-		231FF1241B59B66400A2B949 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231FF1221B59B66400A2B949 /* Interface.storyboard */; };
-		231FF1261B59B66400A2B949 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231FF1251B59B66400A2B949 /* Images.xcassets */; };
 		232378A31AFF7707004BAEB1 /* fow_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 232378A21AFF7707004BAEB1 /* fow_back.png */; };
 		232378AD1AFF7CFB004BAEB1 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 232378AC1AFF7CFB004BAEB1 /* Deck.m */; };
 		232378AF1AFF9E70004BAEB1 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 232378AE1AFF9E70004BAEB1 /* timer.png */; };
@@ -151,13 +144,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		231FF11D1B59B66400A2B949 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2334C63319FCFD7B0060D609 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 231FF11A1B59B66400A2B949;
-			remoteInfo = "FOW Tools WatchKit App";
-		};
 		2334C65819FCFD7C0060D609 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2334C63319FCFD7B0060D609 /* Project object */;
@@ -213,17 +199,6 @@
 		231595ED1A05AF9E00618676 /* Icon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon180.png; sourceTree = "<group>"; };
 		231595F41A05B0DD00618676 /* Icon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon76.png; sourceTree = "<group>"; };
 		231595F51A05B0DD00618676 /* Icon152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon152.png; sourceTree = "<group>"; };
-		231FF10C1B59B66400A2B949 /* FOW Tools WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FOW Tools WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		231FF10F1B59B66400A2B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		231FF1101B59B66400A2B949 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		231FF1111B59B66400A2B949 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		231FF1131B59B66400A2B949 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		231FF1151B59B66400A2B949 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
-		231FF1171B59B66400A2B949 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		231FF11B1B59B66400A2B949 /* FOW Tools WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FOW Tools WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		231FF1211B59B66400A2B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		231FF1231B59B66400A2B949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		231FF1251B59B66400A2B949 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		232378A21AFF7707004BAEB1 /* fow_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fow_back.png; sourceTree = "<group>"; };
 		232378AB1AFF7CFB004BAEB1 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		232378AC1AFF7CFB004BAEB1 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
@@ -424,13 +399,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		231FF1091B59B66400A2B949 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2334C63819FCFD7B0060D609 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -535,45 +503,6 @@
 				231595DC1A05457300618676 /* iTunesArtwork@2x */,
 			);
 			name = "App Icons";
-			sourceTree = "<group>";
-		};
-		231FF10D1B59B66400A2B949 /* FOW Tools WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				231FF1111B59B66400A2B949 /* InterfaceController.swift */,
-				231FF1131B59B66400A2B949 /* NotificationController.swift */,
-				231FF1151B59B66400A2B949 /* GlanceController.swift */,
-				231FF1171B59B66400A2B949 /* Images.xcassets */,
-				231FF10E1B59B66400A2B949 /* Supporting Files */,
-			);
-			path = "FOW Tools WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		231FF10E1B59B66400A2B949 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				231FF10F1B59B66400A2B949 /* Info.plist */,
-				231FF1101B59B66400A2B949 /* PushNotificationPayload.apns */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		231FF11F1B59B66400A2B949 /* FOW Tools WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				231FF1221B59B66400A2B949 /* Interface.storyboard */,
-				231FF1251B59B66400A2B949 /* Images.xcassets */,
-				231FF1201B59B66400A2B949 /* Supporting Files */,
-			);
-			path = "FOW Tools WatchKit App";
-			sourceTree = "<group>";
-		};
-		231FF1201B59B66400A2B949 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				231FF1211B59B66400A2B949 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2325F3131AEBA31900538335 /* Deck */ = {
@@ -694,8 +623,6 @@
 			children = (
 				2334C63D19FCFD7B0060D609 /* ForceOfWill */,
 				2334C65A19FCFD7C0060D609 /* ForceOfWillTests */,
-				231FF10D1B59B66400A2B949 /* FOW Tools WatchKit Extension */,
-				231FF11F1B59B66400A2B949 /* FOW Tools WatchKit App */,
 				2334C63C19FCFD7B0060D609 /* Products */,
 				1DC9F574638BA295AD12058B /* Pods */,
 				E26378513230B312E7FCF9C3 /* Frameworks */,
@@ -707,8 +634,6 @@
 			children = (
 				2334C63B19FCFD7B0060D609 /* ForceOfWill.app */,
 				2334C65719FCFD7C0060D609 /* ForceOfWillTests.xctest */,
-				231FF10C1B59B66400A2B949 /* FOW Tools WatchKit Extension.appex */,
-				231FF11B1B59B66400A2B949 /* FOW Tools WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1051,39 +976,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		231FF10B1B59B66400A2B949 /* FOW Tools WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 231FF12F1B59B66400A2B949 /* Build configuration list for PBXNativeTarget "FOW Tools WatchKit Extension" */;
-			buildPhases = (
-				231FF1081B59B66400A2B949 /* Sources */,
-				231FF1091B59B66400A2B949 /* Frameworks */,
-				231FF10A1B59B66400A2B949 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				231FF11E1B59B66400A2B949 /* PBXTargetDependency */,
-			);
-			name = "FOW Tools WatchKit Extension";
-			productName = "FOW Tools WatchKit Extension";
-			productReference = 231FF10C1B59B66400A2B949 /* FOW Tools WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
-		};
-		231FF11A1B59B66400A2B949 /* FOW Tools WatchKit App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 231FF12E1B59B66400A2B949 /* Build configuration list for PBXNativeTarget "FOW Tools WatchKit App" */;
-			buildPhases = (
-				231FF1191B59B66400A2B949 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "FOW Tools WatchKit App";
-			productName = "FOW Tools WatchKit App";
-			productReference = 231FF11B1B59B66400A2B949 /* FOW Tools WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
-		};
 		2334C63A19FCFD7B0060D609 /* ForceOfWill */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2334C66119FCFD7C0060D609 /* Build configuration list for PBXNativeTarget "ForceOfWill" */;
@@ -1132,13 +1024,6 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = IndieZiOS;
 				TargetAttributes = {
-					231FF10B1B59B66400A2B949 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = M36E68R9C8;
-					};
-					231FF11A1B59B66400A2B949 = {
-						CreatedOnToolsVersion = 6.4;
-					};
 					2334C63A19FCFD7B0060D609 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = M36E68R9C8;
@@ -1164,31 +1049,11 @@
 			targets = (
 				2334C63A19FCFD7B0060D609 /* ForceOfWill */,
 				2334C65619FCFD7C0060D609 /* ForceOfWillTests */,
-				231FF10B1B59B66400A2B949 /* FOW Tools WatchKit Extension */,
-				231FF11A1B59B66400A2B949 /* FOW Tools WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		231FF10A1B59B66400A2B949 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				231FF11C1B59B66400A2B949 /* FOW Tools WatchKit App.app in Resources */,
-				231FF1181B59B66400A2B949 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		231FF1191B59B66400A2B949 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				231FF1241B59B66400A2B949 /* Interface.storyboard in Resources */,
-				231FF1261B59B66400A2B949 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2334C63919FCFD7B0060D609 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1280,16 +1145,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		231FF1081B59B66400A2B949 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				231FF1141B59B66400A2B949 /* NotificationController.swift in Sources */,
-				231FF1121B59B66400A2B949 /* InterfaceController.swift in Sources */,
-				231FF1161B59B66400A2B949 /* GlanceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2334C63719FCFD7B0060D609 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1389,11 +1244,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		231FF11E1B59B66400A2B949 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 231FF11A1B59B66400A2B949 /* FOW Tools WatchKit App */;
-			targetProxy = 231FF11D1B59B66400A2B949 /* PBXContainerItemProxy */;
-		};
 		2334C65919FCFD7C0060D609 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2334C63A19FCFD7B0060D609 /* ForceOfWill */;
@@ -1402,14 +1252,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		231FF1221B59B66400A2B949 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				231FF1231B59B66400A2B949 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 		2334C64B19FCFD7B0060D609 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1429,79 +1271,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		231FF12A1B59B66400A2B949 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iOS Development: Niko Zarzani (E95MND3TWB)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "FOW Tools WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		231FF12B1B59B66400A2B949 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "FOW Tools WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		231FF12C1B59B66400A2B949 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = FOW_Tools_WatchKit_Extension;
-				INFOPLIST_FILE = "FOW Tools WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Debug;
-		};
-		231FF12D1B59B66400A2B949 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				IBSC_MODULE = FOW_Tools_WatchKit_Extension;
-				INFOPLIST_FILE = "FOW Tools WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Release;
-		};
 		2334C65F19FCFD7C0060D609 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1651,24 +1420,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		231FF12E1B59B66400A2B949 /* Build configuration list for PBXNativeTarget "FOW Tools WatchKit App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				231FF12C1B59B66400A2B949 /* Debug */,
-				231FF12D1B59B66400A2B949 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		231FF12F1B59B66400A2B949 /* Build configuration list for PBXNativeTarget "FOW Tools WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				231FF12A1B59B66400A2B949 /* Debug */,
-				231FF12B1B59B66400A2B949 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2334C63619FCFD7B0060D609 /* Build configuration list for PBXProject "ForceOfWill" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

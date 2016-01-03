@@ -19,6 +19,8 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "NoRotationNavigationController.h"
+#import <CoreSpotlight/CoreSpotlight.h>
 
 @interface AppDelegate ()
 
@@ -47,6 +49,13 @@
         [application registerForRemoteNotificationTypes:myTypes];
     }
     
+    NSDictionary *activityDic = [launchOptions objectForKey:UIApplicationLaunchOptionsUserActivityDictionaryKey];
+    if (activityDic) {
+        if(self.window.rootViewController){
+            NSUserActivity * userActivity = [activityDic valueForKey:@"UIApplicationLaunchOptionsUserActivityKey"];
+            [self.window.rootViewController restoreUserActivityState:userActivity];
+        }
+    }
     
     [FBSDKLoginButton class];
     
